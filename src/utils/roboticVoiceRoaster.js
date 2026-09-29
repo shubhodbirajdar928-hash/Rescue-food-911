@@ -1,112 +1,131 @@
-// 1-Word Bollywood Style Hindi Voice Engine
-// Pure Bollywood Icons: Jhakaas, Mogambo, Gabbar, Thakur, Daya, Circuit, Khallas, Baburao!
+// Bollywood Theme Voice Engine 🎬🎭
+// Theatrical Bollywood Hero & Villain Fanfares & Iconic 1-Word Dialogues!
+// Anil Kapoor (Jhakaas!), Mogambo (Mogambo!), Gabbar (Gabbar!), Thakur (Thakur!), CID Daya (Daya!)
 
 const ROAST_STORAGE_KEY = 'fr911_robo_roast_enabled';
 
-// Play a quick Bollywood style brass/chime fanfare before speaking
-const playSmoothChime = (isError = false) => {
+// Play an iconic theatrical Bollywood cinematic fanfare before speaking
+const playBollywoodFanfare = (isError = false) => {
   try {
     if (typeof window === 'undefined') return;
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
     const now = ctx.currentTime;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
 
-    osc.type = 'sine';
     if (isError) {
-      osc.frequency.setValueAtTime(440, now);
-      osc.frequency.exponentialRampToValueAtTime(260, now + 0.15);
-      gain.gain.setValueAtTime(0.08, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-    } else {
-      osc.frequency.setValueAtTime(587.33, now);
-      osc.frequency.exponentialRampToValueAtTime(987.77, now + 0.12);
-      gain.gain.setValueAtTime(0.08, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-    }
+      // Dramatic Bollywood villain / suspense stabs: "Dhum! Dhum! Dhum!"
+      const stabs = [330, 293.66, 220]; // E4, D4, A3 minor suspense
+      stabs.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const startTime = now + idx * 0.1;
 
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start(now);
-    osc.stop(now + 0.18);
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, startTime);
+        gain.gain.setValueAtTime(0.09, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.18);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(startTime);
+        osc.stop(startTime + 0.18);
+      });
+    } else {
+      // Triumphant Bollywood hero entry brass fanfare (C-E-G-C major hero flourish)
+      const notes = [261.63, 329.63, 392.00, 523.25];
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const startTime = now + idx * 0.08;
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, startTime);
+        gain.gain.setValueAtTime(0.1, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.28);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(startTime);
+        osc.stop(startTime + 0.28);
+      });
+    }
   } catch {
-    // Audio context fails gracefully if waiting on user interaction
+    // Fails gracefully if awaiting user gesture
   }
 };
 
-export const HINDI_FUNNY_SCRIPTS = {
-  // RESULTS (SUCCESS ACTIONS) - 1-WORD BOLLYWOOD BLOCKBUSTERS
+export const BOLLYWOOD_THEME_SCRIPTS = {
+  // RESULTS (SUCCESS ACTIONS) - ICONIC 1-WORD BOLLYWOOD HERO SHOUTS
   MISSION_ACCEPTED: [
-    { hindi: "झकास!", roman: "Jhakaas!" },      // Anil Kapoor
-    { hindi: "मोगाम्बो!", roman: "Mogambo!" },   // Mr. India
-    { hindi: "रापचिक!", roman: "Rapchik!" },    // Munna Bhai
-    { hindi: "सिक्सर!", roman: "Sixer!" }
+    { hindi: "झकाऽऽस!", roman: "Jhakaas!", star: "Anil Kapoor Style 🕺" },
+    { hindi: "मोगैम्बोऽऽ!", roman: "Mogambo!", star: "Amrish Puri Style 👑" },
+    { hindi: "रापचिक!", roman: "Rapchik!", star: "Munna Bhai Style 💥" },
+    { hindi: "सिक्सर!", roman: "Sixer!", star: "Bollywood Hero Entry 🏏" }
   ],
   RESCUE_COMPLETED: [
-    { hindi: "शहंशाह!", roman: "Shahenshah!" }, // Amitabh Bachchan
-    { hindi: "बादशाह!", roman: "Baadshah!" },   // SRK
-    { hindi: "वसूल!", roman: "Vasool!" },       // Baburao
-    { hindi: "शोले!", roman: "Sholay!" }        // Sholay
+    { hindi: "शहंशाह!", roman: "Shahenshah!", star: "Amitabh Bachchan Style 🧥" },
+    { hindi: "बादशाह!", roman: "Baadshah!", star: "Shah Rukh Khan Style 👑" },
+    { hindi: "वसूल!", roman: "Vasool!", star: "Baburao Apte Style 💰" },
+    { hindi: "शोले!", roman: "Sholay!", star: "Dharmendra Style 🔥" }
   ],
   KITCHEN_DISPATCH: [
-    { hindi: "गब्बर!", roman: "Gabbar!" },      // Sholay
-    { hindi: "धमाका!", roman: "Dhamaka!" },
-    { hindi: "तहलका!", roman: "Tehelka!" },
-    { hindi: "सुल्तान!", roman: "Sultan!" }
+    { hindi: "गब्बर!", roman: "Gabbar!", star: "Gabbar Singh Style 🤠" },
+    { hindi: "धमाका!", roman: "Dhamaka!", star: "Bollywood Climax 💥" },
+    { hindi: "तहलका!", roman: "Tehelka!", star: "Dharmendra Action 🌪️" },
+    { hindi: "सुल्तान!", roman: "Sultan!", star: "Salman Khan Style 🥊" }
   ],
   FEEDBACK_SUBMITTED_PRAISE: [
-    { hindi: "सुपरस्टार!", roman: "Superstar!" },
-    { hindi: "लाजवाब!", roman: "Lajawab!" }
+    { hindi: "सुपरस्टार!", roman: "Superstar!", star: "Rajinikanth Style 🌟" },
+    { hindi: "लाजवाब!", roman: "Lajawab!", star: "Sanjeev Kumar Style 😋" }
   ],
   FEEDBACK_RESOLVED: [
-    { hindi: "सॉर्टेड!", roman: "Sorted!" },    // Munna Bhai
-    { hindi: "शांति!", roman: "Shaanti!" }
+    { hindi: "सॉर्टेड!", roman: "Sorted!", star: "Munna & Circuit 🕶️" },
+    { hindi: "शांति!", roman: "Shaanti!", star: "Om Shanti Om 🧘" }
   ],
   FEEDBACK_DELETED: [
-    { hindi: "गायब!", roman: "Gaayab!" }
+    { hindi: "गायब!", roman: "Gaayab!", star: "Mr. India Invisible 🎩" }
   ],
   ITEM_RELISTED: [
-    { hindi: "री-लोड!", roman: "Reload!" },
-    { hindi: "जिंदा!", roman: "Zinda!" }
+    { hindi: "री-लोड!", roman: "Reload!", star: "Bollywood Sequels 🎬" },
+    { hindi: "जिंदा!", roman: "Zinda!", star: "Tiger Zinda Hai 🐅" }
   ],
   KITCHEN_RESET: [
-    { hindi: "सफाचट!", roman: "Safachat!" }
+    { hindi: "सफाचट!", roman: "Safachat!", star: "Baburao Ka Jhadu 🧹" }
   ],
 
-  // ERRORS & ALERTS - 1-WORD BOLLYWOOD DRAMA
+  // ERRORS & ALERTS - ICONIC 1-WORD BOLLYWOOD DRAMA SHOUTS
   SAFETY_NOT_CHECKED: [
-    { hindi: "ठाकुर!", roman: "Thakur!" },       // Yeh haath mujhe de de Thakur
-    { hindi: "यमराज!", roman: "Yamraj!" },
-    { hindi: "क्राइममास्टर!", roman: "CrimeMaster!" } // Crime Master Gogo
+    { hindi: "ठाकुऽऽर!", roman: "Thakur!", star: "Sholay Gabbar Warning ✋" },
+    { hindi: "यमराज!", roman: "Yamraj!", star: "Asrani Jailor Style 🐃" },
+    { hindi: "क्राइममास्टर!", roman: "CrimeMaster!", star: "Crime Master Gogo 🦸" }
   ],
   FORM_VALIDATION_ERROR: [
-    { hindi: "सर्किट!", roman: "Circuit!" },     // Munna Bhai
-    { hindi: "ढक्कन!", roman: "Dhakkan!" },
-    { hindi: "चोमू!", roman: "Chomu!" }
+    { hindi: "सर्किट!", roman: "Circuit!", star: "Munna Bhai Warning 🕶️" },
+    { hindi: "ढक्कन!", roman: "Dhakkan!", star: "Bollywood Comedy 🪣" },
+    { hindi: "चोमू!", roman: "Chomu!", star: "Golmaal Style 🤓" }
   ],
   FOOD_EXPIRED_TIMEOUT: [
-    { hindi: "खल्लास!", roman: "Khallas!" },     // Company
-    { hindi: "कुंभकर्ण!", roman: "Kumbhkaran!" },
-    { hindi: "अलविदा!", roman: "Alvida!" }
+    { hindi: "खल्लाऽऽस!", roman: "Khallas!", star: "Company Style 💀" },
+    { hindi: "कुंभकर्ण!", roman: "Kumbhkaran!", star: "Hera Pheri Sleep 😴" },
+    { hindi: "अलविदा!", roman: "Alvida!", star: "Kabhi Alvida Naa Kehna 👋" }
   ],
   COMPLAINT_FILED: [
-    { hindi: "दया!", roman: "Daya!" },           // CID Daya darwaza tod
-    { hindi: "लफड़ा!", roman: "Lafda!" },
-    { hindi: "गड़बड़!", roman: "Gadbad!" }
+    { hindi: "दऽऽया!", roman: "Daya!", star: "CID ACP Pradyuman 🚪" },
+    { hindi: "लफड़ा!", roman: "Lafda!", star: "Bollywood Drama 🚨" },
+    { hindi: "गड़बड़!", roman: "Gadbad!", star: "CID Investigation 🕵️" }
   ],
   OUT_OF_STOCK: [
-    { hindi: "पोपट!", roman: "Popat!" },
-    { hindi: "गोली!", roman: "Goli!" }
+    { hindi: "पोपऽऽट!", roman: "Popat!", star: "Taarak Mehta & Comedy 🦜" },
+    { hindi: "गोली!", roman: "Goli!", star: "Bollywood Action 💊" }
   ],
   CANCELLATION_PANIC: [
-    { hindi: "बाबूराव!", roman: "Baburao!" },   // Yeh Baburao ka style hai
-    { hindi: "भगोड़ा!", roman: "Bhagoda!" }
+    { hindi: "बाबूराव!", roman: "Baburao!", star: "Hera Pheri Retreat 👓" },
+    { hindi: "भगोड़ा!", roman: "Bhagoda!", star: "Sholay Villagers 🏃" }
   ],
   GENERAL_ERROR: [
-    { hindi: "लोचा!", roman: "Locha!" },
-    { hindi: "गड़बड़!", roman: "Gadbad!" }
+    { hindi: "लोचा!", roman: "Locha!", star: "Munna Bhai Locha 😵" },
+    { hindi: "गड़बड़!", roman: "Gadbad!", star: "Golmaal Fun 🎬" }
   ]
 };
 
@@ -124,8 +143,8 @@ export const setRoboRoastEnabled = (enabled) => {
   window.dispatchEvent(new CustomEvent('robo-roast-toggle', { detail: { enabled } }));
 };
 
-// Pick the smoothest Hindi or Indian English voice
-const pickHindiVoice = () => {
+// Pick the most dramatic Hindi or Indian English voice
+const pickBollywoodVoice = () => {
   if (typeof window === 'undefined' || !window.speechSynthesis) return null;
   const voices = window.speechSynthesis.getVoices();
   if (!voices || voices.length === 0) return null;
@@ -150,7 +169,7 @@ const pickHindiVoice = () => {
   );
   if (indianVoice) return { voice: indianVoice, isHindiNative: false };
 
-  // 3. Fallback to natural English voice
+  // 3. Fallback to natural expressive voice
   const fallback = voices.find(v =>
     v.lang.startsWith('en') && (
       v.name.includes('Natural') ||
@@ -164,8 +183,8 @@ const pickHindiVoice = () => {
 };
 
 /**
- * Speak in 1-word iconic Bollywood Hindi voice out loud using window.speechSynthesis
- * @param {string} category - key in HINDI_FUNNY_SCRIPTS (e.g. 'MISSION_ACCEPTED', 'SAFETY_NOT_CHECKED')
+ * Speak in Bollywood Theme voice out loud using window.speechSynthesis
+ * @param {string} category - key in BOLLYWOOD_THEME_SCRIPTS (e.g. 'MISSION_ACCEPTED', 'SAFETY_NOT_CHECKED')
  */
 export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
   if (typeof window === 'undefined') return;
@@ -177,12 +196,12 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
     category.includes('OUT_OF_STOCK') ||
     category.includes('PANIC');
 
-  // Pick 1-word script item
-  const scriptList = HINDI_FUNNY_SCRIPTS[category] || HINDI_FUNNY_SCRIPTS.GENERAL_ERROR;
+  // Pick script item
+  const scriptList = BOLLYWOOD_THEME_SCRIPTS[category] || BOLLYWOOD_THEME_SCRIPTS.GENERAL_ERROR;
   const item = scriptList[Math.floor(Math.random() * scriptList.length)];
 
-  // Play gentle chime
-  playSmoothChime(isError);
+  // Play dramatic Bollywood cinematic fanfare
+  playBollywoodFanfare(isError);
 
   // Dispatch visual event for on-screen subtitle balloon
   window.dispatchEvent(
@@ -190,6 +209,7 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
       detail: {
         text: item.hindi,
         roman: item.roman,
+        star: item.star,
         category,
         isError,
         timestamp: Date.now()
@@ -204,7 +224,7 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
     // Cancel previous speech
     window.speechSynthesis.cancel();
 
-    const voiceInfo = pickHindiVoice();
+    const voiceInfo = pickBollywoodVoice();
     const textToSpeak = voiceInfo && voiceInfo.isHindiNative ? item.hindi : item.roman;
 
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
@@ -216,22 +236,22 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
       utterance.lang = 'hi-IN';
     }
 
-    // Punchy 1-word Bollywood delivery
-    utterance.rate = 1.05;
-    utterance.pitch = isError ? 0.95 : 1.1;
+    // Theatrical Bollywood dialogue delivery tuning
+    utterance.rate = 1.0; // Steady dramatic hero pace
+    utterance.pitch = isError ? 0.9 : 1.15; // High hero energy or deep villain stabs
     utterance.volume = 1.0;
 
     window.speechSynthesis.speak(utterance);
   } catch (err) {
-    console.warn('Speech synthesis error:', err);
+    console.warn('Bollywood speech synthesis error:', err);
   }
 };
 
 /**
- * Trigger a random 1-word Bollywood test roast for demo purposes
+ * Trigger a random 1-word Bollywood test dialogue for demo purposes
  */
 export const testRandomRoast = () => {
-  const categories = Object.keys(HINDI_FUNNY_SCRIPTS);
+  const categories = Object.keys(BOLLYWOOD_THEME_SCRIPTS);
   const randomCategory = categories[Math.floor(Math.random() * categories.length)];
   speakRoboticRoast(randomCategory);
 };

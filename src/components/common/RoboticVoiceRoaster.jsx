@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Bot, Sparkles, X, Radio } from 'lucide-react';
+import { Volume2, VolumeX, Bot, Sparkles, X, Radio, Film, Clapperboard } from 'lucide-react';
 import { isRoboRoastEnabled, setRoboRoastEnabled, testRandomRoast } from '../../utils/roboticVoiceRoaster';
 
 export const RoboticVoiceRoaster = () => {
@@ -52,13 +52,13 @@ export const RoboticVoiceRoaster = () => {
           }`}>
             <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10 text-xs">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-black/40 border border-white/20 text-white flex items-center gap-1.5">
-                  <Bot className="w-4 h-4 text-amber-400 animate-pulse" />
-                  <span className="font-bold text-[11px] tracking-wider uppercase">🇮🇳 DESI ROAST BOT 🎙️</span>
+                <span className="p-1.5 rounded-lg bg-black/40 border border-amber-500/40 text-amber-300 flex items-center gap-1.5">
+                  <Film className="w-4 h-4 text-amber-400 animate-pulse" />
+                  <span className="font-bold text-[11px] tracking-wider uppercase">🎬 BOLLYWOOD VOICE 🎭</span>
                 </span>
                 <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/40">
                   <Radio className="w-2.5 h-2.5 animate-ping" />
-                  HINDI VOICE ON 🔊
+                  70mm AUDIO 🔊
                 </span>
               </div>
               <button
@@ -69,8 +69,13 @@ export const RoboticVoiceRoaster = () => {
               </button>
             </div>
 
-            <div className="py-2 text-center space-y-1">
-              <div className="text-3xl sm:text-4xl font-black text-amber-300 tracking-wider animate-bounce">
+            <div className="py-2.5 text-center space-y-1.5">
+              {currentRoast.star && (
+                <div className="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-[10px] sm:text-[11px] text-amber-300 font-bold font-sans tracking-wide">
+                  ⭐ {currentRoast.star}
+                </div>
+              )}
+              <div className="text-3xl sm:text-4xl font-black text-amber-300 tracking-wider animate-bounce font-sans">
                 {currentRoast.text}
               </div>
               {currentRoast.roman && (
@@ -83,13 +88,14 @@ export const RoboticVoiceRoaster = () => {
             <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-white/70">
               <span className="italic flex items-center gap-1">
                 <Sparkles className="w-3 h-3 text-amber-300" />
-                Hindi Browser Speech Active
+                Bollywood Fanfare & Speech
               </span>
               <button
                 onClick={testRandomRoast}
-                className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-bold border border-amber-500/40 active:scale-95 transition-all"
+                className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-bold border border-amber-500/40 active:scale-95 transition-all flex items-center gap-1"
               >
-                Agla Roast 🎙️
+                <span>Agla Dialogue</span>
+                <Clapperboard className="w-3 h-3" />
               </button>
             </div>
           </div>

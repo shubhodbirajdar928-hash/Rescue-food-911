@@ -101,7 +101,7 @@ export const Navbar = () => {
               <RotateCcw className="w-5 h-5" />
             </button>
 
-            {/* Robotic Voice Roast Control */}
+            {/* Bollywood Theme Voice Control */}
             <button
               onClick={() => {
                 const next = !roboRoastEnabled;
@@ -114,10 +114,10 @@ export const Navbar = () => {
                   ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-lg shadow-amber-950/40 animate-pulse'
                   : 'bg-slate-900 text-slate-500 border-slate-800 hover:text-slate-400'
               }`}
-              title={roboRoastEnabled ? 'Robotic Voice Roast is ON (Click to mute)' : 'Robotic Voice Roast is MUTED (Click to activate)'}
+              title={roboRoastEnabled ? 'Bollywood Theme Voice is ON (Click to mute)' : 'Bollywood Theme Voice is MUTED (Click to activate)'}
             >
-              <Bot className="w-4 h-4 text-amber-400" />
-              <span className="hidden md:inline">{roboRoastEnabled ? '🤖 ROAST ON' : '🤖 ROAST OFF'}</span>
+              <span className="text-base leading-none">🎬</span>
+              <span className="hidden md:inline">{roboRoastEnabled ? 'BOLLYWOOD VOICE' : 'VOICE MUTED'}</span>
             </button>
 
             <button
