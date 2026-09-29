@@ -15,6 +15,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { formatTimeStr, getFilmyTriageReportForFood } from '../../data/mockEmergencies';
+import { speakRoboticRoast } from '../../utils/roboticVoiceRoaster';
 
 const MANDATORY_ITEMS = [
   {
@@ -597,21 +598,29 @@ export const DeployEmergencyModal = ({ isOpen, onClose }) => {
               {/* Sticky Bottom Actions */}
               <div className="p-3.5 sm:p-4 bg-zinc-900/95 border-t border-zinc-800 shrink-0 space-y-2">
                 <button
-                  type="submit"
-                  disabled={!isFormValid}
+                  type={isFormValid ? "submit" : "button"}
+                  onClick={(e) => {
+                    if (!isFormValid) {
+                      e.preventDefault();
+                      speakRoboticRoast('SAFETY_NOT_CHECKED');
+                    }
+                  }}
                   className={`w-full py-3.5 sm:py-4 rounded-xl font-black text-sm tracking-wider flex items-center justify-center gap-2 transform active:scale-98 transition-all ${
                     isFormValid
                       ? 'text-black bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 hover:from-emerald-300 hover:to-teal-200 shadow-xl shadow-emerald-500/20 border-2 border-emerald-300 cursor-pointer'
-                      : 'text-zinc-500 bg-zinc-800/60 border border-zinc-700/50 cursor-not-allowed opacity-60'
+                      : 'text-zinc-400 bg-zinc-800/80 border border-zinc-700 hover:border-rose-500/50 hover:text-rose-300 cursor-pointer'
                   }`}
                 >
                   <Siren className="w-5 h-5 shrink-0" />
-                  <span>🚑 CLEAR & DISPATCH FOOD</span>
+                  <span>{isFormValid ? '🚑 CLEAR & DISPATCH FOOD' : '⚠️ CHECK SAFETY ITEMS FIRST'}</span>
                 </button>
 
                 <button
                   type="button"
-                  onClick={onClose}
+                  onClick={() => {
+                    speakRoboticRoast('CANCELLATION_PANIC');
+                    onClose();
+                  }}
                   className="w-full py-2 rounded-xl text-xs font-mono font-bold text-zinc-400 hover:text-white bg-zinc-950 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-center gap-1.5 transition-colors"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />

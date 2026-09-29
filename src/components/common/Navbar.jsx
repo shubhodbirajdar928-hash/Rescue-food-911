@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRescue } from '../../context/RescueContext';
 import { useAuth } from '../../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Siren, Volume2, VolumeX, Award, ChefHat, Radio, RotateCcw, LogOut, User } from 'lucide-react';
+import { Siren, Volume2, VolumeX, Award, ChefHat, Radio, RotateCcw, LogOut, User, Bot } from 'lucide-react';
+import { isRoboRoastEnabled, setRoboRoastEnabled, testRandomRoast } from '../../utils/roboticVoiceRoaster';
 
 export const Navbar = () => {
   const { role, soundEnabled, setSoundEnabled, totalHeroPoints, reservations, resetToZero } = useRescue();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [roboRoastEnabled, setLocalRoast] = useState(isRoboRoastEnabled);
+
+  useEffect(() => {
+    const handleToggle = (e) => setLocalRoast(e.detail.enabled);
+    window.addEventListener('robo-roast-toggle', handleToggle);
+    return () => window.removeEventListener('robo-roast-toggle', handleToggle);
+  }, []);
 
   const activeReservationsCount = reservations.filter(r => r.status === 'RESERVED' || r.status === 'ON_THE_WAY').length;
   const isRestaurant = role === 'restaurant';
@@ -91,6 +99,25 @@ export const Navbar = () => {
               title="Reset All Data to 0"
             >
               <RotateCcw className="w-5 h-5" />
+            </button>
+
+            {/* Robotic Voice Roast Control */}
+            <button
+              onClick={() => {
+                const next = !roboRoastEnabled;
+                setRoboRoastEnabled(next);
+                setLocalRoast(next);
+                if (next) testRandomRoast();
+              }}
+              className={`px-3 py-2 rounded-xl border text-xs font-bold font-mono flex items-center gap-1.5 transition-all ${
+                roboRoastEnabled
+                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-lg shadow-amber-950/40 animate-pulse'
+                  : 'bg-slate-900 text-slate-500 border-slate-800 hover:text-slate-400'
+              }`}
+              title={roboRoastEnabled ? 'Robotic Voice Roast is ON (Click to mute)' : 'Robotic Voice Roast is MUTED (Click to activate)'}
+            >
+              <Bot className="w-4 h-4 text-amber-400" />
+              <span className="hidden md:inline">{roboRoastEnabled ? '🤖 ROAST ON' : '🤖 ROAST OFF'}</span>
             </button>
 
             <button

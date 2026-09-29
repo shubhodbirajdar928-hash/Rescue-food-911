@@ -17,6 +17,7 @@ import {
   AlertTriangle,
   Trash2
 } from 'lucide-react';
+import { speakRoboticRoast } from '../../utils/roboticVoiceRoaster';
 
 const FEEDBACK_TYPES = [
   {
@@ -120,7 +121,10 @@ export const FeedbackSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!message.trim()) return;
+    if (!message.trim()) {
+      speakRoboticRoast('FORM_VALIDATION_ERROR');
+      return;
+    }
 
     const newTicket = addFeedback({
       foodName: selectedFood,

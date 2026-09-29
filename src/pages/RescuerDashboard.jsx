@@ -12,6 +12,7 @@ import { RescuerProfile } from '../components/rescuer/RescuerProfile';
 import { ExpiredMemorialWard } from '../components/rescuer/ExpiredMemorialWard';
 import { FeedbackSection } from '../components/rescuer/FeedbackSection';
 import { ImpactSection } from '../components/impact/ImpactSection';
+import { RoboticVoiceRoaster } from '../components/common/RoboticVoiceRoaster';
 import { Grid, Map, Trophy, Filter, HeartCrack, MessageSquareQuote } from 'lucide-react';
 
 const RescuerDashboard = () => {
@@ -32,6 +33,7 @@ const RescuerDashboard = () => {
 
       <Navbar />
       <EmergencyTicker />
+      <RoboticVoiceRoaster />
 
       <div className="space-y-10">
         <HeroSection onScrollToGrid={() => { gridRef.current?.scrollIntoView({ behavior: 'smooth' }); }} />

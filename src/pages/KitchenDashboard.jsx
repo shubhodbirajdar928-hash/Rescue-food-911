@@ -3,6 +3,7 @@ import { Navbar } from '../components/common/Navbar';
 import { EmergencyTicker } from '../components/common/EmergencyTicker';
 import { RestaurantDashboard } from '../components/restaurant/RestaurantDashboard';
 import { ImpactSection } from '../components/impact/ImpactSection';
+import { RoboticVoiceRoaster } from '../components/common/RoboticVoiceRoaster';
 
 const KitchenDashboard = () => {
   return (
@@ -11,6 +12,7 @@ const KitchenDashboard = () => {
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
       <Navbar />
       <EmergencyTicker />
+      <RoboticVoiceRoaster />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
         <RestaurantDashboard />
         <ImpactSection />

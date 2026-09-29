@@ -3,6 +3,7 @@ import { INITIAL_EMERGENCIES, INITIAL_RESERVATIONS, INITIAL_RESCUE_HISTORY, INIT
 import { playSound } from '../utils/soundEffects';
 import { triggerRescueConfetti } from '../utils/confetti';
 import { useAuth } from '../auth/AuthContext';
+import { speakRoboticRoast } from '../utils/roboticVoiceRoaster';
 
 const RescueContext = createContext(null);
 
@@ -213,6 +214,7 @@ export const RescueProvider = ({ children }) => {
     };
     setFeedbacks(prev => [newEntry, ...prev]);
     playAudio('beep');
+    speakRoboticRoast(feedbackData.type === 'PRAISE' ? 'FEEDBACK_SUBMITTED_PRAISE' : 'COMPLAINT_FILED');
     return newEntry;
   };
 
@@ -230,11 +232,13 @@ export const RescueProvider = ({ children }) => {
       return item;
     }));
     playAudio('dispatch');
+    speakRoboticRoast('FEEDBACK_RESOLVED');
   };
 
   const deleteFeedback = (id) => {
     setFeedbacks(prev => prev.filter(item => item.id !== id));
     playAudio('beep');
+    speakRoboticRoast('FEEDBACK_DELETED');
   };
 
   // LIVE COUNTDOWN TIMER TICKER (runs every second)
@@ -384,6 +388,7 @@ export const RescueProvider = ({ children }) => {
 
     setEmergencies(prev => [newEmergency, ...prev]);
     playAudio('siren');
+    speakRoboticRoast('KITCHEN_DISPATCH');
     return newEmergency;
   };
 
@@ -398,6 +403,7 @@ export const RescueProvider = ({ children }) => {
 
     // PREVENT CLAIMING EXPIRED FOOD LISTING
     if (remainingSec <= 0) {
+      speakRoboticRoast('FOOD_EXPIRED_TIMEOUT');
       alert('🚨 AREY BHAI! TIME KHATAM HO GAYA! 😭\n\nFood rescue nahi ho paya...\nThe rescue window for this food has expired. 🥲\n\nNote: The vendor configured rescue window has closed.');
       return null;
     }
@@ -405,6 +411,7 @@ export const RescueProvider = ({ children }) => {
     // PREVENT CLAIMING WHEN QUANTITY IS EXHAUSTED
     const current = emergencies.find(e => e.id === foodItem.id);
     if (!current || current.quantity <= 0) {
+      speakRoboticRoast('OUT_OF_STOCK');
       alert('🚨 AREY BHAI! All portions of this food have already been rescued by other heroes!');
       return null;
     }
@@ -463,6 +470,7 @@ export const RescueProvider = ({ children }) => {
     setActiveMission(newReservation);
     setSelectedEmergency(null);
     playAudio('dispatch');
+    speakRoboticRoast('MISSION_ACCEPTED');
 
     return newReservation;
   };
@@ -515,6 +523,7 @@ export const RescueProvider = ({ children }) => {
 
     playAudio('success');
     triggerRescueConfetti();
+    speakRoboticRoast('RESCUE_COMPLETED');
   };
 
   // Re-list an expired surplus batch with a renewed rescue window (Kitchen Chef action)
@@ -545,6 +554,7 @@ export const RescueProvider = ({ children }) => {
     setExpiredEmergencies(prev => prev.filter(e => e.id !== foodId));
     setEmergencies(prev => [relisted, ...prev]);
     playAudio('siren');
+    speakRoboticRoast('ITEM_RELISTED');
   };
 
   // Archive / delete expired emergency permanently
@@ -573,6 +583,7 @@ export const RescueProvider = ({ children }) => {
     setSelectedEmergency(null);
     setCompletedRescueData(null);
     playAudio('dispatch');
+    speakRoboticRoast('KITCHEN_RESET');
   };
 
   // Load sample food emergencies anchored to now
