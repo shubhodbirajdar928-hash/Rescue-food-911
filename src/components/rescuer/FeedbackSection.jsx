@@ -14,7 +14,8 @@ import {
   ShieldCheck,
   RotateCcw,
   Utensils,
-  AlertTriangle
+  AlertTriangle,
+  Trash2
 } from 'lucide-react';
 
 const FEEDBACK_TYPES = [
@@ -80,7 +81,7 @@ const QUICK_TAGS = [
 ];
 
 export const FeedbackSection = () => {
-  const { feedbacks, addFeedback, emergencies, history, reservations } = useRescue();
+  const { feedbacks, addFeedback, deleteFeedback, emergencies, history, reservations } = useRescue();
 
   const [activeTab, setActiveTab] = useState('form'); // 'form' | 'list'
   const [filterType, setFilterType] = useState('ALL');
@@ -448,7 +449,7 @@ export const FeedbackSection = () => {
                     </span>
                   </div>
 
-                  {/* Rating Stars & Date */}
+                  {/* Rating Stars, Date & Delete */}
                   <div className="flex items-center gap-3">
                     <div className="flex items-center text-amber-400">
                       {[...Array(fb.rating || 5)].map((_, i) => (
@@ -458,6 +459,13 @@ export const FeedbackSection = () => {
                     <span className="text-[10px] text-slate-500">
                       {new Date(fb.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
+                    <button
+                      onClick={() => deleteFeedback(fb.id)}
+                      className="p-1 rounded-md hover:bg-rose-950/60 text-slate-500 hover:text-rose-400 transition-colors"
+                      title="Delete ticket"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </div>
 

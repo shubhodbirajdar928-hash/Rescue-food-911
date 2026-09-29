@@ -11,7 +11,8 @@ import {
   Flame,
   Clock,
   Package,
-  HeartHandshake
+  HeartHandshake,
+  Trash2
 } from 'lucide-react';
 
 const QUICK_RESOLUTIONS = [
@@ -38,10 +39,12 @@ const QUICK_RESOLUTIONS = [
 ];
 
 export const KitchenFeedbackInbox = () => {
-  const { feedbacks, resolveFeedback } = useRescue();
+  const { feedbacks, resolveFeedback, deleteFeedback } = useRescue();
   const [filter, setFilter] = useState('ALL'); // 'ALL' | 'OPEN' | 'PRAISE' | 'RESOLVED'
   const [replyNotes, setReplyNotes] = useState({});
   const [activeReplyingId, setActiveReplyingId] = useState(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [deletedToast, setDeletedToast] = useState(null);
 
   const openCount = feedbacks.filter((f) => f.status === 'IN_INVESTIGATION').length;
   const praiseCount = feedbacks.filter((f) => f.type === 'PRAISE').length;
@@ -76,8 +79,45 @@ export const KitchenFeedbackInbox = () => {
     });
   };
 
+  const handleDelete = (fbId, code) => {
+    deleteFeedback(fbId);
+    setConfirmDeleteId(null);
+    setDeletedToast(`Incident ticket ${code} deleted from records.`);
+    setTimeout(() => setDeletedToast(null), 3000);
+  };
+
+  const handleResolveAndDelete = (fbId, code) => {
+    const note =
+      replyNotes[fbId]?.trim() ||
+      'Kitchen supervisor has taken corrective action and updated station protocols. Problem resolved and ticket closed! 🚑🛡️';
+    resolveFeedback(fbId, {
+      status: 'RESOLVED',
+      resolutionNote: note
+    });
+    deleteFeedback(fbId);
+    setActiveReplyingId(null);
+    setDeletedToast(`Issue ${code} marked as fixed & deleted from active feedback.`);
+    setTimeout(() => setDeletedToast(null), 3500);
+  };
+
   return (
     <div className="space-y-6 text-left font-mono">
+      {/* Toast notification when feedback is deleted */}
+      {deletedToast && (
+        <div className="p-3.5 rounded-2xl bg-rose-600/90 text-white text-xs font-bold flex items-center justify-between shadow-2xl animate-in slide-in-from-top-2 border border-rose-400/40">
+          <span className="flex items-center gap-2">
+            <Trash2 className="w-4 h-4 shrink-0 text-white" />
+            <span>{deletedToast}</span>
+          </span>
+          <button
+            onClick={() => setDeletedToast(null)}
+            className="text-white hover:text-rose-200 px-2 py-0.5 rounded-lg bg-black/20"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       {/* Header Banner */}
       <div className="bg-slate-900/90 rounded-3xl border border-slate-800 p-6 sm:p-8 shadow-2xl relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
@@ -289,6 +329,38 @@ export const KitchenFeedbackInbox = () => {
                         Re-open for Audit
                       </button>
                     )}
+
+                    {/* Delete Feedback Button (Available once fixed or to clear from desk) */}
+                    {confirmDeleteId === fb.id ? (
+                      <div className="flex items-center gap-1.5 bg-rose-950/80 border border-rose-500/50 p-1.5 rounded-xl ml-auto animate-in fade-in">
+                        <span className="text-[11px] text-rose-300 font-bold px-1.5">Confirm Delete?</span>
+                        <button
+                          onClick={() => handleDelete(fb.id, fb.code)}
+                          className="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-[11px] font-bold shadow transition-all active:scale-95"
+                        >
+                          Yes, Delete
+                        </button>
+                        <button
+                          onClick={() => setConfirmDeleteId(null)}
+                          className="px-2 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-[11px]"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => setConfirmDeleteId(fb.id)}
+                        className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ml-auto active:scale-95 ${
+                          !isOpen
+                            ? 'bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-500/40'
+                            : 'bg-slate-950 hover:bg-rose-950/40 text-slate-400 hover:text-rose-400 border border-slate-800 hover:border-rose-500/30'
+                        }`}
+                        title="Delete feedback from kitchen dispatch records"
+                      >
+                        <Trash2 className="w-3.5 h-3.5 text-rose-400" />
+                        <span>{!isOpen ? '🗑️ Delete Fixed Ticket' : 'Delete Ticket'}</span>
+                      </button>
+                    )}
                   </div>
 
                   {/* Kitchen Action Drawer */}
@@ -329,7 +401,7 @@ export const KitchenFeedbackInbox = () => {
                         />
                       </div>
 
-                      <div className="flex justify-end gap-2">
+                      <div className="flex justify-end gap-2 flex-wrap">
                         <button
                           type="button"
                           onClick={() => setActiveReplyingId(null)}
@@ -339,8 +411,17 @@ export const KitchenFeedbackInbox = () => {
                         </button>
                         <button
                           type="button"
+                          onClick={() => handleResolveAndDelete(fb.id, fb.code)}
+                          className="px-4 py-2 rounded-xl bg-rose-600/80 hover:bg-rose-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all active:scale-95"
+                          title="Mark problem as fixed and delete from active feedback records"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Fixed: Resolve & Delete</span>
+                        </button>
+                        <button
+                          type="button"
                           onClick={() => handleResolve(fb.id)}
-                          className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-purple-900/40 transition-all"
+                          className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-purple-900/40 transition-all active:scale-95"
                         >
                           <Send className="w-3.5 h-3.5" />
                           <span>Transmit Kitchen Resolution to Rescuer</span>

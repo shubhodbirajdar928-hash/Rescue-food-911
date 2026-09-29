@@ -232,6 +232,11 @@ export const RescueProvider = ({ children }) => {
     playAudio('dispatch');
   };
 
+  const deleteFeedback = (id) => {
+    setFeedbacks(prev => prev.filter(item => item.id !== id));
+    playAudio('beep');
+  };
+
   // LIVE COUNTDOWN TIMER TICKER (runs every second)
   // Calculates remaining seconds from absolute expiresAt.
   // AUTOMATIC EXPIRY REMOVAL: When secondsLeft reaches 0, the food is automatically
@@ -639,6 +644,7 @@ export const RescueProvider = ({ children }) => {
         feedbacks,
         addFeedback,
         resolveFeedback,
+        deleteFeedback,
         // Computed Impact
         totalRescuedCount,
         totalMoneySaved,
