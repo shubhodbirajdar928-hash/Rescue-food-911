@@ -54,11 +54,11 @@ export const RoboticVoiceRoaster = () => {
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-black/40 border border-white/20 text-white flex items-center gap-1.5">
                   <Bot className="w-4 h-4 text-amber-400 animate-pulse" />
-                  <span className="font-bold text-[11px] tracking-wider uppercase">🤖 SMART ROAST BOT 🎙️</span>
+                  <span className="font-bold text-[11px] tracking-wider uppercase">🇮🇳 DESI ROAST BOT 🎙️</span>
                 </span>
                 <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/40">
                   <Radio className="w-2.5 h-2.5 animate-ping" />
-                  SMOOTH VOICE ON
+                  HINDI VOICE ON 🔊
                 </span>
               </div>
               <button
@@ -69,20 +69,27 @@ export const RoboticVoiceRoaster = () => {
               </button>
             </div>
 
-            <p className="text-xs sm:text-sm font-sans leading-relaxed text-white">
-              "{currentRoast.text}"
-            </p>
+            <div className="space-y-1.5">
+              <p className="text-sm sm:text-base font-sans font-bold leading-relaxed text-white">
+                "{currentRoast.text}"
+              </p>
+              {currentRoast.roman && (
+                <p className="text-[11px] sm:text-xs font-mono italic text-amber-300/80">
+                  "{currentRoast.roman}"
+                </p>
+              )}
+            </div>
 
             <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-white/70">
               <span className="italic flex items-center gap-1">
                 <Sparkles className="w-3 h-3 text-amber-300" />
-                Browser Voice Audio Active
+                Hindi Browser Speech Active
               </span>
               <button
                 onClick={testRandomRoast}
-                className="px-2 py-1 rounded bg-black/40 hover:bg-black/60 text-amber-300 font-bold border border-amber-500/30"
+                className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-bold border border-amber-500/40 active:scale-95 transition-all"
               >
-                Next Roast 🎙️
+                Agla Roast 🎙️
               </button>
             </div>
           </div>
