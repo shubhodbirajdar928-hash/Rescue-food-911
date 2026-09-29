@@ -3,7 +3,7 @@ import { useRescue } from '../../context/RescueContext';
 import { Clock, MapPin, CheckCircle2, Navigation, X, ArrowLeft, AlertCircle, AlertTriangle } from 'lucide-react';
 
 export const RescueMissionModal = () => {
-  const { activeMission, setActiveMission, markOnTheWay, markAsRescued } = useRescue();
+  const { activeMission, setActiveMission, markOnTheWay } = useRescue();
   const [clockTick, setClockTick] = useState(() => Date.now());
 
   useEffect(() => {
@@ -183,18 +183,15 @@ export const RescueMissionModal = () => {
                   <span>🏃 I'M ON MY WAY (ALERT THE KITCHEN)</span>
                 </button>
               ) : (
-                <div className="p-2.5 rounded-xl bg-amber-950/40 border border-amber-500/30 text-center text-xs text-amber-300 font-bold">
-                  ✓ Kitchen alerted! They are holding the food for you at the counter.
+                <div className="p-3 rounded-xl bg-amber-950/40 border border-amber-500/30 text-center space-y-1">
+                  <div className="text-xs text-amber-300 font-bold">
+                    ✓ Kitchen alerted! Food is reserved for you at the counter.
+                  </div>
+                  <div className="text-[11px] text-slate-400">
+                    Present Mission Code <span className="text-white font-mono font-bold">{mission.missionCode}</span> to counter staff to collect your meal.
+                  </div>
                 </div>
               )}
-
-              <button
-                onClick={() => markAsRescued(mission.id)}
-                className="w-full py-3.5 rounded-xl font-black text-sm tracking-wider text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transform active:scale-98 transition-all"
-              >
-                <CheckCircle2 className="w-4 h-4" />
-                <span>🎉 I PICKED UP THE FOOD (COMPLETE RESCUE)</span>
-              </button>
             </>
           ) : (
             <button
