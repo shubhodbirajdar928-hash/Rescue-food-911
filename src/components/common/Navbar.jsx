@@ -101,24 +101,37 @@ export const Navbar = () => {
               <RotateCcw className="w-5 h-5" />
             </button>
 
-            {/* Bollywood Theme Voice Control */}
-            <button
-              onClick={() => {
-                const next = !roboRoastEnabled;
-                setRoboRoastEnabled(next);
-                setLocalRoast(next);
-                if (next) testRandomRoast();
-              }}
-              className={`px-3 py-2 rounded-xl border text-xs font-bold font-mono flex items-center gap-1.5 transition-all ${
-                roboRoastEnabled
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-lg shadow-amber-950/40 animate-pulse'
-                  : 'bg-slate-900 text-slate-500 border-slate-800 hover:text-slate-400'
-              }`}
-              title={roboRoastEnabled ? 'Bollywood Theme Voice is ON (Click to mute)' : 'Bollywood Theme Voice is MUTED (Click to activate)'}
-            >
-              <span className="text-base leading-none">🎙️</span>
-              <span className="hidden md:inline">{roboRoastEnabled ? 'FUNNY VOICE' : 'VOICE MUTED'}</span>
-            </button>
+            {/* Funny Voice Button & Tester */}
+            <div className="flex items-center rounded-xl border border-amber-500/40 bg-slate-900 overflow-hidden shadow-lg shadow-amber-950/30">
+              <button
+                onClick={() => {
+                  if (!roboRoastEnabled) {
+                    setRoboRoastEnabled(true);
+                    setLocalRoast(true);
+                  }
+                  testRandomRoast();
+                }}
+                className="px-3 py-2 text-xs font-bold font-mono text-amber-300 hover:bg-amber-500/20 active:scale-95 transition-all flex items-center gap-1.5"
+                title="Click to hear a funny voice line!"
+              >
+                <span className="text-base leading-none animate-bounce">🎙️</span>
+                <span className="hidden md:inline">FUNNY VOICE</span>
+              </button>
+              <button
+                onClick={() => {
+                  const next = !roboRoastEnabled;
+                  setRoboRoastEnabled(next);
+                  setLocalRoast(next);
+                  if (next) testRandomRoast();
+                }}
+                className={`px-2 py-2 text-[10px] font-bold border-l border-amber-500/30 transition-colors ${
+                  roboRoastEnabled ? 'text-emerald-400 bg-emerald-950/40 hover:bg-emerald-950/60' : 'text-slate-500 bg-slate-950 hover:text-slate-400'
+                }`}
+                title={roboRoastEnabled ? "Voice is ON (click to mute)" : "Voice is MUTED (click to turn on)"}
+              >
+                {roboRoastEnabled ? 'ON' : 'OFF'}
+              </button>
+            </div>
 
             <button
               onClick={() => setSoundEnabled(!soundEnabled)}

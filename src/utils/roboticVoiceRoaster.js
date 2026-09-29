@@ -1,8 +1,24 @@
 // Smooth & Funny Bollywood Male Voice Engine 🎙️🎭
-// Simple, hilarious 1-2 word lines (Mast!, Bindaas!, Gajab!, Arrey Yaar!, Ruko Zara!, Locha!, Khatam!)
+// Simple, hilarious meme-worthy lines (Oye hoye mast!, Balle balle!, Khatam tata bye bye!, Arrey yaar ruko zara!)
 // Tuned for crystal-clear, silky smooth male speech synthesis!
 
 const ROAST_STORAGE_KEY = 'fr911_robo_roast_enabled';
+
+// Cache browser voices reliably
+let cachedVoices = [];
+const loadVoices = () => {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return [];
+  const v = window.speechSynthesis.getVoices();
+  if (v && v.length > 0) cachedVoices = v;
+  return cachedVoices;
+};
+
+if (typeof window !== 'undefined' && window.speechSynthesis) {
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = () => {
+    loadVoices();
+  };
+}
 
 // Play a smooth, warm and funny sound effect before speaking
 const playBollywoodFanfare = (isError = false) => {
@@ -56,37 +72,36 @@ const playBollywoodFanfare = (isError = false) => {
 export const BOLLYWOOD_THEME_SCRIPTS = {
   // RESULTS (SUCCESS ACTIONS) - SIMPLE, FUNNY & SUPER SMOOTH
   MISSION_ACCEPTED: [
-    { hindi: "मस्त!", roman: "Mast!", star: "Smooth Hero 😎" },
-    { hindi: "बिंदास!", roman: "Bindaas!", star: "Casual Cool 🕺" },
-    { hindi: "गजब!", roman: "Gajab!", star: "Wah Ustaad 🌟" },
-    { hindi: "कड़क!", roman: "Kadak!", star: "Full Power ☕" }
+    { hindi: "ओए होए, मस्त!", roman: "Oye hoye, mast!", star: "Smooth Hero 😎" },
+    { hindi: "बल्ले बल्ले!", roman: "Balle balle!", star: "Full Happy 🕺" },
+    { hindi: "वाह भाई वाह!", roman: "Wah bhai wah!", star: "Super Star 🌟" },
+    { hindi: "जबरदस्त!", roman: "Zabardast!", star: "Full Power ⚡" }
   ],
   RESCUE_COMPLETED: [
-    { hindi: "हीरो!", roman: "Hero!", star: "Asli Hero 🦸" },
-    { hindi: "सुपर!", roman: "Super!", star: "Champion 🏆" },
-    { hindi: "रॉकिंग!", roman: "Rocking!", star: "Full Swag 🎸" },
-    { hindi: "सेट!", roman: "Set!", star: "Sab Set Hai 👍" }
+    { hindi: "सब सेट है, बॉस!", roman: "Sab set hai, boss!", star: "Rescue Done 👍" },
+    { hindi: "सुपर हिट, हीरो!", roman: "Super hit, hero!", star: "Action Star 🦸" },
+    { hindi: "पैसा वसूल!", roman: "Paisa vasool!", star: "Baburao Style 💰" },
+    { hindi: "रॉकिंग!", roman: "Rocking!", star: "Full Swag 🎸" }
   ],
   KITCHEN_DISPATCH: [
-    { hindi: "धमाका!", roman: "Dhamaka!", star: "Garam Garam 🍲" },
-    { hindi: "तैयार!", roman: "Taiyaar!", star: "Fast Delivery ⚡" },
-    { hindi: "झकास!", roman: "Jhakaas!", star: "Anil Kapoor Style 🕺" },
-    { hindi: "गरमा गरम!", roman: "Garam Garam!", star: "Fresh Dispatch ♨️" }
+    { hindi: "गरमा-गरम, तैयार!", roman: "Garma garam, taiyaar!", star: "Fresh Dispatch 🍲" },
+    { hindi: "धमाका!", roman: "Dhamaka!", star: "Full Speed ⚡" },
+    { hindi: "झकास!", roman: "Jhakaas!", star: "Anil Kapoor Style 🕺" }
   ],
   FEEDBACK_SUBMITTED_PRAISE: [
-    { hindi: "वाह!", roman: "Waah!", star: "Dil Khush ❤️" },
-    { hindi: "लाजवाब!", roman: "Lajawab!", star: "Top Taste 😋" }
+    { hindi: "मजा आ गया!", roman: "Maza aa gaya!", star: "Top Taste 😋" },
+    { hindi: "वाह, लाजवाब!", roman: "Wah, lajawab!", star: "Dil Khush ❤️" }
   ],
   FEEDBACK_RESOLVED: [
-    { hindi: "सॉर्टेड!", roman: "Sorted!", star: "No Tension ✌️" },
-    { hindi: "शांति!", roman: "Shaanti!", star: "Chill Mode 🧘" }
+    { hindi: "सॉर्टेड, नो टेंशन!", roman: "Sorted, no tension!", star: "Chill Mode ✌️" },
+    { hindi: "शांति!", roman: "Shaanti!", star: "All Good 🧘" }
   ],
   FEEDBACK_DELETED: [
-    { hindi: "गायब!", roman: "Gaayab!", star: "Chhoo-Mantar 🎩" }
+    { hindi: "गायब, छू-मंतर!", roman: "Gaayab, chhoo-mantar!", star: "Magic Trick 🎩" }
   ],
   ITEM_RELISTED: [
-    { hindi: "वापस!", roman: "Waapas!", star: "Back Again 🔄" },
-    { hindi: "जिंदा!", roman: "Zinda!", star: "Fir Se Live 🐅" }
+    { hindi: "वापस आ गया!", roman: "Waapas aa gaya!", star: "Back Again 🔄" },
+    { hindi: "जिंदा है!", roman: "Zinda hai!", star: "Fir Se Live 🐅" }
   ],
   KITCHEN_RESET: [
     { hindi: "सफाचट!", roman: "Safachat!", star: "Clean Sweep 🧹" }
@@ -94,36 +109,32 @@ export const BOLLYWOOD_THEME_SCRIPTS = {
 
   // ERRORS & ALERTS - SIMPLE, FUNNY & SUPER SMOOTH
   SAFETY_NOT_CHECKED: [
-    { hindi: "अरे यार!", roman: "Arrey yaar!", star: "Check Box Pehle 🤦" },
-    { hindi: "रुको जरा!", roman: "Ruko zara!", star: "Sabar Karo ✋" },
-    { hindi: "ध्यान से!", roman: "Dhyan se!", star: "Aaram Se Bhai 👀" }
+    { hindi: "अरे यार, रुको जरा!", roman: "Arrey yaar, ruko zara!", star: "Sabar Karo ✋" },
+    { hindi: "ध्यान से, भाई!", roman: "Dhyan se, bhai!", star: "Watch Out 👀" }
   ],
   FORM_VALIDATION_ERROR: [
-    { hindi: "लोचा!", roman: "Locha!", star: "Kuch Chhoot Gaya 📝" },
-    { hindi: "ढक्कन!", roman: "Dhakkan!", star: "Funny Oops 🤪" },
-    { hindi: "अरे भाई!", roman: "Arrey bhai!", star: "Sahi Se Bharo 🧐" }
+    { hindi: "अरे बाप रे, लोचा!", roman: "Arrey baap re, locha!", star: "Form Bhool Gaye 📝" },
+    { hindi: "ढक्कन, चेक करो!", roman: "Dhakkan, check karo!", star: "Funny Oops 🤪" }
   ],
   FOOD_EXPIRED_TIMEOUT: [
-    { hindi: "खत्म!", roman: "Khatam!", star: "Tata Bye Bye ⏰" },
-    { hindi: "गया!", roman: "Gaya!", star: "Too Late 💨" },
-    { hindi: "टाटा!", roman: "Ta-ta!", star: "Alvida Dost 👋" }
+    { hindi: "खत्म, टाटा, बाय बाय!", roman: "Khatam, tata, bye bye!", star: "Time Over ⏰" },
+    { hindi: "गया, टाटा!", roman: "Gaya, tata!", star: "Too Late 💨" }
   ],
   COMPLAINT_FILED: [
-    { hindi: "आईला!", roman: "Aila!", star: "Surprise Alert 🚨" },
-    { hindi: "गड़बड़!", roman: "Gadbad!", star: "CID Alert 🕵️" },
-    { hindi: "लफड़ा!", roman: "Lafda!", star: "Scene Ho Gaya 😵" }
+    { hindi: "ओए तेरी, गड़बड़!", roman: "Oye teri, gadbad!", star: "CID Alert 🕵️" },
+    { hindi: "आईला, लफड़ा!", roman: "Aila, lafda!", star: "Scene Alert 🚨" }
   ],
   OUT_OF_STOCK: [
-    { hindi: "पोपट!", roman: "Popat!", star: "Empty Plate 🦜" },
-    { hindi: "खाली!", roman: "Khaali!", star: "Sab Khatam 📦" }
+    { hindi: "पोपट हो गया!", roman: "Popat ho gaya!", star: "Plate Empty 🦜" },
+    { hindi: "सब खाली!", roman: "Sab khaali!", star: "All Gone 📦" }
   ],
   CANCELLATION_PANIC: [
-    { hindi: "अरे रे!", roman: "Arrey re!", star: "Plan Cancel 🏃" },
-    { hindi: "बाबूराव!", roman: "Baburao!", star: "Utha Le Re Baba 👓" }
+    { hindi: "अरे रे, कैंसल!", roman: "Arrey re, cancel!", star: "Plan Cancel 🏃" },
+    { hindi: "बाबूराव, ये क्या किया!", roman: "Baburao, ye kya kiya!", star: "Hera Pheri 👓" }
   ],
   GENERAL_ERROR: [
-    { hindi: "लोचा!", roman: "Locha!", star: "Chhota Sa Locha 😅" },
-    { hindi: "गड़बड़!", roman: "Gadbad!", star: "Golmaal Fun 🎬" }
+    { hindi: "लोचा हो गया!", roman: "Locha ho gaya!", star: "Chhota Locha 😅" },
+    { hindi: "गड़बड़ है, भाई!", roman: "Gadbad hai, bhai!", star: "Funny Glitch 🎬" }
   ]
 };
 
@@ -166,8 +177,7 @@ const isMaleVoice = (v) => {
 
 // Pick the smoothest, highest-quality MALE Hindi or Indian English voice
 const pickBollywoodVoice = () => {
-  if (typeof window === 'undefined' || !window.speechSynthesis) return null;
-  const voices = window.speechSynthesis.getVoices();
+  const voices = loadVoices();
   if (!voices || voices.length === 0) return null;
 
   // 0. Prefer Natural / Neural Male voices first (smoothest modern neural voices in Edge/Chrome)
@@ -274,8 +284,8 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
 
     // Smooth & funny natural male delivery tuning:
     // Natural conversational pace and warm, friendly pitch
-    utterance.rate = 0.94; // Relaxed, clear, and smooth delivery
-    utterance.pitch = isError ? 0.92 : 0.98; // Silky smooth, warm natural male baritone
+    utterance.rate = 0.93; // Relaxed, clear, and smooth delivery
+    utterance.pitch = isError ? 0.94 : 0.98; // Silky smooth, warm natural male baritone
     utterance.volume = 1.0;
 
     window.speechSynthesis.speak(utterance);
