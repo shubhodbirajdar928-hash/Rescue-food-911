@@ -54,11 +54,11 @@ export const RoboticVoiceRoaster = () => {
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-black/40 border border-amber-500/40 text-amber-300 flex items-center gap-1.5">
                   <Film className="w-4 h-4 text-amber-400 animate-pulse" />
-                  <span className="font-bold text-[11px] tracking-wider uppercase">🎬 BOLLYWOOD VOICE 🎭</span>
+                  <span className="font-bold text-[11px] tracking-wider uppercase">🎬 BOLLYWOOD MALE VOICE 🎙️</span>
                 </span>
                 <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/40">
                   <Radio className="w-2.5 h-2.5 animate-ping" />
-                  70mm AUDIO 🔊
+                  70mm HERO AUDIO 🔊
                 </span>
               </div>
               <button

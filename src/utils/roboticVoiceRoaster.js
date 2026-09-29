@@ -143,43 +143,72 @@ export const setRoboRoastEnabled = (enabled) => {
   window.dispatchEvent(new CustomEvent('robo-roast-toggle', { detail: { enabled } }));
 };
 
-// Pick the most dramatic Hindi or Indian English voice
+// Female voice names to filter out when user requested male Bollywood voice
+const FEMALE_VOICE_NAMES = [
+  'kalpana', 'heera', 'neerja', 'zira', 'samantha', 'jenny', 'aria',
+  'swara', 'aditi', 'victoria', 'karen', 'moira', 'fiona', 'veena',
+  'female', 'woman', 'girl'
+];
+
+// Male voice keywords and well-known male TTS voice identifiers
+const MALE_VOICE_NAMES = [
+  'hemant', 'ravi', 'david', 'mark', 'george', 'guy', 'prabhat',
+  'madhur', 'alex', 'fred', 'daniel', 'male', 'man', 'boy', 'natural (male)'
+];
+
+const isFemaleVoice = (v) => {
+  const name = (v?.name || '').toLowerCase();
+  return FEMALE_VOICE_NAMES.some(fn => name.includes(fn));
+};
+
+const isMaleVoice = (v) => {
+  const name = (v?.name || '').toLowerCase();
+  return MALE_VOICE_NAMES.some(mn => name.includes(mn));
+};
+
+// Pick the most dramatic MALE Hindi or Indian English voice
 const pickBollywoodVoice = () => {
   if (typeof window === 'undefined' || !window.speechSynthesis) return null;
   const voices = window.speechSynthesis.getVoices();
   if (!voices || voices.length === 0) return null;
 
-  // 1. Look for genuine native Hindi voice (Google हिन्दी, Microsoft Hemant, Kalpana, hi-IN)
-  const hindiVoice = voices.find(v =>
-    v.lang.startsWith('hi') ||
-    v.lang.includes('hi_IN') ||
-    v.name.toLowerCase().includes('hindi') ||
-    v.name.includes('हिन्दी') ||
-    v.name.toLowerCase().includes('kalpana') ||
-    v.name.toLowerCase().includes('hemant')
-  );
-  if (hindiVoice) return { voice: hindiVoice, isHindiNative: true };
+  // 1. Look for genuine native MALE Hindi voice (e.g., Microsoft Hemant - Hindi, Google Hindi Male)
+  const hindiMaleVoice = voices.find(v => {
+    const isHindi = v.lang.startsWith('hi') ||
+      v.lang.includes('hi_IN') ||
+      v.name.toLowerCase().includes('hindi') ||
+      v.name.includes('हिन्दी');
+    return isHindi && isMaleVoice(v) && !isFemaleVoice(v);
+  });
+  if (hindiMaleVoice) return { voice: hindiMaleVoice, isHindiNative: true };
 
-  // 2. Look for Indian English voice (en-IN, Ravi, Heera)
-  const indianVoice = voices.find(v =>
-    v.lang.includes('IN') ||
-    v.name.toLowerCase().includes('india') ||
-    v.name.toLowerCase().includes('ravi') ||
-    v.name.toLowerCase().includes('heera')
-  );
-  if (indianVoice) return { voice: indianVoice, isHindiNative: false };
+  // 2. Look for Indian English MALE voice (e.g., Microsoft Ravi - English India, Prabhat)
+  const indianMaleVoice = voices.find(v => {
+    const isIndian = v.lang.includes('IN') || v.name.toLowerCase().includes('india');
+    return isIndian && isMaleVoice(v) && !isFemaleVoice(v);
+  });
+  if (indianMaleVoice) return { voice: indianMaleVoice, isHindiNative: false };
 
-  // 3. Fallback to natural expressive voice
-  const fallback = voices.find(v =>
-    v.lang.startsWith('en') && (
-      v.name.includes('Natural') ||
-      v.name.includes('Google US English') ||
-      v.name.includes('Samantha') ||
-      v.name.includes('Jenny')
-    )
-  ) || voices[0];
+  // 3. Fallback to any Hindi voice that is NOT explicitly female
+  const hindiNonFemale = voices.find(v => {
+    const isHindi = v.lang.startsWith('hi') ||
+      v.lang.includes('hi_IN') ||
+      v.name.toLowerCase().includes('hindi') ||
+      v.name.includes('हिन्दी');
+    return isHindi && !isFemaleVoice(v);
+  });
+  if (hindiNonFemale) return { voice: hindiNonFemale, isHindiNative: true };
 
-  return { voice: fallback, isHindiNative: false };
+  // 4. Look for global authoritative MALE voice (Microsoft David, Microsoft George, Microsoft Mark, Google UK Male, Alex)
+  const globalMaleVoice = voices.find(v => isMaleVoice(v) && !isFemaleVoice(v));
+  if (globalMaleVoice) return { voice: globalMaleVoice, isHindiNative: false };
+
+  // 5. Fallback to any voice that is not female
+  const nonFemaleVoice = voices.find(v => !isFemaleVoice(v));
+  if (nonFemaleVoice) return { voice: nonFemaleVoice, isHindiNative: false };
+
+  // 6. Absolute last resort
+  return { voice: voices[0], isHindiNative: false };
 };
 
 /**
@@ -236,9 +265,9 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
       utterance.lang = 'hi-IN';
     }
 
-    // Theatrical Bollywood dialogue delivery tuning
-    utterance.rate = 1.0; // Steady dramatic hero pace
-    utterance.pitch = isError ? 0.9 : 1.15; // High hero energy or deep villain stabs
+    // Theatrical Bollywood MALE dialogue delivery tuning (deep baritone masculine pitch)
+    utterance.rate = 0.98; // Punchy, theatrical dramatic hero pace
+    utterance.pitch = isError ? 0.78 : 0.85; // Deep masculine hero/villain baritone
     utterance.volume = 1.0;
 
     window.speechSynthesis.speak(utterance);
