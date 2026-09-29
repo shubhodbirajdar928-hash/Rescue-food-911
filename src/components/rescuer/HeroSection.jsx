@@ -91,7 +91,7 @@ const TRAUMA_PATIENTS = [
 ];
 
 export const HeroSection = ({ onScrollToGrid }) => {
-  const { setRole, emergencies } = useRescue();
+  const { emergencies } = useRescue();
   const [selectedPatientIdx, setSelectedPatientIdx] = useState(0);
 
   const currentPatient = TRAUMA_PATIENTS[selectedPatientIdx];
@@ -163,13 +163,6 @@ export const HeroSection = ({ onScrollToGrid }) => {
                 <ArrowDown className="w-4 h-4 animate-bounce" />
               </button>
 
-              <button
-                onClick={() => setRole('restaurant')}
-                className="flex items-center gap-2 px-6 py-4 rounded-2xl font-bold text-sm sm:text-base bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-slate-600 shadow-lg transition-all"
-              >
-                <ChefHat className="w-5 h-5 text-amber-400" />
-                <span>👨‍🍳 HALWAI & CHEF CONSOLE</span>
-              </button>
             </div>
 
             {/* 3 Value Pillars */}

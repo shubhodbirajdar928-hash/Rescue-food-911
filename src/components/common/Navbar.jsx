@@ -1,12 +1,21 @@
 import React from 'react';
 import { useRescue } from '../../context/RescueContext';
-import { Siren, Volume2, VolumeX, Award, ChefHat, Radio, RotateCcw } from 'lucide-react';
+import { useAuth } from '../../auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { Siren, Volume2, VolumeX, Award, ChefHat, Radio, RotateCcw, LogOut, User } from 'lucide-react';
 
 export const Navbar = () => {
-  const { role, setRole, soundEnabled, setSoundEnabled, totalHeroPoints, reservations, resetToZero } = useRescue();
+  const { role, soundEnabled, setSoundEnabled, totalHeroPoints, reservations, resetToZero } = useRescue();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const activeReservationsCount = reservations.filter(r => r.status === 'RESERVED' || r.status === 'ON_THE_WAY').length;
   const isRestaurant = role === 'restaurant';
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <header className="bg-slate-950/80 border-b border-slate-800/80 backdrop-blur-xl sticky top-0 z-30 shadow-2xl">
@@ -41,45 +50,28 @@ export const Navbar = () => {
             </div>
           </div>
 
-          {/* Role Switcher */}
-          <div className="bg-slate-900/90 p-1 rounded-2xl border border-slate-800 flex items-center shadow-inner">
-            <button
-              onClick={() => setRole('rescuer')}
-              className={`flex items-center gap-2 px-3 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 ${
-                !isRestaurant
-                  ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-lg shadow-red-600/30 scale-102'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              <span className="text-base sm:text-lg">🦸</span>
-              <span className="tracking-wide">FOOD RESCUER</span>
-            </button>
-
-            <button
-              onClick={() => setRole('restaurant')}
-              className={`flex items-center gap-2 px-3 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 relative ${
-                isRestaurant
-                  ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg shadow-orange-600/30 scale-102'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              <span className="text-base sm:text-lg">👨‍🍳</span>
-              <span className="tracking-wide">KITCHEN DISPATCH</span>
-              {activeReservationsCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-mono font-bold animate-bounce shadow">
-                  {activeReservationsCount}
-                </span>
-              )}
-            </button>
+          {/* Role Badge (no switching) */}
+          <div className={`px-4 py-2 rounded-2xl border flex items-center gap-2 font-bold text-xs sm:text-sm ${
+            isRestaurant
+              ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg shadow-orange-600/30 border-amber-400/40'
+              : 'bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-lg shadow-red-600/30 border-red-400/40'
+          }`}>
+            <span className="text-base sm:text-lg">{isRestaurant ? '👨‍🍳' : '🦸'}</span>
+            <span className="tracking-wide">{isRestaurant ? 'KITCHEN DISPATCH' : 'FOOD RESCUER'}</span>
+            {isRestaurant && activeReservationsCount > 0 && (
+              <span className="bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-mono font-bold animate-bounce shadow">
+                {activeReservationsCount}
+              </span>
+            )}
           </div>
 
-          {/* Sound & Info */}
+          {/* User Info, Sound & Logout */}
           <div className="flex items-center gap-3 font-mono">
             {!isRestaurant ? (
               <div className="hidden lg:flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3.5 py-1.5 rounded-xl">
                 <Award className="w-4 h-4 text-amber-400" />
                 <div className="text-left text-xs">
-                  <div className="font-bold text-amber-300">FOOD GUARDIAN 🦸</div>
+                  <div className="font-bold text-amber-300">{user?.name || 'FOOD GUARDIAN'} 🦸</div>
                   <div className="text-[10px] text-slate-400">{totalHeroPoints} Rescue Pts</div>
                 </div>
               </div>
@@ -87,8 +79,8 @@ export const Navbar = () => {
               <div className="hidden lg:flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3.5 py-1.5 rounded-xl">
                 <ChefHat className="w-4 h-4 text-orange-400" />
                 <div className="text-left text-xs">
-                  <div className="font-bold text-orange-300">DISPATCH CONTROL</div>
-                  <div className="text-[10px] text-slate-400">Station #04 Online</div>
+                  <div className="font-bold text-orange-300">{user?.name || 'DISPATCH CONTROL'}</div>
+                  <div className="text-[10px] text-slate-400">{user?.stationId || 'Station #04'} Online</div>
                 </div>
               </div>
             )}
@@ -111,6 +103,14 @@ export const Navbar = () => {
               title={soundEnabled ? 'Emergency Siren Sound ON' : 'Sound Muted'}
             >
               {soundEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+            </button>
+
+            <button
+              onClick={handleLogout}
+              className="p-2.5 rounded-xl border bg-slate-900 text-slate-400 border-slate-800 hover:text-red-400 hover:border-red-500/40 transition-colors"
+              title="Logout"
+            >
+              <LogOut className="w-5 h-5" />
             </button>
           </div>
         </div>
