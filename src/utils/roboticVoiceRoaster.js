@@ -1,6 +1,6 @@
-// Smooth and Funny Hindi Voice Engine
+// Full Funny Desi Bollywood Hindi Voice Engine
 // Uses the browser's built-in Web Speech API (window.speechSynthesis)
-// Authentic, smooth, and hilarious Hindi voice on Results and Errors!
+// Full Bollywood comedy: Baburao, Gabbar, CID Daya, Munna Bhai meme humor!
 
 const ROAST_STORAGE_KEY = 'fr911_robo_roast_enabled';
 
@@ -15,16 +15,16 @@ const playSmoothChime = (isError = false) => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    osc.type = 'sine'; // Mellow, pleasant sine chime
+    osc.type = 'sine'; // Mellow, smooth chime
     if (isError) {
       osc.frequency.setValueAtTime(440, now);
-      osc.frequency.exponentialRampToValueAtTime(330, now + 0.18);
-      gain.gain.setValueAtTime(0.05, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.18);
+      gain.gain.setValueAtTime(0.06, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
     } else {
       osc.frequency.setValueAtTime(587.33, now); // D5
       osc.frequency.exponentialRampToValueAtTime(880, now + 0.15); // A5
-      gain.gain.setValueAtTime(0.05, now);
+      gain.gain.setValueAtTime(0.06, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
     }
 
@@ -38,145 +38,153 @@ const playSmoothChime = (isError = false) => {
 };
 
 export const HINDI_FUNNY_SCRIPTS = {
-  // RESULTS (SUCCESS ACTIONS) - Funny, smooth, and authentic Hindi
+  // RESULTS (SUCCESS ACTIONS) - FULL BOLLYWOOD COMEDY
   MISSION_ACCEPTED: [
     {
-      hindi: "अरे वाह भाई! गरमा-गरम खाना भी बचा लिया और सौ रुपये भी! आज तुम्हारा पेट भी खुश और बटुआ भी!",
-      roman: "Arey wah bhai! Garma garam khana bhi bacha liya aur sau rupaye bhi! Aaj tumhara pet bhi khush aur batua bhi!"
+      hindi: "अरे देवा! उठा ले रे बाबा, मेरे को नहीं, इस गरमा-गरम समोसे को उठा ले! क्या डिस्काउंट मारा है रे बाबा, छा गए!",
+      roman: "Arey Deva! Utha le re baba, mere ko nahi, is garma garam samose ko utha le! Kya discount maara hai re baba, chha gaye!"
     },
     {
-      hindi: "शाबाश हीरो! डिस्काउंट के लिए इतनी तेज दौड़े जैसे ओलंपिक का गोल्ड मेडल जीतना हो! जाओ अपना खाना उठाओ!",
-      roman: "Shabash hero! Discount ke liye itni tez daude jaise Olympic ka gold medal jeetna ho! Jao apna khana uthao!"
+      hindi: "शाबाश मेरे चीते! सत्तर परसेंट डिस्काउंट देख के इतनी तेज भागे जैसे पीछे मोहल्ले के कुत्ते पड़ गए हों! जाओ लपको खाना!",
+      roman: "Shabash mere cheete! Sattar percent discount dekh ke itni tez bhaage jaise peeche mohalle ke kutte pad gaye hon! Jao lapko khana!"
     },
     {
-      hindi: "डस्टबिन बेचारा रो रहा है और तुम्हारा पेट खुशी से नाच रहा है! स्वाद आ गया भाई!",
-      roman: "Dustbin bechara ro raha hai aur tumhara pet khushi se naach raha hai! Swaad aa gaya bhai!"
+      hindi: "अरे वाह भाई! खाना भी बचा लिया और दो सौ रुपये भी! आज रात घर वाले भी बोलेंगे - हमारा बेटा कुछ काम तो आया!",
+      roman: "Arey wah bhai! Khana bhi bacha liya aur do sau rupaye bhi! Aaj raat ghar waale bhi bolenge - hamara beta kuch kaam toh aaya!"
     },
     {
-      hindi: "ऑर्डर पक्का हो गया! रास्ते में इंस्टाग्राम की रील्स मत देखना, जल्दी जाके खाना ले लो!",
-      roman: "Order pakka ho gaya! Raste mein Instagram ki reels mat dekhna, jaldi jaake khana le lo!"
+      hindi: "ऑर्डर पक्का हो गया मामू! रास्ते में किसी को ताड़ने मत लग जाना, पहले काउंटर से खाना उठाओ!",
+      roman: "Order pakka ho gaya mamu! Raste mein kisi ko taadne mat lag jaana, pehle counter se khana uthao!"
+    },
+    {
+      hindi: "डस्टबिन बेचारा कोने में बैठ के रो रहा है और तुम्हारा पेट खुशी से भांगड़ा कर रहा है! स्वाद आ गया भाई!",
+      roman: "Dustbin bechara kone mein baith ke ro raha hai aur tumhara pet khushi se bhangra kar raha hai! Swaad aa gaya bhai!"
     }
   ],
   RESCUE_COMPLETED: [
     {
-      hindi: "मिशन पूरा! स्वादिष्ट खाना पेट के अंदर और बर्बादी खत्म! स्वाद आ गया!",
-      roman: "Mission pura! Swadisht khana pet ke andar aur barbadi khatam! Swaad aa gaya!"
+      hindi: "अरे जियो मेरे लाल! पूरा खाना पेट के अंदर और कचरे का डिब्बा खाली! सवा सौ रुपया पूरा वसूल!",
+      roman: "Arey jiyo mere laal! Pura khana pet ke andar aur kachre ka dibba khaali! Sawa sau rupiya pura vasool!"
     },
     {
-      hindi: "पेट भर गया, प्लेट साफ, और पैसे भी बच गए! असली खाना रक्षक तुम ही हो भाई!",
-      roman: "Pet bhar gaya, plate saaf, aur paise bhi bach gaye! Asli khana rakshak tum hi ho bhai!"
+      hindi: "मिशन सौ परसेंट कामयाब! पेट में इतनी शांति मिल गई जैसे बैंक खाते में अचानक सरकारी पैसा आ गया हो!",
+      roman: "Mission sau percent kamyab! Pet mein itni shaanti mil gayi jaise bank khaate mein achanak sarkari paisa aa gaya ho!"
     },
     {
-      hindi: "अरे जियो मेरे लाल! पूरा खाना सुरक्षित तुम्हारे पेट के हवाले! इक्कीस तोपों की सलामी!",
-      roman: "Arey jiyo mere laal! Pura khana surakshit tumhare pet ke hawale! Ikkees topon ki salami!"
+      hindi: "खोपड़ी में एकदम ठंडक पड़ गई रे बाबा! प्लेट भी साफ, इज्जत भी बच गई और बर्बादी भी रुक गई! इक्कीस तोपों की सलामी!",
+      roman: "Khopdi mein ekdam thandak pad gayi re baba! Plate bhi saaf, izzat bhi bach gayi aur barbadi bhi ruk gayi! Ikkees topon ki salami!"
     },
     {
-      hindi: "सवा सौ रुपया वसूल! खाना सीधे तुम्हारे पेट में, कचरे के डिब्बे का आज उपवास है!",
-      roman: "Sawa sau rupiya vasool! Khana seedhe tumhare pet mein, kachre ke dibbe ka aaj upvaas hai!"
+      hindi: "वाह उस्ताद! ऐसा खाना खाया कि आत्मा तृप्त हो गई! अब सीधे चार घंटे की कुंभकर्ण वाली नींद मारो!",
+      roman: "Wah ustaad! Aisa khana khaya ki aatma tript ho gayi! Ab seedhe chaar ghante ki Kumbhkaran waali neend maaro!"
     }
   ],
   KITCHEN_DISPATCH: [
     {
-      hindi: "अरे शेफ साहब ने गरमा-गरम खाना लाइव कर दिया! आज कचरे का डिब्बा भूखा सोएगा!",
-      roman: "Arey chef saab ne garma garam khana live kar diya! Aaj kachre ka dibba bhookha soyega!"
+      hindi: "अरे ओ सांभा! कितने समोसे बचे थे रे? सरदार, पूरे पंद्रह समोसे लाइव कर दिए! आज डस्टबिन भूखा मरेगा!",
+      roman: "Arey o Sambha! Kitne samose bache the re? Sardar, poore pandrah samose live kar diye! Aaj dustbin bhookha marega!"
     },
     {
-      hindi: "तंदूर चालू है भाई! एक्स्ट्रा खाना लाइव हो गया, खाना बचाओ और रोकड़ा बनाओ!",
-      roman: "Tandoor chalu hai bhai! Extra khana live ho gaya, khana bachao aur rokda banao!"
+      hindi: "अरे गब्बर खुश हुआ! तंदूर से गरमा-गरम खाना सीधा रडार पे! खाना फेंका नहीं, सीधा रोकड़ा जेब में डाला!",
+      roman: "Arey Gabbar khush hua! Tandoor se garma garam khana seedha radar pe! Khana phenka nahi, seedha rokda jeb mein daala!"
+    },
+    {
+      hindi: "सावधानी हटी, बिरयानी बटी! शेफ साहब ने एक क्लिक में खाना मैदान में उतार दिया! टूट पड़ो भूखे शेरों!",
+      roman: "Saavdhani hati, biryani bati! Chef saab ne ek click mein khana maidan mein utaar diya! Toot pado bhookhe sheron!"
     }
   ],
   FEEDBACK_SUBMITTED_PRAISE: [
     {
-      hindi: "फाइव स्टार मिल गया! शेफ साहब तो खुशी के मारे किचन में भांगड़ा करने लगे हैं!",
-      roman: "Five star mil gaya! Chef saab toh khushi ke maare kitchen mein bhangra karne lage hain!"
+      hindi: "अरे फाइव स्टार मिल गया रे बाबा! शेफ साहब तो बेलन हाथ में लेके किचन में नागिन डांस करने लगे हैं!",
+      roman: "Arey five star mil gaya re baba! Chef saab toh belan haath mein leke kitchen mein naagin dance karne lage hain!"
     },
     {
-      hindi: "तगड़ा रिव्यू दिया भाई! पूरी किचन टीम के चेहरे पर बत्तीसी खिल गई है!",
-      roman: "Tagda review diya bhai! Puri kitchen team ke chehre par battisi khil gayi hai!"
+      hindi: "तारीफ ऐसी की है भाई कि शेफ साहब की छप्पन इंच की छाती फूल गई! पूरे ढाबे में लड्डू बंट रहे हैं!",
+      roman: "Tareef aisi ki hai bhai ki chef saab ki chhati chaudi ho gayi! Poore dhabe mein laddu bant rahe hain!"
     }
   ],
   FEEDBACK_RESOLVED: [
     {
-      hindi: "मामला हल हो गया भाई! शेफ ने एकदम गरमा-गरम खाने का पक्का बंदोबस्त कर दिया है!",
-      roman: "Mamla hal ho gaya bhai! Chef ne ekdam garam garam khane ka pakka bandobast kar diya hai!"
+      hindi: "मामला रफा-दफा हो गया भाई! शेफ ने कान पकड़ के माफी मांग ली और डबल मसाला डाल दिया! अब कोई लफड़ा नहीं!",
+      roman: "Mamla rafa dafa ho gaya bhai! Chef ne kaan pakad ke maafi maang li aur double masala daal diya! Ab koi lafda nahi!"
     }
   ],
   FEEDBACK_DELETED: [
     {
-      hindi: "शिकायत खत्म और खाता साफ! किचन में फिर से शांति हो गई!",
-      roman: "Shikayat khatam aur khata saaf! Kitchen mein phir se shaanti ho gayi!"
+      hindi: "सबूत मिटा दिए गए हैं दया! शिकायत का नामो-निशान मिटा दिया! अब किचन में सिर्फ प्यार ही प्यार है!",
+      roman: "Saboot mita diye gaye hain Daya! Shikayat ka naamo nishan mita diya! Ab kitchen mein sirf pyar hi pyar hai!"
     }
   ],
   ITEM_RELISTED: [
     {
-      hindi: "पंद्रह मिनट का बोनस टाइम मिल गया! जल्दी लपको, कहीं कोई और न खा जाए!",
-      roman: "Pandrah minute ka bonus time mil gaya! Jaldi lapko, kahin koi aur na khaa jaaye!"
+      hindi: "अरे बाबूराव का स्टाइल देखो! पंद्रह मिनट का लाइफ सपोर्ट और दे दिया! अब तो खा लो रे बाबा!",
+      roman: "Arey Baburao ka style dekho! Pandrah minute ka life support aur de diya! Ab toh khaa lo re baba!"
     }
   ],
   KITCHEN_RESET: [
     {
-      hindi: "किचन एकदम चकाचक साफ! सब रिसेट हो गया!",
-      roman: "Kitchen ekdam chakachak saaf! Sab reset ho gaya!"
+      hindi: "झाड़ू फिर गया रे बाबा! किचन ऐसा साफ हुआ जैसे नया-नया नोट! सब जीरो पे सेट!",
+      roman: "Jhadu phir gaya re baba! Kitchen aisa saaf hua jaise naya naya note! Sab zero pe set!"
     }
   ],
 
-  // ERRORS & ALERTS - Funny & simple Hindi
+  // ERRORS & ALERTS - FULL HILARIOUS DRAMA
   SAFETY_NOT_CHECKED: [
     {
-      hindi: "अरे रुको शेफ साहब! पहले सेफ्टी के सारे टिक लगाओ, ग्राहकों को अस्पताल नहीं भेजना है!",
-      roman: "Arey ruko chef saab! Pehle safety ke saare tick lagao, grahako ko aspatal nahi bhejna hai!"
+      hindi: "अरे शेफ साहब, दिमाग का स्क्रू ढीला है क्या? बिना सेफ्टी टिक किए खाना भेजोगे तो सीधे यमराज आ जाएंगे! टिक लगाओ पहले!",
+      roman: "Arey chef saab, dimag ka screw dheela hai kya? Bina safety tick kiye khana bhejoge toh seedhe Yamraj aa jayenge! Tick lagao pehle!"
     },
     {
-      hindi: "अरे भाई! बिना सेफ्टी चेकिंग के खाना नहीं भेज सकते! पहले बॉक्स टिक करो!",
-      roman: "Arey bhai! Bina safety checking ke khana nahi bhej sakte! Pehle box tick karo!"
+      hindi: "अरे रुको रुको! बिना चेकिंग के खाना भेजा तो सीआईडी वाले दरवाजा तोड़ देंगे! पहले छहों बक्से टिक करो!",
+      roman: "Arey ruko ruko! Bina checking ke khana bheja toh CID waale darwaza tod denge! Pehle chhahon bakse tick karo!"
     }
   ],
   FORM_VALIDATION_ERROR: [
     {
-      hindi: "अरे खाली डिब्बा भेज रहे हो क्या? पहले कुछ लिखो तो सही!",
-      roman: "Arey khaali dibba bhej rahe ho kya? Pehle kuch likho toh sahi!"
+      hindi: "अरे अक्ल के दुश्मन! खाली फॉर्म भेज के क्या हवा खाएगा? कुछ लिख तो सही रे बाबा!",
+      roman: "Arey aql ke dushman! Khaali form bhej ke kya hawa khayega? Kuch likh toh sahi re baba!"
     },
     {
-      hindi: "अरे भाई! खाली फॉर्म से किसका पेट भरेगा? पूरी जानकारी तो लिखो!",
-      roman: "Arey bhai! Khaali form se kiska pet bharega? Puri jankari toh likho!"
+      hindi: "अरे भाई! खाली बक्सा देख के तो कोई भी नाराज हो जाएगा! दो शब्द तो लिखो!",
+      roman: "Arey bhai! Khaali baksa dekh ke toh koi bhi naraz ho jayega! Do shabd toh likho!"
     }
   ],
   FOOD_EXPIRED_TIMEOUT: [
     {
-      hindi: "अरे देर कर दी भाई! स्क्रीन देखते-देखते खाना एक्सपायर हो गया! अगली बार फुर्ती दिखाओ!",
-      roman: "Arey der kar di bhai! Screen dekhte dekhte khana expire ho gaya! Agli baar phurti dikhao!"
+      hindi: "अरे कुंभकर्ण! देखते-देखते खाना एक्सपायर हो गया! अब मुंह बाके मक्खी पकड़ो बैठ के!",
+      roman: "Arey Kumbhkaran! Dekhte dekhte khana expire ho gaya! Ab baith ke pachtao!"
     },
     {
-      hindi: "टाइम खत्म हो गया भाई! बिरयानी तुम्हारा इंतजार करते-करते थक गई!",
-      roman: "Time khatam ho gaya bhai! Biryani tumhara intezar karte karte thak gayi!"
+      hindi: "टाइम खल्लास! बिरयानी बोली - टाटा, बाय बाय, खतम! तुम स्क्रीन ही घूरते रह गए!",
+      roman: "Time khallas! Biryani boli - tata, bye bye, khatam! Tum screen hi ghoorte reh gaye!"
     }
   ],
   COMPLAINT_FILED: [
     {
-      hindi: "अरे बाप रे! ग्राहक की शिकायत आ गई! लहसुन की चटनी किसने नहीं डाली? दया, दरवाजा तोड़ो!",
-      roman: "Arey baap re! Grahak ki shikayat aa gayi! Lahsun ki chutney kisne nahi daali? Daya, darwaza todo!"
+      hindi: "अरे बाप रे बाप! दया, कुछ तो गड़बड़ है! चटनी किसने नहीं डाली? ग्राहक ने भयानक लफड़ा कर दिया है!",
+      roman: "Arey baap re baap! Daya, kuch toh gadbad hai! Chutney kisne nahi dali? Grahak ne bhayanak lafda kar diya hai!"
     },
     {
-      hindi: "अरे शेफ साहब, खाना ठंडा निकला! भट्टी की आंच तेज करो जल्दी!",
-      roman: "Arey chef saab, khana thanda nikla! Bhatti ki aanch tez karo jaldi!"
+      hindi: "अरे शेफ साहब, खाना ठंडा दे दिया क्या? ग्राहक लाल-पीला हो रहा है! जल्दी गरम करो!",
+      roman: "Arey chef saab, khana thanda de diya kya? Grahak laal peela ho raha hai! Jaldi garam karo!"
     }
   ],
   OUT_OF_STOCK: [
     {
-      hindi: "अरे रे! सारा खाना खत्म हो गया! दूसरे भूखे भाई तुमसे तेज निकले!",
-      roman: "Arey re! Saara khana khatam ho gaya! Doosre bhookhe bhai tumse tez nikle!"
+      hindi: "अरे ट्रेन छूट गई बाबूमोशाय! कोई दूसरा चील की तरह झपट्टा मार के खाना ले गया! अब पानी पी के सो जाओ!",
+      roman: "Arey train chhoot gayi babumoshai! Koi doosra cheel ki tarah jhapatta maar ke khana le gaya! Ab paani pee ke so jao!"
     }
   ],
   CANCELLATION_PANIC: [
     {
-      hindi: "अरे कैंसिल कर दिया? रात के बारह बजे जब भूख लगेगी तब बहुत याद आएगी!",
-      roman: "Arey cancel kar diya? Raat ke baarah baje jab bhookh lagegi tab bahut yaad aayegi!"
+      hindi: "अरे कैंसिल कर दिया? पापी पेट का श्राप लगेगा रे बाबा! रात को दो बजे जब चूहे कबड्डी खेलेंगे तब बहुत रोएगा!",
+      roman: "Arey cancel kar diya? Paapi pet ka shraap lagega re baba! Raat ko do baje jab chuhe kabaddi khelenge tab bahut royega!"
     }
   ],
   GENERAL_ERROR: [
     {
-      hindi: "अरे कुछ गड़बड़ हो गई भाई! एक बार फिर से कोशिश करो!",
-      roman: "Arey kuch gadbad ho gayi bhai! Ek baar phir se koshish karo!"
+      hindi: "अरे गड़बड़ हो गई रे देवा! सिस्टम की खोपड़ी घूम गई! एक बार फिर से बटन दबाओ!",
+      roman: "Arey gadbad ho gayi re Deva! System ki khopdi ghoom gayi! Ek baar phir se button dabao!"
     }
   ]
 };
@@ -235,7 +243,7 @@ const pickHindiVoice = () => {
 };
 
 /**
- * Speak in smooth and funny Hindi voice out loud using window.speechSynthesis
+ * Speak in full funny Bollywood Hindi voice out loud using window.speechSynthesis
  * @param {string} category - key in HINDI_FUNNY_SCRIPTS (e.g. 'MISSION_ACCEPTED', 'SAFETY_NOT_CHECKED')
  */
 export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
@@ -287,8 +295,8 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
       utterance.lang = 'hi-IN';
     }
 
-    // Natural cadence for Hindi speech
-    utterance.rate = 0.98;
+    // Natural expressive cadence for Hindi comedy
+    utterance.rate = 1.0;
     utterance.pitch = isError ? 0.95 : 1.05;
     utterance.volume = 1.0;
 
