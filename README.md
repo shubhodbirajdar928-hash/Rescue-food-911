@@ -7,7 +7,10 @@
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Web_Speech_API](https://img.shields.io/badge/Web_Speech_API-Voice_Roaster-orange?style=flat-square&logo=googlechrome&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
 [![Web_Audio_API](https://img.shields.io/badge/Web_Audio_API-Police_Radio_&_Siren-purple?style=flat-square)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
+[![Vercel](https://img.shields.io/badge/Vercel-Live_Deployment-black?style=flat-square&logo=vercel)](https://rescue-food-911.vercel.app/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
+
+### 🌐 Live Web App: **[rescue-food-911.vercel.app](https://rescue-food-911.vercel.app/)**
 
 ---
 
@@ -171,14 +174,13 @@ Rescue-food-911/
 
 ---
 
-## 🔑 Demo Access
+## 🔑 Live Demo Access
+You can test both user roles immediately on the live deployment:
 
-The application comes pre-configured with instant demo authentication for both roles:
-
-| Role | Access URL | Features |
+| Role | Live Demo Link | Features |
 | :--- | :--- | :--- |
-| 🦸‍♂️ **Food Rescuer** | `/login/rescuer` | Browse live trauma ward, rescue meals at 50%–70% off, view ECG pulse, earn hero badges |
-| 👨‍🍳 **Kitchen Dispatch** | `/login/kitchen` | Deploy surplus batches in 30s, verify food safety, process live pickups, view cost recovery |
+| 🦸‍♂️ **Food Rescuer** | [rescue-food-911.vercel.app/login/rescuer](https://rescue-food-911.vercel.app/login/rescuer) | Browse live trauma ward, rescue meals at 50%–70% off, view ECG pulse, earn hero badges |
+| 👨‍🍳 **Kitchen Dispatch** | [rescue-food-911.vercel.app/login/kitchen](https://rescue-food-911.vercel.app/login/kitchen) | Deploy surplus batches in 30s, verify food safety, process live pickups, view cost recovery |
 
 ---
 
