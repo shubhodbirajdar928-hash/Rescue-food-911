@@ -69,14 +69,14 @@ export const RoboticVoiceRoaster = () => {
               </button>
             </div>
 
-            <div className="space-y-1.5">
-              <p className="text-sm sm:text-base font-sans font-bold leading-relaxed text-white">
-                "{currentRoast.text}"
-              </p>
+            <div className="py-2 text-center space-y-1">
+              <div className="text-3xl sm:text-4xl font-black text-amber-300 tracking-wider animate-bounce">
+                {currentRoast.text}
+              </div>
               {currentRoast.roman && (
-                <p className="text-[11px] sm:text-xs font-mono italic text-amber-300/80">
-                  "{currentRoast.roman}"
-                </p>
+                <div className="text-xs sm:text-sm font-mono font-bold text-white/80 uppercase tracking-widest">
+                  [{currentRoast.roman}]
+                </div>
               )}
             </div>
 
