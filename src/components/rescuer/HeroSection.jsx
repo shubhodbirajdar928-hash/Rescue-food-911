@@ -135,7 +135,9 @@ export const HeroSection = ({ onScrollToGrid }) => {
             </div>
 
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Dukaan band hone wali hai! Taaza khana dustbin mein royega, isse achha aapke pet mein hasega! Seedha <strong className="text-amber-300 font-bold">50%–70% OFF</strong> pe lapeto aur hero bano! 🤤🍛🔥
+              Dukaan band hone wali hai aur garma-garam <strong className="text-white font-bold">100% taaza khana ICU mein aakhri saansein le raha hai! 😱</strong>{' '}
+              Yahan koi boring coupons nahi chalte meri jaan — seedha <strong className="text-red-400 font-bold">911 Bollywood Siren bajta hai!</strong>{' '}
+              Food Rescuer bano, seedha <strong className="text-amber-300 font-bold">50%–70% ki chhappar-phaad loot machao</strong>, aur bechare Vada Pav, Biryani aur Pattice ko dustbin ke kabristan se bacha ke pet mein panah do! 🚑💨🤤
             </p>
 
             {/* Hospital ECG Pulse Monitor Widget (Linked to Active Food Patient) */}

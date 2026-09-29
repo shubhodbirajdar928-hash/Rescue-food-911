@@ -28,7 +28,7 @@ export const ImpactSection = () => {
           </h2>
 
           <p className="text-xs sm:text-sm mt-1 max-w-2xl text-slate-300 leading-relaxed">
-            Dukaan band hone se pehle taaza khana waste hone se bachao aur dukaandar ka nuksaan roko. Yahan pet bhi bharega aur paise bhi bachenge! 💰🍲
+            Vada pav, biryani aur pattice ko "911 ICU trauma patient" bolke hasna toh easy hai babu moshai... par dukan band hone par taaza khana dustbin ke kabristan mein jaana aur dukaandar ka nuksaan hona 100% kadva sach hai! Yahan pet bhi bharega aur jeb bhi! 💰🤤
           </p>
         </div>
 
