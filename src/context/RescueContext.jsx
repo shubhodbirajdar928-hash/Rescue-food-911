@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { INITIAL_EMERGENCIES, INITIAL_RESERVATIONS, INITIAL_RESCUE_HISTORY, INITIAL_EXPIRED_EMERGENCIES, getStatusByMinutes, formatTimeStr, getFilmyTriageReportForFood } from '../data/mockEmergencies';
 import { playSound } from '../utils/soundEffects';
 import { triggerRescueConfetti } from '../utils/confetti';
+import { useAuth } from '../auth/AuthContext';
 
 const RescueContext = createContext(null);
 
@@ -70,10 +71,9 @@ export const INITIAL_FEEDBACKS = [
 ];
 
 export const RescueProvider = ({ children }) => {
-  // Active Role: 'rescuer' or 'restaurant'
-  const [role, setRole] = useState(() => {
-    return localStorage.getItem('fr911_role') || 'rescuer';
-  });
+  // Role derived from AuthContext - maps auth roles to legacy internal roles
+  const { role: authRole } = useAuth();
+  const role = authRole === 'KITCHEN_DISPATCH' ? 'restaurant' : 'rescuer';
 
   // Sound effects toggle
   const [soundEnabled, setSoundEnabled] = useState(() => {
@@ -151,9 +151,7 @@ export const RescueProvider = ({ children }) => {
   const [demoStep, setDemoStep] = useState(1);
 
   // Sync to localStorage
-  useEffect(() => {
-    localStorage.setItem('fr911_role', role);
-  }, [role]);
+  // Role is now derived from AuthContext, no need to sync to localStorage
 
   useEffect(() => {
     localStorage.setItem('fr911_sound', JSON.stringify(soundEnabled));
@@ -319,11 +317,8 @@ export const RescueProvider = ({ children }) => {
     }
   };
 
-  // Switch Role
-  const switchRole = (newRole) => {
-    setRole(newRole);
-    playAudio('dispatch');
-  };
+  // switchRole removed - role is now derived from authentication
+  // To change roles, user must logout and login with different credentials
 
   // Add new food emergency from Restaurant
   const addEmergency = (foodData) => {
@@ -615,7 +610,6 @@ export const RescueProvider = ({ children }) => {
     <RescueContext.Provider
       value={{
         role,
-        setRole: switchRole,
         soundEnabled,
         setSoundEnabled,
         playAudio,

@@ -4,7 +4,7 @@ import { Sparkles, ChevronDown, ChevronUp, RotateCcw } from 'lucide-react';
 
 export const DemoGuideBar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const { role, setRole, resetToZero, loadSampleEmergencies, setDemoStep } = useRescue();
+  const { role, resetToZero, loadSampleEmergencies, setDemoStep } = useRescue();
 
   const demoSteps = [
     {
@@ -100,7 +100,6 @@ export const DemoGuideBar = () => {
                 <div
                   key={s.step}
                   onClick={() => {
-                    setRole(s.targetRole);
                     setDemoStep(s.step);
                   }}
                   className={`cursor-pointer p-2 rounded-lg border transition-all text-left ${
