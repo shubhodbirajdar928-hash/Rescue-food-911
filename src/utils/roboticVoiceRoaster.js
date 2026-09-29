@@ -86,7 +86,7 @@ export const BOLLYWOOD_THEME_SCRIPTS = {
   KITCHEN_DISPATCH: [
     { hindi: "गरमा-गरम, तैयार!", roman: "Garma garam, taiyaar!", star: "Fresh Dispatch 🍲" },
     { hindi: "धमाका!", roman: "Dhamaka!", star: "Full Speed ⚡" },
-    { hindi: "झकास!", roman: "Jhakaas!", star: "Anil Kapoor Style 🕺" }
+    { hindi: "पार्सल तैयार!", roman: "Parcel taiyaar!", star: "Fast Kitchen 📦" }
   ],
   FEEDBACK_SUBMITTED_PRAISE: [
     { hindi: "मजा आ गया!", roman: "Maza aa gaya!", star: "Top Taste 😋" },
