@@ -19,6 +19,7 @@ import {
   CheckCircle2,
   AlertCircle
 } from 'lucide-react';
+import { getFilmyTriageReportForFood } from '../../data/mockEmergencies';
 
 export const FoodDetailsModal = () => {
   const { selectedEmergency, setSelectedEmergency, reserveEmergency, emergencies } = useRescue();
@@ -258,16 +259,23 @@ export const FoodDetailsModal = () => {
           <div className="bg-gradient-to-r from-slate-950 via-rose-950/20 to-slate-950 rounded-2xl p-4 border border-rose-500/40 text-xs font-mono space-y-2 shadow-inner">
             <div className="text-[11px] text-rose-400 font-bold uppercase tracking-wider flex items-center justify-between">
               <span className="flex items-center gap-1.5 font-black text-amber-300">
-                <span className="text-base">💋</span>
+                <span className="text-base">🎬</span>
                 <span>CHEF & DOCTOR KI FILMY DIAGNOSIS (मसालेदार रिपोर्ट):</span>
               </span>
               <span className="text-[10px] text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded-full border border-rose-500/40">
                 🎬 100% FILMY & FLIRTY
               </span>
             </div>
-            <p className="text-amber-100 font-sans italic leading-relaxed text-sm sm:text-base border-l-2 border-rose-500/80 pl-3 py-1 font-medium bg-black/20 rounded-r-xl">
-              "{item.doctorNotes}"
-            </p>
+            {(() => {
+              const isGeneric = !item.doctorNotes || item.doctorNotes.startsWith('Food Safety Clearance') || item.doctorNotes.includes('100% verified edible surplus');
+              const rawDialogue = isGeneric ? getFilmyTriageReportForFood(item.name, item.category, item.emoji) : item.doctorNotes;
+              const cleanDialogue = (rawDialogue || '').replaceAll('💋', '❤️');
+              return (
+                <p className="text-amber-100 font-sans italic leading-relaxed text-sm sm:text-base border-l-2 border-rose-500/80 pl-3 py-1 font-medium bg-black/20 rounded-r-xl">
+                  "{cleanDialogue}"
+                </p>
+              );
+            })()}
           </div>
 
           {/* Location & Safe food pledge */}
@@ -349,7 +357,7 @@ export const FoodDetailsModal = () => {
               className="w-full py-4 rounded-2xl font-black text-base sm:text-lg tracking-wider text-white bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-500 hover:to-orange-500 shadow-xl shadow-amber-600/30 border border-amber-400/40 flex items-center justify-center gap-2 transform active:scale-98 transition-all"
             >
               <RotateCcw className="w-5 h-5 animate-spin-slow" />
-              <span>🔄 FIND ANOTHER RESCUE</span>
+              <span>🔄 DOOSRA MAREEZ DHOONDO</span>
             </button>
           ) : isSoldOut ? (
             /* If SOLD OUT: Prevent claiming */
@@ -358,14 +366,14 @@ export const FoodDetailsModal = () => {
                 disabled
                 className="w-full py-4 rounded-2xl font-black text-sm tracking-wider text-slate-400 bg-slate-800/80 border border-slate-700/60 cursor-not-allowed flex items-center justify-center gap-2"
               >
-                <span>🚫 ALL PORTIONS HAVE ALREADY BEEN RESCUED</span>
+                <span>🚫 SAB KHANA HERO LOGON NE KHA LIYA</span>
               </button>
               <button
                 onClick={() => setSelectedEmergency(null)}
                 className="w-full py-2 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 flex items-center justify-center gap-1.5 transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>← BACK TO EMERGENCY RADAR</span>
+                <span>← WAPAS WARD MEIN</span>
               </button>
             </div>
           ) : (
@@ -380,7 +388,7 @@ export const FoodDetailsModal = () => {
                 }`}
               >
                 <Siren className="w-5 h-5 animate-siren-wiggle shrink-0" />
-                <span>🚨 ACCEPT RESCUE (SAVE ₹{savings})</span>
+                <span>🚨 ISSE BACHAO (SAVE ₹{savings})</span>
               </button>
 
               <button
@@ -388,7 +396,7 @@ export const FoodDetailsModal = () => {
                 className="w-full py-2 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 flex items-center justify-center gap-1.5 transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>← BACK TO EMERGENCY RADAR</span>
+                <span>← WAPAS WARD MEIN</span>
               </button>
             </div>
           )}

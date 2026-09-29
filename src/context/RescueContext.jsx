@@ -21,6 +21,54 @@ const ensureUniqueFilmyReports = (items) => {
   });
 };
 
+export const INITIAL_FEEDBACKS = [
+  {
+    id: 'fb-001',
+    code: 'FB-911-001',
+    foodName: 'Miss 64-Layers Shahi Veg Pattice',
+    restaurant: 'Sharma Ji Ka Diljala Bakery & ICU',
+    type: 'PRAISE',
+    typeLabel: '🌟 Chef Praise (Lajawab Khana)',
+    rating: 5,
+    rescuerName: 'Rescuer Raju (Hero #007)',
+    message: 'Bhai kya crispy layers thi! Ekdum garma garam pattice mila counter par. Bachat bhi mast hui aur taste bilkul A1! Chef saab ko salam!',
+    status: 'RESOLVED',
+    statusLabel: '🎖️ Pinned to Kitchen Trauma Wall',
+    resolutionNote: 'Chef Sharma Ji personally thanked the rescuer and issued a complimentary cutting chai token! ☕❤️',
+    timestamp: Date.now() - 3600000 * 2
+  },
+  {
+    id: 'fb-002',
+    code: 'FB-911-002',
+    foodName: 'ACP Pradyuman Vada Pav',
+    restaurant: 'CID Emergency Vada Pav Outpost',
+    type: 'COMPLAINT',
+    typeLabel: '🚨 Quality / Missing Item',
+    rating: 2,
+    rescuerName: 'Inspector Daya',
+    message: 'Vada pav tasty tha lekin extra teekhi garlic chutney parcel mein nahi thi! Kuch toh gadbad hai Daya! Please packaging check karo.',
+    status: 'ACTION_TAKEN',
+    statusLabel: '👨‍🍳 Kitchen Action Taken',
+    resolutionNote: 'Outpost counter staff retrained. Chutney pouch count verified on all active dispatch racks. 🧄✅',
+    timestamp: Date.now() - 3600000 * 5
+  },
+  {
+    id: 'fb-003',
+    code: 'FB-911-003',
+    foodName: 'Makhan Tadpa Pav Bhaji',
+    restaurant: 'Sardar Ji Sizzling Tawa Trauma Ward',
+    type: 'TEMPERATURE',
+    typeLabel: '🥶 Temperature Issue',
+    rating: 3,
+    rescuerName: 'Hero Baburao',
+    message: 'Taste mast tha par parcel thoda thanda ho gaya tha counter delay ki wajah se. Microwave mein 30 second garam karke khana pada.',
+    status: 'RESOLVED',
+    statusLabel: '🟢 Resolved & Closed',
+    resolutionNote: 'Thermal aluminum wrap added to all takeaway packaging for hot bhaji! 🍲🔥',
+    timestamp: Date.now() - 3600000 * 9
+  }
+];
+
 export const RescueProvider = ({ children }) => {
   // Active Role: 'rescuer' or 'restaurant'
   const [role, setRole] = useState(() => {
@@ -126,6 +174,65 @@ export const RescueProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('fr911_v8_history', JSON.stringify(history));
   }, [history]);
+
+  // Rescuer Feedback & Complaints State
+  const [feedbacks, setFeedbacks] = useState(() => {
+    const saved = localStorage.getItem('fr911_v8_feedbacks');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    return INITIAL_FEEDBACKS;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('fr911_v8_feedbacks', JSON.stringify(feedbacks));
+  }, [feedbacks]);
+
+  const addFeedback = (feedbackData) => {
+    const newId = `fb-${Date.now().toString().slice(-4)}`;
+    const code = `FB-911-${Math.floor(100 + Math.random() * 900)}`;
+    const newEntry = {
+      id: newId,
+      code,
+      foodName: feedbackData.foodName || 'General Rescue Feedback',
+      restaurant: feedbackData.restaurant || 'Central Kitchen Station #04',
+      type: feedbackData.type || 'PRAISE',
+      typeLabel: feedbackData.typeLabel || '🌟 General Feedback',
+      rating: feedbackData.rating || 5,
+      rescuerName: feedbackData.rescuerName || 'You (Hero On-Duty)',
+      message: feedbackData.message || '',
+      status: feedbackData.type === 'PRAISE' ? 'RESOLVED' : 'IN_INVESTIGATION',
+      statusLabel: feedbackData.type === 'PRAISE' ? '🎖️ Appreciated & Forwarded' : '🩺 Under ICU Investigation',
+      resolutionNote: feedbackData.type === 'PRAISE'
+        ? 'Chef has received your praise! Pinned to Kitchen Trauma Wall with 21-topon ki salami! 🎖️❤️'
+        : 'Emergency complaint ticket dispatched to kitchen supervisor for quality audit. 🚑📋',
+      timestamp: Date.now()
+    };
+    setFeedbacks(prev => [newEntry, ...prev]);
+    playAudio('beep');
+    return newEntry;
+  };
+
+  const resolveFeedback = (id, resolutionData) => {
+    setFeedbacks(prev => prev.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          status: resolutionData.status || 'RESOLVED',
+          statusLabel: resolutionData.status === 'RESOLVED' ? '✅ Action Taken & Solved' : '🩺 Under Kitchen Review',
+          resolutionNote: resolutionData.resolutionNote || 'Kitchen supervisor inspected and resolved this issue.',
+          resolvedAt: Date.now()
+        };
+      }
+      return item;
+    }));
+    playAudio('dispatch');
+  };
 
   // LIVE COUNTDOWN TIMER TICKER (runs every second)
   // Calculates remaining seconds from absolute expiresAt.
@@ -260,7 +367,9 @@ export const RescueProvider = ({ children }) => {
       initialMinutes: rescueMins,
       condition: statusObj.key,
       isExpired: secondsLeft === 0,
-      doctorNotes: foodData.doctorNotes || getFilmyTriageReportForFood(foodData.name, foodData.category, foodData.emoji),
+      doctorNotes: (foodData.doctorNotes && !foodData.doctorNotes.startsWith('Food Safety Clearance'))
+        ? foodData.doctorNotes
+        : getFilmyTriageReportForFood(foodData.name, foodData.category, foodData.emoji),
       safetyPledge: foodData.safetyPledge || 'Freshly prepared. 100% safe, verified edible surplus before pickup window ends.',
       vitalSigns: {
         temp: 'Freshly warm (65°C)',
@@ -289,7 +398,6 @@ export const RescueProvider = ({ children }) => {
 
     // PREVENT CLAIMING EXPIRED FOOD LISTING
     if (remainingSec <= 0) {
-      playAudio('error');
       alert('🚨 AREY BHAI! TIME KHATAM HO GAYA! 😭\n\nFood rescue nahi ho paya...\nThe rescue window for this food has expired. 🥲\n\nNote: The vendor configured rescue window has closed.');
       return null;
     }
@@ -297,14 +405,12 @@ export const RescueProvider = ({ children }) => {
     // PREVENT CLAIMING WHEN QUANTITY IS EXHAUSTED
     const current = emergencies.find(e => e.id === foodItem.id);
     if (!current || current.quantity <= 0) {
-      playAudio('error');
       alert('🚨 AREY BHAI! All portions of this food have already been rescued by other heroes!');
       return null;
     }
 
     const claimQty = Math.min(quantity, current.quantity);
     if (claimQty <= 0) {
-      playAudio('error');
       return null;
     }
 
@@ -535,6 +641,10 @@ export const RescueProvider = ({ children }) => {
         resetDemoData,
         resetToZero,
         loadSampleEmergencies,
+        // Feedback & Complaints
+        feedbacks,
+        addFeedback,
+        resolveFeedback,
         // Computed Impact
         totalRescuedCount,
         totalMoneySaved,

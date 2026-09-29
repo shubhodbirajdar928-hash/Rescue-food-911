@@ -10,9 +10,10 @@ import { RescueSuccessModal } from './components/rescuer/RescueSuccessModal';
 import { RadarMap } from './components/rescuer/RadarMap';
 import { RescuerProfile } from './components/rescuer/RescuerProfile';
 import { ExpiredMemorialWard } from './components/rescuer/ExpiredMemorialWard';
+import { FeedbackSection } from './components/rescuer/FeedbackSection';
 import { RestaurantDashboard } from './components/restaurant/RestaurantDashboard';
 import { ImpactSection } from './components/impact/ImpactSection';
-import { Grid, Map, Trophy, Filter, HeartCrack } from 'lucide-react';
+import { Grid, Map, Trophy, Filter, HeartCrack, MessageSquareQuote } from 'lucide-react';
 
 const RescuerView = ({ gridRef }) => {
   const { emergencies, expiredEmergencies } = useRescue();
@@ -47,7 +48,7 @@ const RescuerView = ({ gridRef }) => {
               }`}
             >
               <Grid className="w-4 h-4" />
-              <span>Trauma Ward (Grid)</span>
+              <span>🏥 Mareez Ward</span>
             </button>
 
             <button
@@ -59,7 +60,7 @@ const RescuerView = ({ gridRef }) => {
               }`}
             >
               <Map className="w-4 h-4" />
-              <span>911 Radar Map</span>
+              <span>📡 Khana Radar</span>
             </button>
 
             <button
@@ -71,7 +72,7 @@ const RescuerView = ({ gridRef }) => {
               }`}
             >
               <Trophy className="w-4 h-4" />
-              <span>My Rescues</span>
+              <span>🏆 Mera Score</span>
             </button>
 
             <button
@@ -83,7 +84,19 @@ const RescuerView = ({ gridRef }) => {
               }`}
             >
               <HeartCrack className="w-4 h-4 text-rose-400" />
-              <span>Missed Rescues ({expiredEmergencies?.length || 0})</span>
+              <span>🪦 RIP Khana ({expiredEmergencies?.length || 0})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('feedback')}
+              className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-mono font-bold uppercase transition-all relative ${
+                activeTab === 'feedback'
+                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/40'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              <MessageSquareQuote className="w-4 h-4 text-purple-400" />
+              <span>📢 Shikayat & Feedback</span>
             </button>
           </div>
 
@@ -91,14 +104,14 @@ const RescuerView = ({ gridRef }) => {
           {activeTab === 'grid' && (
             <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 font-mono text-xs">
               <span className="text-slate-400 font-bold text-xs hidden lg:inline mr-1 flex items-center gap-1">
-                <Filter className="w-3.5 h-3.5 text-red-500" /> Condition:
+                <Filter className="w-3.5 h-3.5 text-red-500" /> Halat:
               </span>
               {[
-                { key: 'ALL', label: 'All Patients' },
-                { key: 'CRITICAL', label: '🔴 Critical' },
-                { key: 'URGENT', label: '🟠 Urgent' },
+                { key: 'ALL', label: 'Sabhi Mareez' },
+                { key: 'CRITICAL', label: '🔴 ICU Critical' },
+                { key: 'URGENT', label: '🟠 Tadap Raha Hai' },
                 { key: 'OBSERVATION', label: '🟡 Observation' },
-                { key: 'STABLE', label: '🟢 Stable' }
+                { key: 'STABLE', label: '🟢 Mast Taza' }
               ].map(item => (
                 <button
                   key={item.key}
@@ -168,6 +181,8 @@ const RescuerView = ({ gridRef }) => {
 
         {activeTab === 'expired' && <ExpiredMemorialWard />}
 
+        {activeTab === 'feedback' && <FeedbackSection />}
+
         {/* Impact Section */}
         <div className="pt-6">
           <ImpactSection />
@@ -212,13 +227,12 @@ const MainContent = () => {
           <div className="flex items-center justify-center gap-2 font-black text-sm">
             <span className="text-white">🚨 FOOD RESCUE 911</span>
             <span>•</span>
-            <span className="text-red-500">"Not all heroes wear capes. Some rescue vadapav, biryani & kachori."</span>
+            <span className="text-amber-400">"Asli Hero wahi... jo dustbin se pehle Biryani aur Vada Pav bacha le! 🦸‍♂️🍛"</span>
           </div>
-          <p className="max-w-xl mx-auto text-slate-400 leading-relaxed">
-            Built for the <strong>Build Something Stupid</strong> Hackathon.
-            While giving CPR to a cold pizza is completely stupid, solving edible surplus food waste is 100% real.
+          <p className="max-w-xl mx-auto text-slate-300 leading-relaxed">
+            Vada pav aur pizza ko CPR dena full comedy lag sakta hai... par dukan band hone ke baad taaza khana bachana aur pet bharna 100% real impact hai!
           </p>
-          <div className="text-[11px] text-slate-500 font-bold">
+          <div className="text-[11px] text-emerald-400 font-bold">
             100% Safe, Edible Surplus Food Marketplace • Built with React, Vite & Tailwind CSS
           </div>
         </div>

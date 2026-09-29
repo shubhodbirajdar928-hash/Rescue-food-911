@@ -3,8 +3,10 @@ import { useRescue } from '../../context/RescueContext';
 import { StatusBadge } from '../common/StatusBadge';
 import { CountdownTimer } from '../common/CountdownTimer';
 import { DeployEmergencyModal } from './DeployEmergencyModal';
+import { FoodSafetyDisclaimerModal } from './FoodSafetyDisclaimerModal';
 import { ReservationsList } from './ReservationsList';
-import { Siren, Plus, IndianRupee, Utensils, Users, Terminal, Zap, ArrowUpRight, ShieldCheck, Clock, RotateCcw, Sparkles, RefreshCw, Trash2, Archive, AlertTriangle } from 'lucide-react';
+import { KitchenFeedbackInbox } from './KitchenFeedbackInbox';
+import { Siren, Plus, IndianRupee, Utensils, Users, Terminal, Zap, ArrowUpRight, ShieldCheck, Clock, RotateCcw, Sparkles, RefreshCw, Trash2, Archive, AlertTriangle, MessageSquareQuote } from 'lucide-react';
 import { getFilmyTriageReportForFood } from '../../data/mockEmergencies';
 
 export const RestaurantDashboard = () => {
@@ -19,18 +21,22 @@ export const RestaurantDashboard = () => {
     deleteExpiredEmergency,
     clearAllExpired,
     playAudio,
-    resetToZero
+    resetToZero,
+    feedbacks,
+    resolveFeedback
   } = useRescue();
 
   const [isDeployOpen, setIsDeployOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('kds'); // 'kds' | 'inventory' | 'expired'
+  const [safetyFood, setSafetyFood] = useState(null);
+  const [isSafetyOpen, setIsSafetyOpen] = useState(false);
 
   const activeReservationsCount = reservations.filter(r => r.status !== 'COMPLETED').length;
 
-  // 1-Click Fast Surplus Broadcast presets
+  // 1-Click Fast Surplus Broadcast presets (routed through Food Safety Clearance)
   const handleQuickDeploy = (preset) => {
     const tailoredNote = preset.doctorNotes || getFilmyTriageReportForFood(preset.name, preset.category, preset.emoji);
-    addEmergency({
+    const preparedData = {
       name: preset.name,
       category: preset.category,
       emoji: preset.emoji,
@@ -41,8 +47,9 @@ export const RestaurantDashboard = () => {
       restaurant: "Central Kitchen Station #04",
       address: 'Main Express Counter, Food Hub',
       doctorNotes: tailoredNote
-    });
-    playAudio('siren');
+    };
+    setSafetyFood(preparedData);
+    setIsSafetyOpen(true);
   };
 
   const quickPresets = [
@@ -84,7 +91,7 @@ export const RestaurantDashboard = () => {
       rescuePrice: 79,
       quantity: 10,
       minutes: 30,
-      doctorNotes: 'Haye re meri 64 crispy layers! Sirf tumhare hot bites ke liye pighal rahi hoon jaaneman! Thoda ketchup lagao, thoda pyaar jatao... aakhir kab tak akele tadpaoge? Jaldi rescue karo! 🥐💋🔥'
+      doctorNotes: 'Haye re meri 64 crispy layers! Sirf tumhare hot bites ke liye pighal rahi hoon jaaneman! Thoda ketchup lagao, thoda pyaar jatao... aakhir kab tak akele tadpaoge? Jaldi rescue karo! 🥐🔥'
     },
     {
       name: 'Major Samosa & Spicy Potato Boys',
@@ -104,7 +111,7 @@ export const RestaurantDashboard = () => {
       rescuePrice: 45,
       quantity: 5,
       minutes: 15,
-      doctorNotes: 'Haye mar jawaan! Desi ghee mein tale huye rasbhare gulaab jamun hain hum... itni meethi chaashni mein doobe hain ki chhoo lo toh pyaar ho jaye! Aaja meri rasmalai, hume apne pet mein panah de do! 🍯🍮💋'
+      doctorNotes: 'Haye mar jawaan! Desi ghee mein tale huye rasbhare gulaab jamun hain hum... itni meethi chaashni mein doobe hain ki chhoo lo toh pyaar ho jaye! Aaja meri rasmalai, hume apne pet mein panah de do! 🍯🍮❤️'
     },
     {
       name: 'Express Grilled Cheese Sandwich Batch',
@@ -124,7 +131,7 @@ export const RestaurantDashboard = () => {
       rescuePrice: 65,
       quantity: 5,
       minutes: 25,
-      doctorNotes: 'Itne soft, steamed aur juicy momos hain hum... red fiery teekhi chutney ke bina adhoore hain aur tumhare bina anaath! Ek spicy bite lo aur seedha swarg pahunch jao hero! 🥟🌶️💋'
+      doctorNotes: 'Itne soft, steamed aur juicy momos hain hum... red fiery teekhi chutney ke bina adhoore hain aur tumhare bina anaath! Ek spicy bite lo aur seedha swarg pahunch jao hero! 🥟🌶️🔥'
     },
     {
       name: 'Paneer Tikka ICU Sizzle (Tandoori)',
@@ -134,7 +141,7 @@ export const RestaurantDashboard = () => {
       rescuePrice: 89,
       quantity: 4,
       minutes: 30,
-      doctorNotes: 'Tandoor se nikla hua smokey aroma aur soft malai paneer! Chaat masala chhidak ke tawa pe tadap rahe hain... Aao na hero, aisi sizzling tandoori aashiqui dhoondhe se bhi nahi milegi! 🍢🔥💋'
+      doctorNotes: 'Tandoor se nikla hua smokey aroma aur soft malai paneer! Chaat masala chhidak ke tawa pe tadap rahe hain... Aao na hero, aisi sizzling tandoori aashiqui dhoondhe se bhi nahi milegi! 🍢🔥❤️'
     }
   ];
 
@@ -186,8 +193,8 @@ export const RestaurantDashboard = () => {
           </div>
         </div>
 
-        {/* 4 Operations Telemetry Gauges */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-8 pt-6 border-t border-slate-800/80">
+        {/* 5 Operations Telemetry Gauges */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mt-8 pt-6 border-t border-slate-800/80">
           <div className="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 shadow-inner">
             <div className="text-xs text-slate-400 mb-1 flex items-center justify-between uppercase">
               <span className="flex items-center gap-1.5 text-amber-400">
@@ -253,6 +260,35 @@ export const RestaurantDashboard = () => {
             </div>
             <div className="text-[11px] text-blue-300 mt-1">
               {activeReservationsCount} awaiting counter pickup
+            </div>
+          </div>
+
+          <div
+            onClick={() => setActiveTab('feedback')}
+            className={`p-4 rounded-2xl border transition-all cursor-pointer shadow-inner group ${
+              feedbacks?.some((f) => f.status === 'IN_INVESTIGATION')
+                ? 'bg-rose-950/30 border-rose-500/50 hover:border-rose-400'
+                : 'bg-slate-950/80 border-slate-800 hover:border-purple-500/50'
+            }`}
+          >
+            <div className="text-xs text-slate-400 mb-1 flex items-center justify-between uppercase">
+              <span className="flex items-center gap-1.5 text-purple-400 group-hover:text-purple-300">
+                <MessageSquareQuote className="w-3.5 h-3.5" />
+                Rescuer Desk
+              </span>
+              {feedbacks?.some((f) => f.status === 'IN_INVESTIGATION') ? (
+                <span className="px-1.5 py-0.5 rounded bg-rose-600 text-white text-[10px] font-bold animate-pulse">
+                  ACTION
+                </span>
+              ) : (
+                <span className="text-[10px] text-emerald-400 font-bold">100% OK</span>
+              )}
+            </div>
+            <div className="text-3xl font-black text-purple-400">
+              {feedbacks?.length || 0}
+            </div>
+            <div className="text-[11px] text-purple-300 mt-1">
+              {feedbacks?.filter((f) => f.status === 'IN_INVESTIGATION').length || 0} open incidents • Tap to view
             </div>
           </div>
         </div>
@@ -353,10 +389,29 @@ export const RestaurantDashboard = () => {
             </span>
           )}
         </button>
+
+        <button
+          onClick={() => setActiveTab('feedback')}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold font-mono text-xs uppercase tracking-wider transition-all relative ${
+            activeTab === 'feedback'
+              ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/40'
+              : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+          }`}
+        >
+          <MessageSquareQuote className="w-4 h-4 text-purple-400" />
+          <span>Rescuer Feedback & Complaints ({feedbacks?.length || 0})</span>
+          {feedbacks?.some((f) => f.status === 'IN_INVESTIGATION') && (
+            <span className="bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold animate-bounce">
+              {feedbacks.filter((f) => f.status === 'IN_INVESTIGATION').length}
+            </span>
+          )}
+        </button>
       </div>
 
       {/* Tab 1: KDS Order Ticket Rack */}
-      {activeTab === 'kds' && <ReservationsList />}
+      {activeTab === 'kds' && (
+        <ReservationsList onSwitchToFeedback={() => setActiveTab('feedback')} />
+      )}
 
       {/* Tab 2: Surplus Matrix Table */}
       {activeTab === 'inventory' && (
@@ -547,10 +602,27 @@ export const RestaurantDashboard = () => {
         </div>
       )}
 
+      {/* Tab 4: Rescuer Feedback & Complaints Inbox */}
+      {activeTab === 'feedback' && <KitchenFeedbackInbox />}
+
       {/* Deploy Modal */}
       <DeployEmergencyModal
         isOpen={isDeployOpen}
         onClose={() => setIsDeployOpen(false)}
+      />
+
+      {/* Mandatory Food Safety Clearance Modal for Quick Presets */}
+      <FoodSafetyDisclaimerModal
+        isOpen={isSafetyOpen}
+        onClose={() => setIsSafetyOpen(false)}
+        onConfirm={(clearedData) => {
+          addEmergency(clearedData || safetyFood);
+          playAudio('siren');
+        }}
+        onSuccessDismiss={() => {
+          setIsSafetyOpen(false);
+        }}
+        foodData={safetyFood}
       />
     </div>
   );

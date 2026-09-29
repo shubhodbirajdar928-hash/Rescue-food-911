@@ -35,8 +35,8 @@ export const Navbar = () => {
                   <span>EMERGENCY DISPATCH</span>
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-medium tracking-wide hidden sm:block">
-                "Not all heroes wear capes. Some rescue vadapav, biryani & kachori."
+              <p className="text-xs text-amber-300 font-medium tracking-wide hidden sm:block">
+                "Asli Hero wahi... jo dustbin se pehle Biryani aur Vada Pav bacha le! 🦸‍♂️🍛"
               </p>
             </div>
           </div>

@@ -50,11 +50,12 @@ export const EmergencyCard = ({ emergency }) => {
           {/* Header Tag & Countdown */}
           <div className="flex items-center justify-between gap-2 mb-3">
             <div className="flex items-center gap-1.5">
-              <span className="font-mono text-xs font-black uppercase tracking-wider text-slate-300 bg-slate-800/90 px-2.5 py-1 rounded-md border border-slate-700/80">
-                {emergency.code}
+              <span className="font-mono text-xs font-black uppercase tracking-wider text-slate-300 bg-slate-800/90 px-2.5 py-1 rounded-md border border-slate-700/80 flex items-center gap-1">
+                <span>📋</span>
+                <span>{emergency.code}</span>
               </span>
               <span className="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                SAVE ₹{savings} ({discountPercent}% OFF)
+                Loot: Bachao ₹{savings} ({discountPercent}% OFF)
               </span>
             </div>
 
@@ -63,23 +64,24 @@ export const EmergencyCard = ({ emergency }) => {
 
           {/* Big Food Icon & Name */}
           <div className="flex items-start gap-4 mb-4">
-            <div className={`w-16 h-16 rounded-2xl border flex items-center justify-center text-4xl shadow-inner shrink-0 group-hover:scale-105 transition-transform ${
+            <div className={`relative w-16 h-16 rounded-2xl border flex items-center justify-center text-4xl shadow-inner shrink-0 group-hover:scale-105 transition-transform ${
               isExpired
                 ? 'bg-slate-950 border-slate-800 grayscale'
                 : 'bg-gradient-to-br from-slate-800 to-slate-950 border-slate-700/70'
             }`}>
               <span className="filter drop-shadow-md">{emergency.emoji}</span>
+              <span className="absolute -top-1 -right-1 text-xs select-none">🩹</span>
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="mb-1 flex items-center gap-1.5">
                 {isExpired ? (
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-rose-950/80 text-rose-400 border border-rose-500/40">
-                    ⛔ EXPIRED
+                    💀 DUSTBIN FLATLINE
                   </span>
                 ) : isLowTime ? (
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-orange-950/80 text-orange-400 border border-orange-500/60 animate-pulse">
-                    🟠 TIME RUNNING OUT!
+                    🔥 DHADKAN TEZ (JALDI AAO!)
                   </span>
                 ) : (
                   <StatusBadge condition={emergency.condition} size="sm" />
@@ -115,10 +117,10 @@ export const EmergencyCard = ({ emergency }) => {
           <div className="bg-slate-950/80 rounded-xl p-3 border border-rose-500/20 mb-4 text-xs font-mono text-slate-300 leading-relaxed">
             <div className="text-[10px] text-rose-400 uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
               <HeartPulse className="w-3.5 h-3.5 text-rose-500 animate-pulse" />
-              <span>💋 FILMY TRIAGE REPORT:</span>
+              <span>🎬 FILMY TRIAGE REPORT:</span>
             </div>
             <p className="text-amber-200/90 italic line-clamp-2 font-sans text-xs">
-              "{emergency.doctorNotes}"
+              "{(emergency.doctorNotes || '').replaceAll('💋', '❤️')}"
             </p>
           </div>
 
@@ -126,10 +128,10 @@ export const EmergencyCard = ({ emergency }) => {
           <div className="flex items-center justify-between text-xs text-slate-400 mb-4 font-mono pb-2 border-b border-slate-800/60">
             <div className="flex items-center gap-1">
               <MapPin className="w-3.5 h-3.5 text-amber-400" />
-              <span>{emergency.distance} km away</span>
+              <span>{emergency.distance} km door hai</span>
             </div>
             <div className={isSoldOut ? 'text-rose-400 font-bold' : 'text-amber-300/90 font-medium'}>
-              {isSoldOut ? '🚫 ALL PORTIONS CLAIMED' : `📦 ${emergency.quantity} patient${emergency.quantity > 1 ? 's' : ''} left`}
+              {isSoldOut ? '🚫 SAB KHA GAYE HERO LOG' : `📦 ${emergency.quantity} mareez bache hain`}
             </div>
           </div>
         </div>
@@ -138,14 +140,14 @@ export const EmergencyCard = ({ emergency }) => {
         <div className="flex items-center justify-between pt-1">
           <div>
             <div className="text-xs text-slate-400 line-through font-mono">
-              Original: ₹{emergency.originalPrice}
+              MRP: ₹{emergency.originalPrice}
             </div>
             <div className="flex items-baseline gap-1">
               <span className="text-2xl font-black text-white font-mono">
                 ₹{emergency.rescuePrice}
               </span>
               <span className="text-xs text-emerald-400 font-bold font-mono">
-                (Save ₹{savings})
+                (Bachat ₹{savings})
               </span>
             </div>
           </div>
@@ -172,7 +174,7 @@ export const EmergencyCard = ({ emergency }) => {
               }`}
             >
               <Siren className="w-4 h-4 animate-siren-wiggle" />
-              <span>ACCEPT RESCUE</span>
+              <span>🚨 BACHA LO! (ADOPT)</span>
             </button>
           )}
         </div>

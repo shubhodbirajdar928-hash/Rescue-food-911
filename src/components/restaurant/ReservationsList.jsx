@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useRescue } from '../../context/RescueContext';
-import { CheckCircle2, Clock, User, Check, PackageCheck } from 'lucide-react';
+import { CheckCircle2, Clock, User, Check, PackageCheck, MessageSquareQuote, AlertTriangle, Sparkles, ArrowRight } from 'lucide-react';
 
-export const ReservationsList = () => {
-  const { reservations, markAsRescued, playAudio } = useRescue();
+export const ReservationsList = ({ onSwitchToFeedback }) => {
+  const { reservations, markAsRescued, playAudio, feedbacks } = useRescue();
   const [packedTickets, setPackedTickets] = useState({});
 
   const activeReservations = reservations.filter(r => r.status !== 'COMPLETED');
   const completedReservations = reservations.filter(r => r.status === 'COMPLETED');
+
+  const openComplaints = (feedbacks || []).filter(f => f.status === 'IN_INVESTIGATION');
+  const latestAlert = openComplaints[0] || (feedbacks || [])[0];
 
   const togglePacked = (id) => {
     setPackedTickets(prev => ({
@@ -45,6 +48,67 @@ export const ReservationsList = () => {
             </span>
           </div>
         </div>
+
+        {/* Live Rescuer Feedback / Complaint Alert Bar */}
+        {latestAlert && (
+          <div
+            className={`mb-6 p-4 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-all shadow-lg ${
+              openComplaints.length > 0
+                ? 'bg-rose-950/40 border-rose-500/50 text-rose-200'
+                : 'bg-purple-950/40 border-purple-500/40 text-purple-200'
+            }`}
+          >
+            <div className="flex items-start sm:items-center gap-3">
+              <span
+                className={`p-2 rounded-xl text-xs font-bold shrink-0 ${
+                  openComplaints.length > 0
+                    ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                    : 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+                }`}
+              >
+                {openComplaints.length > 0 ? (
+                  <AlertTriangle className="w-4 h-4 text-rose-400" />
+                ) : (
+                  <Sparkles className="w-4 h-4 text-purple-300" />
+                )}
+              </span>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800">
+                    {latestAlert.code}
+                  </span>
+                  <span className="text-xs font-bold text-white">
+                    {openComplaints.length > 0
+                      ? '🚨 URGENT RESCUER COMPLAINT AT DISPATCH:'
+                      : '🌟 LATEST RESCUER FEEDBACK:'}
+                  </span>
+                  <span className="text-xs text-amber-300 font-bold">{latestAlert.foodName}</span>
+                </div>
+                <p className="text-xs text-slate-300 italic mt-0.5 font-sans">
+                  "{latestAlert.message}"
+                </p>
+              </div>
+            </div>
+
+            {onSwitchToFeedback && (
+              <button
+                onClick={onSwitchToFeedback}
+                className={`shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md active:scale-95 ${
+                  openComplaints.length > 0
+                    ? 'bg-rose-600 hover:bg-rose-500 text-white shadow-rose-900/40'
+                    : 'bg-purple-600 hover:bg-purple-500 text-white shadow-purple-900/40'
+                }`}
+              >
+                <span>
+                  {openComplaints.length > 0
+                    ? `Resolve Complaint (${openComplaints.length} Open)`
+                    : 'Open Feedback Desk'}
+                </span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        )}
 
         {activeReservations.length === 0 ? (
           <div className="bg-slate-950/60 rounded-2xl p-10 border border-slate-800 text-center space-y-2">

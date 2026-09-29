@@ -97,10 +97,10 @@ export const ExpiredMemorialWard = () => {
               <div className="bg-rose-950/30 border border-rose-500/20 rounded-xl p-3 space-y-1.5">
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-rose-400 uppercase tracking-wider">
                   <HeartCrack className="w-3.5 h-3.5 text-rose-400" />
-                  <span>💋 AASHIQ KA SHOKAASANDESH (शोक संदेश)</span>
+                  <span>🎬 AASHIQ KA SHOKAASANDESH (शोक संदेश)</span>
                 </div>
                 <p className="text-xs text-rose-200/90 italic leading-relaxed">
-                  "{item.doctorNotes}"
+                  "{(item.doctorNotes || '').replaceAll('💋', '💔')}"
                 </p>
               </div>
 

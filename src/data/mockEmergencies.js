@@ -77,7 +77,7 @@ export const getFilmyTriageReportForFood = (name = '', category = '', emoji = ''
 
   // 1. Patties / Puff
   if (n.includes('pattice') || n.includes('puff') || c.includes('patties') || emoji === '🥐') {
-    return 'Haye re meri 64 crispy layers! Sirf tumhare hot bites ke liye pighal rahi hoon jaaneman! Thoda ketchup lagao, thoda pyaar jatao... aakhir kab tak door se taadte rahoge hero? Jaldi rescue karo varna hum thande pad jayenge! 🥐💋🔥';
+    return 'Haye re meri 64 crispy layers! Sirf tumhare hot bites ke liye pighal rahi hoon jaaneman! Thoda ketchup lagao, thoda pyaar jatao... aakhir kab tak door se taadte rahoge hero? Jaldi rescue karo varna hum thande pad jayenge! 🥐🔥';
   }
 
   // 2. Vada Pav / Batata Vada
@@ -97,12 +97,12 @@ export const getFilmyTriageReportForFood = (name = '', category = '', emoji = ''
 
   // 5. Kachori / Khasta
   if (n.includes('kachori') || n.includes('khasta') || c.includes('kachorii') || emoji === '🍘') {
-    return 'Itni khasta aur kurkuri hoon ki ek nazar mein ghayal kar doon! Meethi sonth aur teekhi pudina chutney se naha ke baithe hain... Aao na shona, aisi crispy romance zindagi mein dobara kahan milegi? 🍘😉💋';
+    return 'Itni khasta aur kurkuri hoon ki ek nazar mein ghayal kar doon! Meethi sonth aur teekhi pudina chutney se naha ke baithe hain... Aao na shona, aisi crispy romance zindagi mein dobara kahan milegi? 🍘😉❤️';
   }
 
   // 6. Gulab Jamun / Rasgulla / Sweets
   if (n.includes('jamun') || n.includes('rasgulla') || n.includes('sweet') || n.includes('mithai') || c.includes('sweets') || emoji === '🍯') {
-    return 'Haye mar jawaan! Desi ghee mein tale huye rasbhare gulaab jamun hain hum... itni meethi chaashni mein doobe hain ki chhoo lo toh pyaar ho jaye! Aaja meri rasmalai, hume apne pet mein panah de do, varna chaashni jam jayegi! 🍯🍮💋';
+    return 'Haye mar jawaan! Desi ghee mein tale huye rasbhare gulaab jamun hain hum... itni meethi chaashni mein doobe hain ki chhoo lo toh pyaar ho jaye! Aaja meri rasmalai, hume apne pet mein panah de do, varna chaashni jam jayegi! 🍯🍮❤️';
   }
 
   // 7. Samosa
@@ -122,7 +122,7 @@ export const getFilmyTriageReportForFood = (name = '', category = '', emoji = ''
 
   // 10. Momos / Dim Sum
   if (n.includes('momo') || n.includes('dim sum') || emoji === '🥟') {
-    return 'Itne soft, steamed aur juicy momos hain hum... red fiery teekhi chutney ke bina adhoore hain aur tumhare bina anaath! Ek spicy bite lo aur seedha swarg pahunch jao hero! 🥟🌶️💋';
+    return 'Itne soft, steamed aur juicy momos hain hum... red fiery teekhi chutney ke bina adhoore hain aur tumhare bina anaath! Ek spicy bite lo aur seedha swarg pahunch jao hero! 🥟🌶️🔥';
   }
 
   // 11. Chole Bhature / Naan
@@ -132,7 +132,7 @@ export const getFilmyTriageReportForFood = (name = '', category = '', emoji = ''
 
   // 12. Paneer Tikka / Tandoori / Kebab
   if (n.includes('paneer') || n.includes('tikka') || n.includes('kebab') || n.includes('tandoor') || emoji === '🍢') {
-    return 'Tandoor se nikla hua smokey aroma aur soft malai paneer! Chaat masala chhidak ke tawa pe tadap rahe hain... Aao na hero, aisi sizzling tandoori aashiqui dhoondhe se bhi nahi milegi! 🍢🔥💋';
+    return 'Tandoor se nikla hua smokey aroma aur soft malai paneer! Chaat masala chhidak ke tawa pe tadap rahe hain... Aao na hero, aisi sizzling tandoori aashiqui dhoondhe se bhi nahi milegi! 🍢🔥❤️';
   }
 
   // 13. Pizza
@@ -147,7 +147,7 @@ export const getFilmyTriageReportForFood = (name = '', category = '', emoji = ''
 
   // 15. Jalebi / Rabdi
   if (n.includes('jalebi') || n.includes('rabdi') || emoji === '🥨') {
-    return 'Garma-garam desi ghee ki tedhi-medhi kurkuri jalebi hoon main... bilkul tumhare ishq ki tarah uljhi hui! Thoda rabdi ka sahara do aur seedha dil mein utaar lo hero! 🥨🥛💋';
+    return 'Garma-garam desi ghee ki tedhi-medhi kurkuri jalebi hoon main... bilkul tumhare ishq ki tarah uljhi hui! Thoda rabdi ka sahara do aur seedha dil mein utaar lo hero! 🥨🥛❤️';
   }
 
   // 16. Chaat / Pani Puri
@@ -167,12 +167,12 @@ export const getFilmyTriageReportForFood = (name = '', category = '', emoji = ''
 
   // 19. Cake / Pastry / Brownie
   if (n.includes('cake') || n.includes('pastry') || n.includes('brownie') || emoji === '🍰') {
-    return 'Rich dark chocolate aur velvety cream ka nasha! Tumhare meethe ishq ke bina yeh treat bilkul akeli hai... Aao na meri jaan, melt hone se pehle adopt kar lo! 🍰🍫💋';
+    return 'Rich dark chocolate aur velvety cream ka nasha! Tumhare meethe ishq ke bina yeh treat bilkul akeli hai... Aao na meri jaan, melt hone se pehle adopt kar lo! 🍰🍫❤️';
   }
 
   // 20. Default Dynamic Bollywood Filmy generator
   const foodTitle = name.trim() || 'swadisht pakwaan';
-  return `Arrey deewane! Yeh lazeez ${foodTitle} sirf tumhare intezaar mein kitchen counter par ahen bhar raha hai! Thoda pyaar dikhao aur turant rescue karo jaaneman, varna yeh garam romance hawa ho jayega! ${emoji || '🍽️'}💋🔥`;
+  return `Arrey deewane! Yeh lazeez ${foodTitle} sirf tumhare intezaar mein kitchen counter par ahen bhar raha hai! Thoda pyaar dikhao aur turant rescue karo jaaneman, varna yeh garam romance hawa ho jayega! ${emoji || '🍽️'}🔥`;
 };
 
 // Helper to create a fully timestamp-anchored emergency item
@@ -265,7 +265,7 @@ export const INITIAL_EMERGENCIES = [
     rescueWindowMinutes: 30,
     pickupWindowMinutes: 15,
     remainingSecondsOffset: 29 * 60 + 58,
-    doctorNotes: 'Haye re meri 64 crispy layers! Sirf tumhare hot bites ke liye pighal rahi hoon jaaneman! Thoda ketchup lagao, thoda pyaar jatao... aakhir kab tak door se taadte rahoge hero? Jaldi rescue karo varna hum thande pad jayenge! 🥐💋🔥',
+    doctorNotes: 'Haye re meri 64 crispy layers! Sirf tumhare hot bites ke liye pighal rahi hoon jaaneman! Thoda ketchup lagao, thoda pyaar jatao... aakhir kab tak door se taadte rahoge hero? Jaldi rescue karo varna hum thande pad jayenge! 🥐🔥',
     safetyPledge: 'Taaza baked golden crust. 100% edible and crispy surplus before counter closing.',
     temp: 'Garam (62°C)',
     pulse: '98 BPM (Flaky Dhadkan & Ketchup Pyar)',
@@ -349,7 +349,7 @@ export const INITIAL_EMERGENCIES = [
     rescueWindowMinutes: 30,
     pickupWindowMinutes: 15,
     remainingSecondsOffset: 4 * 60 + 32,
-    doctorNotes: 'Itni khasta aur kurkuri hoon ki ek nazar mein ghayal kar doon! Meethi sonth aur teekhi pudina chutney se naha ke baithe hain... Aao na shona, aisi crispy romance zindagi mein dobara kahan milegi? 🍘😉💋',
+    doctorNotes: 'Itni khasta aur kurkuri hoon ki ek nazar mein ghayal kar doon! Meethi sonth aur teekhi pudina chutney se naha ke baithe hain... Aao na shona, aisi crispy romance zindagi mein dobara kahan milegi? 🍘😉❤️',
     safetyPledge: 'Deep-fried golden khasta crust. Still intensely crisp and fresh.',
     temp: 'Warm (54°C)',
     pulse: '160 BPM (Khasta Shock & Basanti Fear)',
@@ -370,7 +370,7 @@ export const INITIAL_EMERGENCIES = [
     rescueWindowMinutes: 20,
     pickupWindowMinutes: 10,
     remainingSecondsOffset: 2 * 60 + 15,
-    doctorNotes: 'Haye mar jawaan! Desi ghee mein tale huye rasbhare gulaab jamun hain hum... itni meethi chaashni mein doobe hain ki chhoo lo toh pyaar ho jaye! Aaja meri rasmalai, hume apne pet mein panah de do, varna chaashni jam jayegi! 🍯🍮💋',
+    doctorNotes: 'Haye mar jawaan! Desi ghee mein tale huye rasbhare gulaab jamun hain hum... itni meethi chaashni mein doobe hain ki chhoo lo toh pyaar ho jaye! Aaja meri rasmalai, hume apne pet mein panah de do, varna chaashni jam jayegi! 🍯🍮❤️',
     safetyPledge: 'Fresh mawa batch cooked in pure desi ghee. Warm and soft.',
     temp: 'Meetha & Garam (48°C)',
     pulse: '175 BPM (Syrup Dhadkan & Romantic Arrest)',

@@ -63,47 +63,47 @@ export const RescueSuccessModal = () => {
           <div className="space-y-1.5">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black tracking-widest uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
               <Sparkles className="w-3.5 h-3.5" />
-              PATIENT ADOPTED & SAVED!
+              🎉 MAREEZ BACH GAYA RE DEVA!
             </span>
 
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight font-sans">
-              🎉 FOOD RESCUED!
+              🎉 PET POOJA MUBARAK!
             </h2>
 
             <p className="text-sm sm:text-base font-bold text-amber-300">
-              {reservation.foodName} has found a loving belly!
+              {reservation.foodName} ab seedha pet mein swaaha! 🤤
             </p>
 
-            <p className="text-xs text-slate-400 italic max-w-md mx-auto">
-              "Congratulations. You saved a meal from a tragic fate in the dumpster."
+            <p className="text-xs text-slate-300 italic max-w-md mx-auto">
+              "Dustbin rota reh gaya, aur apna Hero garma-garam dakar gaya! 🦸‍♂️🍛"
             </p>
           </div>
 
           {/* Victory Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 my-3 text-left">
             <div className="bg-slate-950/80 p-2.5 sm:p-3 rounded-2xl border border-slate-800">
-              <div className="text-[10px] text-slate-400 uppercase">You Saved</div>
+              <div className="text-[10px] text-slate-400 uppercase">Rokda Bacha</div>
               <div className="text-base sm:text-lg font-black text-emerald-400">
                 ₹{historyEntry.savedAmount}
               </div>
             </div>
 
             <div className="bg-slate-950/80 p-2.5 sm:p-3 rounded-2xl border border-slate-800">
-              <div className="text-[10px] text-slate-400 uppercase">Hero Pts</div>
+              <div className="text-[10px] text-slate-400 uppercase">Hero Points</div>
               <div className="text-base sm:text-lg font-black text-amber-400">
                 +{historyEntry.points}
               </div>
             </div>
 
             <div className="bg-slate-950/80 p-2.5 sm:p-3 rounded-2xl border border-slate-800">
-              <div className="text-[10px] text-slate-400 uppercase">Rescued</div>
+              <div className="text-[10px] text-slate-400 uppercase">Bachaya Gaya</div>
               <div className="text-base sm:text-lg font-black text-white">
                 {reservation.quantity} item{reservation.quantity > 1 ? 's' : ''}
               </div>
             </div>
 
             <div className="bg-slate-950/80 p-2.5 sm:p-3 rounded-2xl border border-slate-800">
-              <div className="text-[10px] text-slate-400 uppercase">Waste Avoided</div>
+              <div className="text-[10px] text-slate-400 uppercase">Kachra Zero</div>
               <div className="text-base sm:text-lg font-black text-teal-400">
                 ~{(reservation.quantity * 0.45).toFixed(1)} kg
               </div>
@@ -114,10 +114,10 @@ export const RescueSuccessModal = () => {
           <div className="bg-emerald-950/30 border border-emerald-500/40 rounded-2xl p-3 sm:p-4 text-xs text-emerald-200/90 text-left space-y-1">
             <div className="flex items-center gap-2 font-bold text-emerald-300">
               <Award className="w-4 h-4 text-amber-400" />
-              <span>OFFICIAL CITIZEN VALOR CERTIFICATE</span>
+              <span>🎖️ ASLI PET HERO CERTIFICATE</span>
             </div>
             <p className="text-[11px] text-slate-300">
-              Issued to <strong className="text-white">{reservation.customerName}</strong> for courageous consumption of safe surplus food before closing.
+              Issued to <strong className="text-white">{reservation.customerName}</strong> for bravery against hunger & dustbin! 🫡
             </p>
           </div>
         </div>
@@ -129,14 +129,14 @@ export const RescueSuccessModal = () => {
             className="w-full sm:w-auto flex-1 py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center gap-2 transition-colors"
           >
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span>More Confetti!</span>
+            <span>Aur Confetti! 🎉</span>
           </button>
 
           <button
             onClick={() => setCompletedRescueData(null)}
             className="w-full sm:w-auto flex-1 py-3 rounded-xl font-black text-xs uppercase tracking-wider text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-1.5 transition-all"
           >
-            <span>Awesome, Dismiss</span>
+            <span>Mast Hai, Chalo!</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

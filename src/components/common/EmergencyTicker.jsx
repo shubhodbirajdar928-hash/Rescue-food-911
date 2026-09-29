@@ -16,12 +16,12 @@ export const EmergencyTicker = () => {
           {isRestaurant ? (
             <>
               <Terminal className="w-3.5 h-3.5 text-amber-400" />
-              <span>KITCHEN DISPATCH:</span>
+              <span>👨‍🍳 HALWAI WIRELESS:</span>
             </>
           ) : (
             <>
               <Siren className="w-3.5 h-3.5 animate-siren-wiggle text-red-400" />
-              <span>911 DISPATCH:</span>
+              <span>🚨 911 BREAKING NEWS:</span>
             </>
           )}
         </div>
@@ -33,35 +33,35 @@ export const EmergencyTicker = () => {
                 <>
                   <span className="flex items-center gap-1.5 text-amber-300">
                     <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
-                    LIVE TELEMETRY: {activePickups} RESCUER ORDERS AWAITING COUNTER PICKUP
+                    HOT COUNTER: {activePickups} Bhookhe Hero raste mein hain, parcel ready rakho!
                   </span>
                   <span className="text-slate-700">•</span>
                   <span className="text-slate-300">
-                    {emergencies.length} ACTIVE SURPLUS FOOD BATCHES BROADCASTED TO NEIGHBORHOOD HEROES
+                    {emergencies.length} Taza batches broadcasted • Dustbin ko zero daana milega!
                   </span>
                   <span className="text-slate-700">•</span>
                   <span className="text-emerald-400 font-bold">
-                    100% EDIBLE SURPLUS GUARANTEE • ZERO TRASH PROTOCOL
+                    🔥 100% GARAM MAAL • ZERO KACHRA PROTOCOL
                   </span>
                 </>
               ) : (
                 <>
                   <span className="flex items-center gap-1.5 text-amber-300 font-bold">
                     <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
-                    ⚠️ TRAUMA ALERT: {emergencies.length} FOOD PATIENTS REQUIRE IMMEDIATE RESCUE INGESTION
+                    ⚠️ EMERGENCY ALERT: {emergencies.length} Garma-Garam Mareez ICU mein aakhri saansein le rahe hain!
                   </span>
                   <span className="text-slate-700">•</span>
                   {criticalItems.map((item) => (
                     <span key={item.id} className="flex items-center gap-1.5 text-red-300">
                       <span className="text-base">{item.emoji}</span>
-                      <strong className="text-white">{item.name}</strong> is in <strong className="text-red-400 font-bold">{item.condition}</strong> condition!
-                      <span className="text-slate-400">({Math.ceil(item.secondsLeft / 60)}m left)</span>
+                      <strong className="text-white">{item.name}</strong> ki halat: <strong className="text-red-400 font-bold">{item.condition}</strong>!
+                      <span className="text-slate-400">({Math.ceil(item.secondsLeft / 60)}m bache hain!) Jaldi bacha lo re baba!</span>
                     </span>
                   ))}
                   <span className="text-slate-700">•</span>
-                  <span className="flex items-center gap-1.5 text-emerald-300">
+                  <span className="flex items-center gap-1.5 text-emerald-300 font-bold">
                     <Heart className="w-3 h-3 text-red-400 fill-red-400" />
-                    "Not all heroes wear capes. Some rescue vadapav, biryani & kachori."
+                    "Asli Hero wahi... jo dustbin se pehle Biryani aur Vada Pav bacha le! 🦸‍♂️🍛"
                   </span>
                 </>
               )}
