@@ -71,39 +71,53 @@ const LoginPage = () => {
             <div className="relative space-y-3.5">
               {/* Badge */}
               <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-red-500/20 border border-red-500/40 text-red-300 text-[11px] font-mono font-bold uppercase">
-                <span>🦸 PET PUJA SPECIAL FORCES</span>
+                <span>🦸 PET PUJA SPECIAL FORCES 🍔</span>
               </div>
 
-              <div className="text-6xl group-hover:scale-125 transition-transform duration-300">
-                🦸‍♂️🍔
+              {/* Big Emojis */}
+              <div className="text-5xl sm:text-6xl group-hover:scale-110 transition-transform duration-300 flex items-center justify-center gap-2">
+                <span>🦸‍♂️</span>
+                <span className="text-4xl animate-bounce">🍕</span>
+                <span className="text-4xl animate-pulse">🤤</span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-black text-white tracking-wide group-hover:text-red-400 transition-colors">
-                  FOOD RESCUER
+                <h3 className="text-2xl font-black text-white tracking-wide group-hover:text-red-400 transition-colors flex items-center justify-center gap-1.5">
+                  <span>FOOD RESCUER</span>
+                  <span>🍛</span>
                 </h3>
-                <div className="text-xs text-amber-300 font-bold font-mono mt-0.5">
-                  (Khana Khau Super-Hero)
+                <div className="text-xs text-amber-300 font-bold font-mono">
+                  (Khana Khau Hero 🦸)
                 </div>
+                
                 <p className="text-xs text-rose-300/90 italic font-mono mt-1 bg-red-950/40 py-1.5 px-2 rounded-lg border border-red-500/20">
-                  "Tumhara pyaar mile na mile... par ye Biryani dustbin mein nahi jaani chahiye!" 😉
+                  "Tumhara pyaar mile na mile... Biryani nahi chhodenge!" 😉
                 </p>
-                <p className="text-xs text-slate-300 mt-2.5 leading-relaxed">
-                  Tadapte hue Vada Pav, Momo aur Pizza ko CPR (Chutney-Plate-Rescue) do at <span className="text-emerald-400 font-black font-mono">50-70% OFF</span>!
-                </p>
+
+                {/* Emojis replacing heavy text */}
+                <div className="grid grid-cols-2 gap-2 mt-3 text-xs font-mono">
+                  <div className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-red-300 flex items-center justify-center gap-1.5">
+                    <span>🍛🤤</span>
+                    <span className="font-bold">Biryani Bachao</span>
+                  </div>
+                  <div className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-emerald-400 flex items-center justify-center gap-1.5">
+                    <span>🏷️📉</span>
+                    <span className="font-bold">70% Sasta</span>
+                  </div>
+                  <div className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-amber-300 flex items-center justify-center gap-1.5">
+                    <span>😋🍕</span>
+                    <span className="font-bold">Pet Khush</span>
+                  </div>
+                  <div className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-purple-300 flex items-center justify-center gap-1.5">
+                    <span>🏆⚡</span>
+                    <span className="font-bold">Hero Points</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-slate-400 pt-1">
-                <span className="flex items-center gap-1 text-red-300"><Shield className="w-3.5 h-3.5 text-red-400" /> Bachaao</span>
-                <span>•</span>
-                <span className="flex items-center gap-1 text-emerald-300"><Heart className="w-3.5 h-3.5 text-emerald-400" /> Bachat</span>
-                <span>•</span>
-                <span className="flex items-center gap-1 text-amber-300"><Zap className="w-3.5 h-3.5 text-amber-400" /> Dabao</span>
-              </div>
-
-              <button className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wider text-white bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 shadow-lg shadow-red-600/40 border border-red-400/50 flex items-center justify-center gap-2 transition-all group-hover:shadow-red-600/60 active:scale-95">
+              <button className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wider text-white bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 shadow-lg shadow-red-600/40 border border-red-400/50 flex items-center justify-center gap-2 transition-all group-hover:shadow-red-600/60 active:scale-95 mt-2">
                 <Siren className="w-4 h-4 animate-siren-wiggle" />
-                <span>🚨 AMBULANCE LEKE AAO (RESCUER)</span>
+                <span>🚨 AMBULANCE CHALAO! 🚑</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
@@ -118,39 +132,53 @@ const LoginPage = () => {
             <div className="relative space-y-3.5">
               {/* Badge */}
               <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-mono font-bold uppercase">
-                <span>👨‍🍳 TANDOOR TRAUMA WARD HQ</span>
+                <span>👨‍🍳 DHABE KA GABBAR HQ 🔥</span>
               </div>
 
-              <div className="text-6xl group-hover:scale-125 transition-transform duration-300">
-                👨‍🍳🔥
+              {/* Big Emojis */}
+              <div className="text-5xl sm:text-6xl group-hover:scale-110 transition-transform duration-300 flex items-center justify-center gap-2">
+                <span>👨‍🍳</span>
+                <span className="text-4xl animate-bounce">🥘</span>
+                <span className="text-4xl animate-pulse">💸</span>
               </div>
 
               <div>
-                <h3 className="text-2xl font-black text-white tracking-wide group-hover:text-amber-400 transition-colors">
-                  KITCHEN DISPATCH
+                <h3 className="text-2xl font-black text-white tracking-wide group-hover:text-amber-400 transition-colors flex items-center justify-center gap-1.5">
+                  <span>KITCHEN DISPATCH</span>
+                  <span>🔥</span>
                 </h3>
-                <div className="text-xs text-amber-300 font-bold font-mono mt-0.5">
-                  (Dhabe Ka Gabbar)
+                <div className="text-xs text-amber-300 font-bold font-mono">
+                  (Bawarchi Control 🤠)
                 </div>
+                
                 <p className="text-xs text-amber-200/90 italic font-mono mt-1 bg-amber-950/40 py-1.5 px-2 rounded-lg border border-amber-500/20">
-                  "Ye garam surplus khana dustbin ko mat dena Thakur! Rokda recover karo!" 💸
+                  "Surplus khana dustbin ko mat do Thakur! 💸🤤"
                 </p>
-                <p className="text-xs text-slate-300 mt-2.5 leading-relaxed">
-                  Surplus batch phenkna paap hai! 1-click 911 broadcast chalao, waste ko <span className="text-emerald-400 font-black font-mono">Cash Mein Badlo</span>!
-                </p>
+
+                {/* Emojis replacing heavy text */}
+                <div className="grid grid-cols-2 gap-2 mt-3 text-xs font-mono">
+                  <div className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-amber-300 flex items-center justify-center gap-1.5">
+                    <span>🍲🔥</span>
+                    <span className="font-bold">Garam Khana</span>
+                  </div>
+                  <div className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-emerald-400 flex items-center justify-center gap-1.5">
+                    <span>💵⚡</span>
+                    <span className="font-bold">Rokda Recover</span>
+                  </div>
+                  <div className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-rose-400 flex items-center justify-center gap-1.5">
+                    <span>🗑️❌</span>
+                    <span className="font-bold">Dustbin Block</span>
+                  </div>
+                  <div className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-blue-300 flex items-center justify-center gap-1.5">
+                    <span>🚨🚑</span>
+                    <span className="font-bold">1-Tap 911</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-slate-400 pt-1">
-                <span className="flex items-center gap-1 text-amber-300"><ChefHat className="w-3.5 h-3.5 text-amber-400" /> Tandoor</span>
-                <span>•</span>
-                <span className="flex items-center gap-1 text-emerald-300"><Zap className="w-3.5 h-3.5 text-emerald-400" /> Rokda</span>
-                <span>•</span>
-                <span className="flex items-center gap-1 text-blue-300"><Shield className="w-3.5 h-3.5 text-blue-400" /> Zero Bin</span>
-              </div>
-
-              <button className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wider text-white bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-500 hover:to-orange-500 shadow-lg shadow-orange-600/40 border border-amber-400/50 flex items-center justify-center gap-2 transition-all group-hover:shadow-amber-600/60 active:scale-95">
+              <button className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wider text-white bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-500 hover:to-orange-500 shadow-lg shadow-orange-600/40 border border-amber-400/50 flex items-center justify-center gap-2 transition-all group-hover:shadow-amber-600/60 active:scale-95 mt-2">
                 <ChefHat className="w-4 h-4" />
-                <span>👨‍🍳 TANDOOR CONTROL (KITCHEN)</span>
+                <span>👨‍🍳 TANDOOR KHOLO! 🔥</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>

@@ -37,14 +37,14 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
             <div>
               <h3 className="text-lg font-black text-white m-0 tracking-wider flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping" />
-                <span>KDS LIVE ORDER TICKET RACK ({activeReservations.length} ACTIVE)</span>
+                <span>🧾 KDS LIVE TICKET RACK ({activeReservations.length} BHOOKHE HEROES) 🏃💨</span>
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Thermal dispatch tickets for food rescuers arriving at counter
+              <p className="text-xs text-amber-300/80 mt-0.5">
+                ⚡ Thermal dispatch tickets for rescuers running to the counter!
               </p>
             </div>
             <span className="text-[11px] font-bold text-amber-300 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">
-              COUNTER PICKUP STATION
+              🏪 COUNTER PICKUP ADDA 📍
             </span>
           </div>
         </div>
@@ -79,8 +79,8 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
                   </span>
                   <span className="text-xs font-bold text-white">
                     {openComplaints.length > 0
-                      ? '🚨 URGENT RESCUER COMPLAINT AT DISPATCH:'
-                      : '🌟 LATEST RESCUER FEEDBACK:'}
+                      ? '🚨 URGENT RESCUER COMPLAINT (LAFDA AT DISPATCH):'
+                      : '🌟 LATEST 5-STAR TAREEF & PRAISE:'}
                   </span>
                   <span className="text-xs text-amber-300 font-bold">{latestAlert.foodName}</span>
                 </div>
@@ -101,8 +101,8 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
               >
                 <span>
                   {openComplaints.length > 0
-                    ? `Resolve Complaint (${openComplaints.length} Open)`
-                    : 'Open Feedback Desk'}
+                    ? `Resolve Lafda (${openComplaints.length} Open) 🛠️`
+                    : 'Open Panchayat Desk 📢'}
                 </span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -112,10 +112,10 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
 
         {activeReservations.length === 0 ? (
           <div className="bg-slate-950/60 rounded-2xl p-10 border border-slate-800 text-center space-y-2">
-            <span className="text-4xl block">🧾</span>
-            <h4 className="text-base font-bold text-white">Ticket Rack Is Empty</h4>
+            <span className="text-5xl block animate-bounce">🧾✨</span>
+            <h4 className="text-base font-bold text-white">Ticket Rack Khaali Hai Babumoshai! 🧘‍♂️</h4>
             <p className="text-xs text-slate-400 max-w-md mx-auto">
-              No active customer rescue orders right now. Switch to [🦸 FOOD RESCUER] to test adopting a surplus meal!
+              No active customer rescue orders right now. Switch to [🦸 FOOD RESCUER] to test ordering a surplus meal! 🍲🍔
             </p>
           </div>
         ) : (
@@ -148,7 +148,7 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
                           : 'bg-blue-500/20 text-blue-300 border-blue-500/40'
                       }`}
                     >
-                      {isOnTheWay ? '🏃 RESCUER EN ROUTE' : 'RESERVED'}
+                      {isOnTheWay ? '🏃 RESCUER BHAAG KE AA RAHA HAI!' : '⏳ WAITING IN LOBBY'}
                     </span>
                   </div>
 
@@ -162,7 +162,7 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
                         </span>
                         <div>
                           <span className="text-xs font-bold text-amber-300 uppercase block">
-                            [{res.quantity}X ORDER]
+                            [{res.quantity}X ORDER] 🔥
                           </span>
                           <h4 className="text-base font-bold text-white leading-tight font-sans">
                             {res.foodName}
@@ -176,7 +176,7 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
                       {/* Customer Info & Deadline */}
                       <div className="space-y-1.5 pt-2 text-[11px] text-slate-300">
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-500">RESCUER:</span>
+                          <span className="text-slate-500">RESCUER HERO:</span>
                           <span className="font-bold text-white flex items-center gap-1">
                             <User className="w-3 h-3 text-amber-400" />
                             <span>{res.customerName}</span>
@@ -184,7 +184,7 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
                         </div>
 
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-500">PICKUP BY:</span>
+                          <span className="text-slate-500">PICKUP DEADLINE:</span>
                           <span className="font-bold text-red-400 flex items-center gap-1">
                             <Clock className="w-3 h-3" />
                             <span>{res.pickupDeadline}</span>
@@ -192,9 +192,9 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
                         </div>
 
                         <div className="flex items-center justify-between pt-1 border-t border-slate-800 text-xs">
-                          <span className="text-slate-400">COLLECT AT COUNTER:</span>
+                          <span className="text-slate-400">COLLECT ROKDA:</span>
                           <span className="text-emerald-400 font-black text-sm">
-                            ₹{res.rescuePrice * res.quantity}
+                            ₹{res.rescuePrice * res.quantity} 💰
                           </span>
                         </div>
                       </div>
@@ -211,7 +211,7 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
                         }`}
                       >
                         <PackageCheck className="w-4 h-4 text-emerald-400" />
-                        <span>{isPacked ? '✓ PACKED & READY AT COUNTER' : 'MARK PACKED IN KITCHEN'}</span>
+                        <span>{isPacked ? '✓ PACKED & GARAM AT COUNTER 🔥' : '👨‍🍳 DIBBA PACK KARO JALDI! 📦'}</span>
                       </button>
 
                       <button
@@ -219,7 +219,7 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
                         className="w-full py-2.5 px-3 rounded-xl text-xs font-black text-white bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-500 hover:to-orange-500 shadow-md shadow-orange-600/30 flex items-center justify-center gap-1.5 transform active:scale-95 transition-all"
                       >
                         <CheckCircle2 className="w-4 h-4" />
-                        <span>HAND OVER MEAL (MARK AS RESCUED)</span>
+                        <span>🤝 HAND OVER MEAL • ROKDA RECEIVED 💸😋</span>
                       </button>
                     </div>
                   </div>
@@ -236,10 +236,10 @@ export const ReservationsList = ({ onSwitchToFeedback }) => {
           <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-400" />
-              <span>COMPLETED TICKET ARCHIVE TODAY ({completedReservations.length})</span>
+              <span>🏆 AAJ KE PET POOJA HEROES ({completedReservations.length} DELIVERED) 🌟</span>
             </h4>
             <span className="text-[11px] text-emerald-400 font-bold">
-              +₹{completedReservations.reduce((sum, r) => sum + (r.rescuePrice * r.quantity), 0)} Recovered
+              💰 +₹{completedReservations.reduce((sum, r) => sum + (r.rescuePrice * r.quantity), 0)} Rokda Recovered
             </span>
           </div>
 

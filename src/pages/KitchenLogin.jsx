@@ -63,13 +63,21 @@ const KitchenLogin = () => {
         <div className="bg-slate-900/90 backdrop-blur-md rounded-3xl border border-amber-500/40 shadow-2xl shadow-amber-950/30 overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-500 p-6 text-center">
-            <div className="text-5xl mb-2">👨‍🍳</div>
+            <div className="text-5xl mb-2 flex items-center justify-center gap-2">
+              <span>👨‍🍳</span>
+              <span className="text-3xl animate-bounce">🔥</span>
+              <span className="text-4xl animate-pulse">🥘</span>
+              <span className="text-3xl">💸</span>
+            </div>
             <h2 className="text-xl font-black text-white tracking-wide">
-              {isRegister ? 'REGISTER KITCHEN' : 'KITCHEN DISPATCH LOGIN'}
+              {isRegister ? 'REGISTER BAWARCHI KHANA 👨‍🍳' : 'DHABE KA GABBAR LOGIN 🤠'}
             </h2>
-            <p className="text-amber-100/80 text-xs font-mono mt-1 flex items-center justify-center gap-1">
-              <Terminal className="w-3 h-3" />
-              {isRegister ? 'Set up your kitchen station' : 'Access your dispatch terminal'}
+            <p className="text-amber-100 text-xs font-mono mt-1.5 flex items-center justify-center gap-2 flex-wrap">
+              <span>🍲 Khana Bachao</span>
+              <span>•</span>
+              <span>💸 Rokda Banao</span>
+              <span>•</span>
+              <span>🗑️❌ Bin Upvaas</span>
             </p>
           </div>
 
@@ -159,18 +167,23 @@ const KitchenLogin = () => {
           {!isRegister && (
             <div className="border-t border-slate-800 p-4 bg-slate-950/50">
               <div className="text-center">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-mono">Demo Access</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 font-mono">
+                  👨‍🍳 1-TAP DEMO CHEF ACCESS (NO TYPING)
+                </span>
                 <button
                   type="button"
                   onClick={fillDemo}
-                  className="mt-2 w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl p-3 text-left transition-colors group cursor-pointer"
+                  className="mt-2 w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-amber-500/50 rounded-xl p-3 text-left transition-colors group cursor-pointer"
                 >
                   <div className="flex items-center justify-between">
                     <div className="text-xs font-mono">
-                      <div className="text-slate-400">Email: <span className="text-white font-bold">kitchen@food911.com</span></div>
-                      <div className="text-slate-400">Pass: <span className="text-white font-bold">kitchen123</span></div>
+                      <div className="text-slate-400">📧 <span className="text-white font-bold">kitchen@food911.com</span></div>
+                      <div className="text-slate-400">🔑 <span className="text-white font-bold">kitchen123</span></div>
                     </div>
-                    <span className="text-[10px] font-bold text-amber-400 bg-amber-950/50 px-2 py-1 rounded border border-amber-500/30 group-hover:bg-amber-900/50 transition-colors">FILL</span>
+                    <span className="text-xs font-bold text-amber-300 bg-amber-500/20 px-3 py-1.5 rounded-lg border border-amber-500/40 group-hover:bg-amber-500 group-hover:text-black transition-all flex items-center gap-1">
+                      <span>AUTO FILL</span>
+                      <span>⚡</span>
+                    </span>
                   </div>
                 </button>
               </div>

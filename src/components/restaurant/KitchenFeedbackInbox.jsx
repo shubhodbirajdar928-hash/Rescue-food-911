@@ -127,24 +127,24 @@ export const KitchenFeedbackInbox = () => {
                 <MessageSquareQuote className="w-5 h-5" />
               </span>
               <h2 className="text-xl sm:text-2xl font-black text-white m-0 tracking-wider">
-                KITCHEN DISPATCH RESCUER FEEDBACK & COMPLAINT DESK
+                📢 RESCUER PANCHAYAT & COMPLAINT DESK 👨‍🍳🔥
               </h2>
             </div>
-            <p className="text-xs text-slate-400">
-              Live customer incident reports, food triage complaints, temperature checks & chef praises
+            <p className="text-xs text-purple-300/80">
+              🍲 Khana garam tha ya thanda? Rescuer ki tareef ya chef ki class! ⚡✨
             </p>
           </div>
 
           {/* Quick Metrics */}
           <div className="flex items-center gap-3">
             <div className="bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 text-center">
-              <span className="text-[10px] uppercase text-slate-400 font-bold block">Open Tickets</span>
+              <span className="text-[10px] uppercase text-slate-400 font-bold block">Open Lafde 🚨</span>
               <span className={`text-xl font-black ${openCount > 0 ? 'text-red-400 animate-pulse' : 'text-emerald-400'}`}>
                 {openCount}
               </span>
             </div>
             <div className="bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 text-center">
-              <span className="text-[10px] uppercase text-slate-400 font-bold block">Total Reviews</span>
+              <span className="text-[10px] uppercase text-slate-400 font-bold block">Total Reviews 🌟</span>
               <span className="text-xl font-black text-purple-400">{feedbacks.length}</span>
             </div>
           </div>
@@ -160,7 +160,7 @@ export const KitchenFeedbackInbox = () => {
                 : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
             }`}
           >
-            All Reports ({feedbacks.length})
+            Sab Reports ({feedbacks.length}) 📋
           </button>
 
           <button
@@ -172,7 +172,7 @@ export const KitchenFeedbackInbox = () => {
             }`}
           >
             <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
-            <span>Action Required ({openCount})</span>
+            <span>Action Required ({openCount}) 🚨</span>
             {openCount > 0 && <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />}
           </button>
 
@@ -185,7 +185,7 @@ export const KitchenFeedbackInbox = () => {
             }`}
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            <span>🌟 Chef Praises ({praiseCount})</span>
+            <span>🌟 Chef Praises ({praiseCount}) 💖</span>
           </button>
 
           <button
@@ -197,7 +197,7 @@ export const KitchenFeedbackInbox = () => {
             }`}
           >
             <CheckCircle2 className="w-3.5 h-3.5 text-blue-300" />
-            <span>Resolved ({resolvedCount})</span>
+            <span>Khalaas & Solved ({resolvedCount}) ✅</span>
           </button>
         </div>
       </div>
@@ -205,10 +205,10 @@ export const KitchenFeedbackInbox = () => {
       {/* Incident Cards Feed */}
       {filteredFeedbacks.length === 0 ? (
         <div className="bg-slate-900/60 rounded-3xl border border-slate-800 p-12 text-center space-y-3">
-          <span className="text-5xl block">🎉</span>
-          <h3 className="text-xl font-bold text-white">No Reports in this Category</h3>
+          <span className="text-5xl block animate-bounce">🧘‍♂️🍲</span>
+          <h3 className="text-xl font-bold text-white">🎉 KITCHEN MEIN SHAANTI HAI! ZERO LAFDA!</h3>
           <p className="text-xs text-slate-400 max-w-md mx-auto">
-            Everything in the kitchen dispatch is peaceful. Rescuer complaints and praise will appear here immediately as they are submitted!
+            Everything is peaceful in the kitchen dispatch. Rescuer complaints or 5-star praises will appear here instantly! 😋✨
           </p>
         </div>
       ) : (

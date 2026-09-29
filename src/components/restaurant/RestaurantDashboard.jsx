@@ -150,24 +150,40 @@ export const RestaurantDashboard = () => {
       {/* Sleek BOH Operations Console Chassis */}
       <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-amber-950/30 rounded-3xl border border-amber-500/30 p-6 sm:p-8 shadow-2xl relative overflow-hidden">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-400 text-xs font-bold uppercase tracking-wider">
                 <Terminal className="w-3.5 h-3.5" />
-                <span>BOH KITCHEN DISPATCH TERMINAL • STATION #04</span>
+                <span>👨‍🍳 TANDOORI DISPATCH • DHABA ER #04 🔥</span>
               </span>
               <span className="text-xs text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/40 px-2.5 py-1 rounded-full flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                SURPLUS RESCUE WINDOW: ACTIVE
+                🍲 BHATTI ON • RESCUE OPEN ⚡
               </span>
             </div>
 
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight flex items-center gap-3 font-sans">
-              <span>👨‍🍳 KITCHEN DISPLAY SYSTEM & RECOVERY ER</span>
+              <span>👨‍🍳 KITCHEN DISPATCH & DHABA ER 🍲🔥</span>
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed font-sans font-normal">
-              Convert unsold, high-quality surplus batches into urgent 911 rescue dispatches in 1-click. Turn edible food waste into immediate recovered revenue before kitchen closing time.
+            {/* Funny emoji punchlines instead of boring text */}
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold">
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-amber-500/30 text-amber-300 flex items-center gap-1">
+                🍲 Khana Bachao
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-emerald-500/30 text-emerald-400 flex items-center gap-1">
+                💸 Rokda Recover
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-rose-500/30 text-rose-300 flex items-center gap-1">
+                🗑️❌ Bin Ka Upvaas
+              </span>
+              <span className="px-2.5 py-1 rounded-lg bg-slate-950 border border-blue-500/30 text-blue-300 flex items-center gap-1">
+                ⚡ 1-Tap 911 Broadcast
+              </span>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl font-sans italic">
+              "Surplus khana dustbin ko mat do Thakur! 👨‍🍳🔥 1-Click broadcast dabao, rokda recover karo! 💸🤤"
             </p>
           </div>
 
@@ -179,7 +195,7 @@ export const RestaurantDashboard = () => {
               className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl font-bold text-xs tracking-wider text-rose-300 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-500/30 transition-all active:scale-95"
             >
               <RotateCcw className="w-4 h-4 text-rose-400" />
-              <span>RESET ALL TO 0</span>
+              <span>🧹 KITCHEN RESET 0️⃣</span>
             </button>
 
             <button
@@ -187,7 +203,7 @@ export const RestaurantDashboard = () => {
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wider text-white bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-500 hover:to-orange-500 shadow-xl shadow-orange-600/30 border border-amber-400/40 transform active:scale-98 transition-all"
             >
               <Siren className="w-4 h-4 text-white animate-siren-wiggle" />
-              <span>DEPLOY CUSTOM BATCH</span>
+              <span>🚨 DISPATCH SURPLUS 🍲🔥</span>
               <Plus className="w-4 h-4" />
             </button>
           </div>
@@ -199,7 +215,7 @@ export const RestaurantDashboard = () => {
             <div className="text-xs text-slate-400 mb-1 flex items-center justify-between uppercase">
               <span className="flex items-center gap-1.5 text-amber-400">
                 <Siren className="w-3.5 h-3.5 text-red-400" />
-                Live Broadcasts
+                🚨 Live Radar
               </span>
               <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
             </div>
@@ -207,7 +223,7 @@ export const RestaurantDashboard = () => {
               {emergencies.length}
             </div>
             <div className="text-[11px] text-slate-400 mt-1">
-              Active foods on customer radar
+              🍲 On rescuer radar
             </div>
           </div>
 
@@ -215,7 +231,7 @@ export const RestaurantDashboard = () => {
             <div className="text-xs text-slate-400 mb-1 flex items-center justify-between uppercase">
               <span className="flex items-center gap-1.5 text-emerald-400">
                 <Utensils className="w-3.5 h-3.5" />
-                Meals Rescued
+                😋 Pet Pooja
               </span>
               <span className="text-[10px] text-emerald-400 font-bold">100% OK</span>
             </div>
@@ -223,7 +239,7 @@ export const RestaurantDashboard = () => {
               {totalRescuedCount}
             </div>
             <div className="text-[11px] text-emerald-400/80 mt-1">
-              Diverted from kitchen bin
+              🗑️❌ Bin se bachaya
             </div>
           </div>
 
@@ -231,7 +247,7 @@ export const RestaurantDashboard = () => {
             <div className="text-xs text-slate-400 mb-1 flex items-center justify-between uppercase">
               <span className="flex items-center gap-1.5 text-amber-400">
                 <IndianRupee className="w-3.5 h-3.5 text-amber-400" />
-                Recovered Cash
+                💸 Rokda Recover
               </span>
               <span className="text-[10px] text-amber-400 font-bold">TODAY</span>
             </div>
@@ -239,7 +255,7 @@ export const RestaurantDashboard = () => {
               ₹{totalRevenueRecovered.toLocaleString()}
             </div>
             <div className="text-[11px] text-amber-300/80 mt-1">
-              Direct counter recovery
+              💰 Direct counter cash
             </div>
           </div>
 
@@ -247,11 +263,11 @@ export const RestaurantDashboard = () => {
             <div className="text-xs text-slate-400 mb-1 flex items-center justify-between uppercase">
               <span className="flex items-center gap-1.5 text-blue-400">
                 <Users className="w-3.5 h-3.5" />
-                Kitchen Tickets
+                🧾 Rescuer Orders
               </span>
               {activeReservationsCount > 0 && (
                 <span className="px-1.5 py-0.5 rounded bg-red-600 text-white text-[10px] font-bold animate-bounce">
-                  URGENT
+                  URGENT ⚡
                 </span>
               )}
             </div>
@@ -259,7 +275,7 @@ export const RestaurantDashboard = () => {
               {reservations.length}
             </div>
             <div className="text-[11px] text-blue-300 mt-1">
-              {activeReservationsCount} awaiting counter pickup
+              🏃 {activeReservationsCount} coming to counter
             </div>
           </div>
 
@@ -274,21 +290,21 @@ export const RestaurantDashboard = () => {
             <div className="text-xs text-slate-400 mb-1 flex items-center justify-between uppercase">
               <span className="flex items-center gap-1.5 text-purple-400 group-hover:text-purple-300">
                 <MessageSquareQuote className="w-3.5 h-3.5" />
-                Rescuer Desk
+                📢 Panchayat Desk
               </span>
               {feedbacks?.some((f) => f.status === 'IN_INVESTIGATION') ? (
                 <span className="px-1.5 py-0.5 rounded bg-rose-600 text-white text-[10px] font-bold animate-pulse">
-                  ACTION
+                  LAFDA 🚨
                 </span>
               ) : (
-                <span className="text-[10px] text-emerald-400 font-bold">100% OK</span>
+                <span className="text-[10px] text-emerald-400 font-bold">100% OK ✨</span>
               )}
             </div>
             <div className="text-3xl font-black text-purple-400">
               {feedbacks?.length || 0}
             </div>
             <div className="text-[11px] text-purple-300 mt-1">
-              {feedbacks?.filter((f) => f.status === 'IN_INVESTIGATION').length || 0} open incidents • Tap to view
+              🗣️ {feedbacks?.filter((f) => f.status === 'IN_INVESTIGATION').length || 0} open reports • Tap to view
             </div>
           </div>
         </div>
@@ -298,10 +314,10 @@ export const RestaurantDashboard = () => {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300">
               <Zap className="w-4 h-4 text-amber-400" />
-              <span>CHEF 1-CLICK RAPID SURPLUS BROADCAST (TAP TO BROADCAST INSTANTLY)</span>
+              <span>⚡ 1-CLICK TANDOOR DISPATCH (TAP & DHAMAKA) 🍲🔥</span>
             </div>
-            <span className="text-[11px] text-slate-500 hidden sm:inline">
-              1-tap pushes surplus batch live to rescuer app
+            <span className="text-[11px] text-amber-400/80 hidden sm:inline">
+              1-tap me surplus live customer radar pe! 🚀
             </span>
           </div>
 
@@ -318,7 +334,7 @@ export const RestaurantDashboard = () => {
                       {preset.emoji}
                     </span>
                     <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                      +{preset.quantity} BATCH
+                      +{preset.quantity} BATCH 🍲
                     </span>
                   </div>
                   <div className="font-bold text-white text-xs truncate group-hover:text-amber-300">
@@ -332,7 +348,7 @@ export const RestaurantDashboard = () => {
                     <span className="text-emerald-400 font-bold">₹{preset.rescuePrice}</span>
                   </div>
                   <span className="text-[10px] text-amber-400 font-bold flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
-                    <span>DEPLOY</span>
+                    <span>DISPATCH ⚡</span>
                     <ArrowUpRight className="w-3 h-3" />
                   </span>
                 </div>
@@ -353,7 +369,7 @@ export const RestaurantDashboard = () => {
           }`}
         >
           <Terminal className="w-4 h-4" />
-          <span>Kitchen Ticket Rack (KDS)</span>
+          <span>🧾 KDS Live Tickets 🏃</span>
           {activeReservationsCount > 0 && (
             <span className="bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
               {activeReservationsCount}
@@ -370,7 +386,7 @@ export const RestaurantDashboard = () => {
           }`}
         >
           <Siren className="w-4 h-4" />
-          <span>Surplus Shelf-Life Matrix ({emergencies.length})</span>
+          <span>⏳ Surplus Matrix ({emergencies.length}) 🍲</span>
         </button>
 
         <button
@@ -382,7 +398,7 @@ export const RestaurantDashboard = () => {
           }`}
         >
           <Archive className="w-4 h-4 text-rose-400" />
-          <span>Expired Batches ({expiredEmergencies?.length || 0})</span>
+          <span>⛔ Expired Vault ({expiredEmergencies?.length || 0}) 💀</span>
           {expiredEmergencies?.length > 0 && (
             <span className="bg-rose-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
               {expiredEmergencies.length}
@@ -399,7 +415,7 @@ export const RestaurantDashboard = () => {
           }`}
         >
           <MessageSquareQuote className="w-4 h-4 text-purple-400" />
-          <span>Rescuer Feedback & Complaints ({feedbacks?.length || 0})</span>
+          <span>📢 Rescuer Panchayat ({feedbacks?.length || 0}) 🗣️</span>
           {feedbacks?.some((f) => f.status === 'IN_INVESTIGATION') && (
             <span className="bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold animate-bounce">
               {feedbacks.filter((f) => f.status === 'IN_INVESTIGATION').length}
@@ -418,27 +434,27 @@ export const RestaurantDashboard = () => {
         <div className="bg-slate-900/90 rounded-3xl border border-slate-800 p-6 shadow-2xl space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pb-4 border-b border-slate-800">
             <div>
-              <h3 className="text-lg font-black text-white m-0 tracking-wider">
-                SURPLUS SHELF-LIFE TELEMETRY MATRIX
+              <h3 className="text-lg font-black text-white m-0 tracking-wider flex items-center gap-2">
+                <span>⏳ SURPLUS SHELF-LIFE MATRIX (लाइव खाना काउंटर) 🍲</span>
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Monitoring active food emergencies and live countdowns ({emergencies.length} active on live customer radar)
+              <p className="text-xs text-amber-300/80 mt-0.5">
+                ⚡ Live emergency batches & countdown ({emergencies.length} active on rescuer radar)
               </p>
             </div>
             <button
               onClick={() => setIsDeployOpen(true)}
-              className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold border border-slate-700"
+              className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold border border-slate-700 flex items-center gap-1.5"
             >
-              + Deploy Item to Matrix
+              <span>+ Deploy Item to Matrix 🍲</span>
             </button>
           </div>
 
           {emergencies.length === 0 ? (
             <div className="p-12 text-center border border-dashed border-slate-800 rounded-2xl bg-slate-950/50 space-y-2">
-              <span className="text-4xl block">✨</span>
-              <h4 className="text-white font-bold text-sm">NO ACTIVE SURPLUS BROADCASTS</h4>
+              <span className="text-5xl block animate-bounce">😋🎉</span>
+              <h4 className="text-white font-bold text-sm">✨ SAB KHANA SAFELY KHALAAS! ZERO WASTE!</h4>
               <p className="text-xs text-slate-400 max-w-md mx-auto">
-                No food is currently live on customer radars. Click "Deploy Custom Batch" or tap a 1-click preset above to broadcast!
+                No active food emergencies on radar right now. "Deploy Custom Batch" dabao ya 1-click preset pe tap karo! 👨‍🍳🔥
               </p>
             </div>
           ) : (
@@ -503,11 +519,11 @@ export const RestaurantDashboard = () => {
                   BOH ARCHIVE
                 </span>
                 <h3 className="text-lg font-black text-white m-0 tracking-wider flex items-center gap-2">
-                  <span>⛔ EXPIRED SURPLUS VAULT (एक्सपायर्ड खाना वॉर्ड)</span>
+                  <span>⛔ EXPIRED SURPLUS VAULT (एक्सपायर्ड खाना वॉर्ड) 💀</span>
                 </h3>
               </div>
-              <p className="text-xs text-slate-400 mt-1 max-w-2xl leading-relaxed">
-                Surplus batches whose rescue window closed without hero claims. The food is safe, but because its rescue deadline expired, it has been <strong>automatically removed from live customer broadcasts</strong>. You can re-list with an extended rescue window (+15m) or safely archive.
+              <p className="text-xs text-rose-300/80 mt-1 max-w-2xl leading-relaxed">
+                ⏰ Rescue window bandh ho gayi! Food safe tha par time up ho gaya. <strong>Re-list (+15m)</strong> karke rescuer app pe wapas bhejo ya archive karo! 🍲🛡️
               </p>
             </div>
             {expiredEmergencies.length > 0 && (
@@ -516,17 +532,17 @@ export const RestaurantDashboard = () => {
                 className="px-3.5 py-1.5 rounded-xl bg-rose-950/50 hover:bg-rose-900/60 text-rose-300 text-xs font-bold border border-rose-500/30 flex items-center gap-1.5 transition-all"
               >
                 <Trash2 className="w-3.5 h-3.5 text-rose-400" />
-                <span>Archive All</span>
+                <span>Archive All 🧹</span>
               </button>
             )}
           </div>
 
           {expiredEmergencies.length === 0 ? (
             <div className="p-12 text-center border border-dashed border-slate-800 rounded-2xl bg-slate-950/50 space-y-2">
-              <span className="text-4xl block">✨</span>
-              <h4 className="text-white font-bold text-sm">NO EXPIRED BATCHES</h4>
+              <span className="text-5xl block animate-bounce">🌟🍲</span>
+              <h4 className="text-white font-bold text-sm">🎉 KOI KHANA SHAHEED NAHI HUA! ZERO CASUALTIES!</h4>
               <p className="text-xs text-slate-400 max-w-md mx-auto">
-                All food emergencies are either actively on the rescue radar or successfully devoured! Zero food casualties.
+                Sab food emergencies ya toh live radar pe active hain ya safely devour ho chuke hain! 100% Khana bacha liya! 😋✨
               </p>
             </div>
           ) : (
