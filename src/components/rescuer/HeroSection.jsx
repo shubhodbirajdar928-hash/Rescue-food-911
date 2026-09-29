@@ -135,7 +135,7 @@ export const HeroSection = ({ onScrollToGrid }) => {
             </div>
 
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Dukaan band hone se pehle <strong className="text-white font-bold">100% taaza khana rescue karo</strong> aur pao seedha <strong className="text-amber-300 font-bold">50%–70% flat discount</strong>! Khana waste hone se bachao aur tasty meals enjoy karo. 🍲✨
+              Dukaan band hone wali hai! Taaza khana dustbin mein royega, isse achha aapke pet mein hasega! Seedha <strong className="text-amber-300 font-bold">50%–70% OFF</strong> pe lapeto aur hero bano! 🤤🍛🔥
             </p>
 
             {/* Hospital ECG Pulse Monitor Widget (Linked to Active Food Patient) */}
