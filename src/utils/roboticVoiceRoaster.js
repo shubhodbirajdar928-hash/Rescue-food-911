@@ -1,9 +1,9 @@
-// 1-Word Full Funny Desi Hindi Voice Engine
-// Speaks punchy 1-word hilarious Hindi reactions on Results and Errors!
+// 1-Word Bollywood Style Hindi Voice Engine
+// Pure Bollywood Icons: Jhakaas, Mogambo, Gabbar, Thakur, Daya, Circuit, Khallas, Baburao!
 
 const ROAST_STORAGE_KEY = 'fr911_robo_roast_enabled';
 
-// Play a quick, funny melodic chime before speaking
+// Play a quick Bollywood style brass/chime fanfare before speaking
 const playSmoothChime = (isError = false) => {
   try {
     if (typeof window === 'undefined') return;
@@ -37,30 +37,31 @@ const playSmoothChime = (isError = false) => {
 };
 
 export const HINDI_FUNNY_SCRIPTS = {
-  // RESULTS (SUCCESS ACTIONS) - 1-WORD HILARIOUS REACTIONS
+  // RESULTS (SUCCESS ACTIONS) - 1-WORD BOLLYWOOD BLOCKBUSTERS
   MISSION_ACCEPTED: [
-    { hindi: "झकास!", roman: "Jhakaas!" },
-    { hindi: "भूखड़!", roman: "Bhookhad!" },
-    { hindi: "वसूल!", roman: "Vasool!" },
-    { hindi: "रापचिक!", roman: "Rapchik!" }
+    { hindi: "झकास!", roman: "Jhakaas!" },      // Anil Kapoor
+    { hindi: "मोगाम्बो!", roman: "Mogambo!" },   // Mr. India
+    { hindi: "रापचिक!", roman: "Rapchik!" },    // Munna Bhai
+    { hindi: "सिक्सर!", roman: "Sixer!" }
   ],
   RESCUE_COMPLETED: [
-    { hindi: "सवा-सौ-वसूल!", roman: "Vasool!" },
-    { hindi: "शाबाश!", roman: "Shabash!" },
-    { hindi: "स्वादिष्ट!", roman: "Swadisht!" },
-    { hindi: "बल्ले-बल्ले!", roman: "Balle-Balle!" }
+    { hindi: "शहंशाह!", roman: "Shahenshah!" }, // Amitabh Bachchan
+    { hindi: "बादशाह!", roman: "Baadshah!" },   // SRK
+    { hindi: "वसूल!", roman: "Vasool!" },       // Baburao
+    { hindi: "शोले!", roman: "Sholay!" }        // Sholay
   ],
   KITCHEN_DISPATCH: [
+    { hindi: "गब्बर!", roman: "Gabbar!" },      // Sholay
     { hindi: "धमाका!", roman: "Dhamaka!" },
-    { hindi: "तंदूरी!", roman: "Tandoori!" },
-    { hindi: "रोकड़ा!", roman: "Rokda!" }
+    { hindi: "तहलका!", roman: "Tehelka!" },
+    { hindi: "सुल्तान!", roman: "Sultan!" }
   ],
   FEEDBACK_SUBMITTED_PRAISE: [
-    { hindi: "मस्त!", roman: "Mast!" },
-    { hindi: "सुपरस्टार!", roman: "Superstar!" }
+    { hindi: "सुपरस्टार!", roman: "Superstar!" },
+    { hindi: "लाजवाब!", roman: "Lajawab!" }
   ],
   FEEDBACK_RESOLVED: [
-    { hindi: "सॉर्टेड!", roman: "Sorted!" },
+    { hindi: "सॉर्टेड!", roman: "Sorted!" },    // Munna Bhai
     { hindi: "शांति!", roman: "Shaanti!" }
   ],
   FEEDBACK_DELETED: [
@@ -74,34 +75,34 @@ export const HINDI_FUNNY_SCRIPTS = {
     { hindi: "सफाचट!", roman: "Safachat!" }
   ],
 
-  // ERRORS & ALERTS - 1-WORD FUNNY WARNINGS
+  // ERRORS & ALERTS - 1-WORD BOLLYWOOD DRAMA
   SAFETY_NOT_CHECKED: [
-    { hindi: "रुको!", roman: "Ruko!" },
-    { hindi: "अरे-देवा!", roman: "Arey-Deva!" },
-    { hindi: "यमराज!", roman: "Yamraj!" }
+    { hindi: "ठाकुर!", roman: "Thakur!" },       // Yeh haath mujhe de de Thakur
+    { hindi: "यमराज!", roman: "Yamraj!" },
+    { hindi: "क्राइममास्टर!", roman: "CrimeMaster!" } // Crime Master Gogo
   ],
   FORM_VALIDATION_ERROR: [
-    { hindi: "चोमू!", roman: "Chomu!" },
-    { hindi: "खाली!", roman: "Khaali!" },
-    { hindi: "लिखो!", roman: "Likho!" }
+    { hindi: "सर्किट!", roman: "Circuit!" },     // Munna Bhai
+    { hindi: "ढक्कन!", roman: "Dhakkan!" },
+    { hindi: "चोमू!", roman: "Chomu!" }
   ],
   FOOD_EXPIRED_TIMEOUT: [
+    { hindi: "खल्लास!", roman: "Khallas!" },     // Company
     { hindi: "कुंभकर्ण!", roman: "Kumbhkaran!" },
-    { hindi: "खल्लास!", roman: "Khallas!" },
-    { hindi: "टाटा!", roman: "Tata!" }
+    { hindi: "अलविदा!", roman: "Alvida!" }
   ],
   COMPLAINT_FILED: [
+    { hindi: "दया!", roman: "Daya!" },           // CID Daya darwaza tod
     { hindi: "लफड़ा!", roman: "Lafda!" },
-    { hindi: "गड़बड़!", roman: "Gadbad!" },
-    { hindi: "दया!", roman: "Daya!" }
+    { hindi: "गड़बड़!", roman: "Gadbad!" }
   ],
   OUT_OF_STOCK: [
     { hindi: "पोपट!", roman: "Popat!" },
-    { hindi: "खत्म!", roman: "Khatam!" }
+    { hindi: "गोली!", roman: "Goli!" }
   ],
   CANCELLATION_PANIC: [
-    { hindi: "भगोड़ा!", roman: "Bhagoda!" },
-    { hindi: "कंजूस!", roman: "Kanjoos!" }
+    { hindi: "बाबूराव!", roman: "Baburao!" },   // Yeh Baburao ka style hai
+    { hindi: "भगोड़ा!", roman: "Bhagoda!" }
   ],
   GENERAL_ERROR: [
     { hindi: "लोचा!", roman: "Locha!" },
@@ -163,7 +164,7 @@ const pickHindiVoice = () => {
 };
 
 /**
- * Speak in 1-word hilarious Hindi voice out loud using window.speechSynthesis
+ * Speak in 1-word iconic Bollywood Hindi voice out loud using window.speechSynthesis
  * @param {string} category - key in HINDI_FUNNY_SCRIPTS (e.g. 'MISSION_ACCEPTED', 'SAFETY_NOT_CHECKED')
  */
 export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
@@ -215,7 +216,7 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
       utterance.lang = 'hi-IN';
     }
 
-    // Punchy 1-word delivery
+    // Punchy 1-word Bollywood delivery
     utterance.rate = 1.05;
     utterance.pitch = isError ? 0.95 : 1.1;
     utterance.volume = 1.0;
@@ -227,7 +228,7 @@ export const speakRoboticRoast = (category = 'MISSION_ACCEPTED') => {
 };
 
 /**
- * Trigger a random 1-word test roast for demo purposes
+ * Trigger a random 1-word Bollywood test roast for demo purposes
  */
 export const testRandomRoast = () => {
   const categories = Object.keys(HINDI_FUNNY_SCRIPTS);
