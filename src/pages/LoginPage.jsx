@@ -48,15 +48,15 @@ const LoginPage = () => {
         </div>
 
         {/* Choose Access Header */}
-        <div className="text-center mb-6 space-y-1">
+        <div className="text-center mb-6 space-y-1.5">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-[11px] font-mono font-bold uppercase tracking-wider mb-1">
-            <span>🚨 SELECT IDENTITY PROTOCOL</span>
+            <span>🎭 BOLLYWOOD FOOD TRIAGE SELECTION</span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-rose-400 to-red-500 font-mono uppercase tracking-wider flex items-center justify-center gap-2">
-            <span>KAUN HO TUM? CHOOSE YOUR ROLE</span>
+          <h2 className="text-xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-rose-400 to-red-500 font-mono uppercase tracking-wider flex items-center justify-center gap-2">
+            <span>BATAO BABUMOSHAI... KAUN HO TUM?</span>
           </h2>
-          <p className="text-xs text-slate-400 font-mono">
-            Khaane wale ho ya khilaane wale? Jaldi chuno, Biryani thandi ho rahi hai! 😉
+          <p className="text-xs sm:text-sm text-slate-300 font-mono">
+            "Zindagi lambi nahi babu... Biryani aur samosa garam hona chahiye!" 🤤🔥
           </p>
         </div>
 
@@ -65,41 +65,46 @@ const LoginPage = () => {
           {/* Food Rescuer Card */}
           <Link
             to="/login/rescuer"
-            className="group relative bg-slate-900/80 backdrop-blur-md rounded-3xl border border-red-500/30 p-7 text-center hover:border-red-500/80 hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-950/60 transition-all duration-300 cursor-pointer no-underline flex flex-col justify-between"
+            className="group relative bg-slate-900/90 backdrop-blur-md rounded-3xl border-2 border-red-500/40 hover:border-red-500 p-6 sm:p-7 text-center hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-red-900/50 transition-all duration-300 cursor-pointer no-underline flex flex-col justify-between"
           >
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-red-600/10 to-transparent pointer-events-none" />
-            <div className="relative space-y-4">
+            <div className="relative space-y-3.5">
               {/* Badge */}
-              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-500/15 border border-red-500/30 text-red-300 text-[10px] font-mono font-bold uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-red-500/20 border border-red-500/40 text-red-300 text-[11px] font-mono font-bold uppercase">
                 <span>🦸 PET PUJA SPECIAL FORCES</span>
               </div>
 
-              <div className="text-6xl group-hover:scale-110 transition-transform">🦸‍♂️🍔</div>
+              <div className="text-6xl group-hover:scale-125 transition-transform duration-300">
+                🦸‍♂️🍔
+              </div>
 
               <div>
-                <h3 className="text-xl font-black text-white tracking-wide group-hover:text-red-400 transition-colors">
+                <h3 className="text-2xl font-black text-white tracking-wide group-hover:text-red-400 transition-colors">
                   FOOD RESCUER
                 </h3>
-                <p className="text-xs text-red-300/80 italic font-mono mt-0.5">
-                  "Bin-bulaye baraat ke asli hero!"
+                <div className="text-xs text-amber-300 font-bold font-mono mt-0.5">
+                  (Khana Khau Super-Hero)
+                </div>
+                <p className="text-xs text-rose-300/90 italic font-mono mt-1 bg-red-950/40 py-1.5 px-2 rounded-lg border border-red-500/20">
+                  "Tumhara pyaar mile na mile... par ye Biryani dustbin mein nahi jaani chahiye!" 😉
                 </p>
-                <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                  Tadapte hue Biryani, Pizza aur Vada Pav ko dustbin se bacha ke pet mein daalo! <span className="text-amber-300 font-bold font-mono">(50-70% OFF)</span>
+                <p className="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                  Tadapte hue Vada Pav, Momo aur Pizza ko CPR (Chutney-Plate-Rescue) do at <span className="text-emerald-400 font-black font-mono">50-70% OFF</span>!
                 </p>
               </div>
 
               <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-slate-400 pt-1">
-                <span className="flex items-center gap-1 text-red-300"><Shield className="w-3 h-3 text-red-400" /> Bachaao</span>
+                <span className="flex items-center gap-1 text-red-300"><Shield className="w-3.5 h-3.5 text-red-400" /> Bachaao</span>
                 <span>•</span>
-                <span className="flex items-center gap-1 text-emerald-300"><Heart className="w-3 h-3 text-emerald-400" /> Bachat</span>
+                <span className="flex items-center gap-1 text-emerald-300"><Heart className="w-3.5 h-3.5 text-emerald-400" /> Bachat</span>
                 <span>•</span>
-                <span className="flex items-center gap-1 text-amber-300"><Zap className="w-3 h-3 text-amber-400" /> Dabao</span>
+                <span className="flex items-center gap-1 text-amber-300"><Zap className="w-3.5 h-3.5 text-amber-400" /> Dabao</span>
               </div>
 
-              <button className="w-full py-3 rounded-xl font-black text-xs tracking-wider text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 shadow-lg shadow-red-600/30 border border-red-400/40 flex items-center justify-center gap-2 transition-all group-hover:shadow-xl active:scale-95">
+              <button className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wider text-white bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 shadow-lg shadow-red-600/40 border border-red-400/50 flex items-center justify-center gap-2 transition-all group-hover:shadow-red-600/60 active:scale-95">
                 <Siren className="w-4 h-4 animate-siren-wiggle" />
-                <span>🚨 AMBULANCE CHALAO (RESCUER)</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>🚨 AMBULANCE LEKE AAO (RESCUER)</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
           </Link>
@@ -107,41 +112,46 @@ const LoginPage = () => {
           {/* Kitchen Dispatch Card */}
           <Link
             to="/login/kitchen"
-            className="group relative bg-slate-900/80 backdrop-blur-md rounded-3xl border border-amber-500/30 p-7 text-center hover:border-amber-500/80 hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-950/60 transition-all duration-300 cursor-pointer no-underline flex flex-col justify-between"
+            className="group relative bg-slate-900/90 backdrop-blur-md rounded-3xl border-2 border-amber-500/40 hover:border-amber-400 p-6 sm:p-7 text-center hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-amber-900/50 transition-all duration-300 cursor-pointer no-underline flex flex-col justify-between"
           >
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-amber-600/10 to-transparent pointer-events-none" />
-            <div className="relative space-y-4">
+            <div className="relative space-y-3.5">
               {/* Badge */}
-              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[10px] font-mono font-bold uppercase">
-                <span>👨‍🍳 BAWARCHI CONTROL ROOM</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-mono font-bold uppercase">
+                <span>👨‍🍳 TANDOOR TRAUMA WARD HQ</span>
               </div>
 
-              <div className="text-6xl group-hover:scale-110 transition-transform">👨‍🍳🔥</div>
+              <div className="text-6xl group-hover:scale-125 transition-transform duration-300">
+                👨‍🍳🔥
+              </div>
 
               <div>
-                <h3 className="text-xl font-black text-white tracking-wide group-hover:text-amber-400 transition-colors">
+                <h3 className="text-2xl font-black text-white tracking-wide group-hover:text-amber-400 transition-colors">
                   KITCHEN DISPATCH
                 </h3>
-                <p className="text-xs text-amber-300/80 italic font-mono mt-0.5">
-                  "Khana phenkna paap hai babumoshai!"
+                <div className="text-xs text-amber-300 font-bold font-mono mt-0.5">
+                  (Dhabe Ka Gabbar)
+                </div>
+                <p className="text-xs text-amber-200/90 italic font-mono mt-1 bg-amber-950/40 py-1.5 px-2 rounded-lg border border-amber-500/20">
+                  "Ye garam surplus khana dustbin ko mat dena Thakur! Rokda recover karo!" 💸
                 </p>
-                <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                  Surplus batch dustbin bhejke rona band karo! 1-click broadcast karo aur maal ka <span className="text-emerald-300 font-bold font-mono">Cash Recover</span> karo!
+                <p className="text-xs text-slate-300 mt-2.5 leading-relaxed">
+                  Surplus batch phenkna paap hai! 1-click 911 broadcast chalao, waste ko <span className="text-emerald-400 font-black font-mono">Cash Mein Badlo</span>!
                 </p>
               </div>
 
               <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-slate-400 pt-1">
-                <span className="flex items-center gap-1 text-amber-300"><ChefHat className="w-3 h-3 text-amber-400" /> Tandoor</span>
+                <span className="flex items-center gap-1 text-amber-300"><ChefHat className="w-3.5 h-3.5 text-amber-400" /> Tandoor</span>
                 <span>•</span>
-                <span className="flex items-center gap-1 text-emerald-300"><Zap className="w-3 h-3 text-emerald-400" /> Cash Back</span>
+                <span className="flex items-center gap-1 text-emerald-300"><Zap className="w-3.5 h-3.5 text-emerald-400" /> Rokda</span>
                 <span>•</span>
-                <span className="flex items-center gap-1 text-blue-300"><Shield className="w-3 h-3 text-blue-400" /> No Waste</span>
+                <span className="flex items-center gap-1 text-blue-300"><Shield className="w-3.5 h-3.5 text-blue-400" /> Zero Bin</span>
               </div>
 
-              <button className="w-full py-3 rounded-xl font-black text-xs tracking-wider text-white bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 shadow-lg shadow-orange-600/30 border border-amber-400/40 flex items-center justify-center gap-2 transition-all group-hover:shadow-xl active:scale-95">
+              <button className="w-full py-3.5 rounded-xl font-black text-xs sm:text-sm tracking-wider text-white bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-500 hover:to-orange-500 shadow-lg shadow-orange-600/40 border border-amber-400/50 flex items-center justify-center gap-2 transition-all group-hover:shadow-amber-600/60 active:scale-95">
                 <ChefHat className="w-4 h-4" />
-                <span>👨‍🍳 TANDOOR KHOLO (KITCHEN)</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>👨‍🍳 TANDOOR CONTROL (KITCHEN)</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
           </Link>
