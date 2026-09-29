@@ -116,8 +116,8 @@ export const Navbar = () => {
               }`}
               title={roboRoastEnabled ? 'Bollywood Theme Voice is ON (Click to mute)' : 'Bollywood Theme Voice is MUTED (Click to activate)'}
             >
-              <span className="text-base leading-none">🎬</span>
-              <span className="hidden md:inline">{roboRoastEnabled ? 'BOLLYWOOD VOICE' : 'VOICE MUTED'}</span>
+              <span className="text-base leading-none">🎙️</span>
+              <span className="hidden md:inline">{roboRoastEnabled ? 'FUNNY VOICE' : 'VOICE MUTED'}</span>
             </button>
 
             <button

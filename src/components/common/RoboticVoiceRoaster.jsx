@@ -54,11 +54,11 @@ export const RoboticVoiceRoaster = () => {
               <div className="flex items-center gap-2">
                 <span className="p-1.5 rounded-lg bg-black/40 border border-amber-500/40 text-amber-300 flex items-center gap-1.5">
                   <Film className="w-4 h-4 text-amber-400 animate-pulse" />
-                  <span className="font-bold text-[11px] tracking-wider uppercase">🎬 BOLLYWOOD MALE VOICE 🎙️</span>
+                  <span className="font-bold text-[11px] tracking-wider uppercase">🎙️ SMOOTH & FUNNY VOICE 🎭</span>
                 </span>
                 <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/40">
                   <Radio className="w-2.5 h-2.5 animate-ping" />
-                  70mm HERO AUDIO 🔊
+                  SMOOTH AUDIO 🔊
                 </span>
               </div>
               <button
@@ -88,13 +88,13 @@ export const RoboticVoiceRoaster = () => {
             <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-white/70">
               <span className="italic flex items-center gap-1">
                 <Sparkles className="w-3 h-3 text-amber-300" />
-                Bollywood Fanfare & Speech
+                Smooth Chime & Voice
               </span>
               <button
                 onClick={testRandomRoast}
                 className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-bold border border-amber-500/40 active:scale-95 transition-all flex items-center gap-1"
               >
-                <span>Agla Dialogue</span>
+                <span>Agla Word</span>
                 <Clapperboard className="w-3 h-3" />
               </button>
             </div>
